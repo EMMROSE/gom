@@ -3,7 +3,7 @@ class Activity < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_by_location,
-    against: [ :location],
+    against: [ :location]
     # using: {
     #   tsearch: { prefix: true }
     # }
