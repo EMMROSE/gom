@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2020_02_24_165352) do
     t.bigint "activity_id", null: false
     t.date "start_time"
     t.date "end_time"
-    t.boolean "open_status"
+    t.boolean "open_status", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["activity_id"], name: "index_sessions_on_activity_id"
