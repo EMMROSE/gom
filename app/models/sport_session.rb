@@ -2,7 +2,7 @@ class SportSession < ApplicationRecord
   CAPACITY = [1, 2, 3, 4, 5]
   LEVEL = ['beginner', 'intermediate', 'expert']
   belongs_to :activity, dependent: :destroy
-  has_many :session_users
+  has_many :session_users, dependent: :destroy
   has_many :users, through: :session_users
   has_one_attached :photo
 
