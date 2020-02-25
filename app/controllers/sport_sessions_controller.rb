@@ -9,5 +9,11 @@ class SportSessionsController < ApplicationController
         infoWindow: render_to_string(partial: "infowindow", locals: { sport_session: sport_session }),
         image_url: helpers.asset_url('old-walker.png')
       }
+    end
   end
+
+  def show
+    @sport_session = SportSession.find(params[:id])
+  end
+
 end
