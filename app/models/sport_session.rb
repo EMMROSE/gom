@@ -4,6 +4,7 @@ class SportSession < ApplicationRecord
   belongs_to :activity, dependent: :destroy
   has_many :session_users
   has_many :users, through: :session_users
+  has_one_attached :photo
 
   validates :location, presence: true
   validates :start_time, presence: true
