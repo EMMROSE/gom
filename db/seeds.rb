@@ -68,17 +68,17 @@ puts "Create SportSessions"
 s1 = SportSession.new(location: "Basque Country", start_time: Date.today, capacity: 3, title: "Maxi Sess", description: "Alright guys! Who's in for this one?", level: 'expert')
 s1.activity = a1
 
-se1a = SessionUser.new(owner: true)
+se1a = SessionUser.new(owner: true, status: 'accepted')
 se1a.sport_session = s1
 se1a.user = u1
 se1a.save!
 
-se1b = SessionUser.new(owner: false)
+se1b = SessionUser.new(owner: false, status: 'accepted')
 se1b.sport_session = s1
 se1b.user = u2
 se1b.save!
 
-se1c = SessionUser.new(owner: false)
+se1c = SessionUser.new(owner: false, status: 'accepted')
 se1c.sport_session = s1
 se1c.user = u3
 se1c.save!
@@ -89,17 +89,17 @@ puts "Session1 ok"
 s2 = SportSession.new(location: "Basque Country", start_time: Date.today, capacity: 3, title: "Ski Paradise", description: "Conditions are awesome! Let's go!", level: 'intermediate')
 s2.activity = a2
 
-se2a = SessionUser.new(owner: true)
+se2a = SessionUser.new(owner: true, status: 'accepted')
 se2a.sport_session = s2
 se2a.user = u6
 se2a.save!
 
-se2b = SessionUser.new(owner: false)
+se2b = SessionUser.new(owner: false, status: 'accepted')
 se2b.sport_session = s2
 se2b.user = u5
 se2b.save!
 
-se2c = SessionUser.new(owner: false)
+se2c = SessionUser.new(owner: false, status: 'accepted')
 se2c.sport_session = s2
 se2c.user = u4
 se2c.save!
@@ -110,17 +110,17 @@ puts "Session2 ok"
 s3 = SportSession.new(location: "Basque Country", start_time: Date.today, capacity: 4, title: "Bike Mountain with friends", description: "Who's motivated to hit the road again?", level: 'intermediate')
 s3.activity = a3
 
-se3a = SessionUser.new(owner: true)
+se3a = SessionUser.new(owner: true, status: 'accepted')
 se3a.sport_session = s3
 se3a.user = u6
 se3a.save!
 
-se3b = SessionUser.new(owner: false)
+se3b = SessionUser.new(owner: false, status: 'accepted')
 se3b.sport_session = s3
 se3b.user = u5
 se3a.save!
 
-se3c = SessionUser.new(owner: false)
+se3c = SessionUser.new(owner: false, status: 'accepted')
 se3c.sport_session = s3
 se3c.user = u4
 se3a.save!
@@ -131,17 +131,17 @@ puts "Session3 ok"
 s4 = SportSession.new(location: "Basque Country", start_time: Date.today, capacity: 2, title: "Surf with friends", description: "Really motivated for this morning session!", level: 'beginner')
 s4.activity = a4
 
-se4a = SessionUser.new(owner: true)
+se4a = SessionUser.new(owner: true, status: 'accepted')
 se4a.sport_session = s4
 se4a.user = u2
 se4a.save!
 
-se4b = SessionUser.new(owner: false)
+se4b = SessionUser.new(owner: false, status: 'accepted')
 se4b.sport_session = s4
 se4b.user = u3
 se4b.save!
 
-se4c = SessionUser.new(owner: false)
+se4c = SessionUser.new(owner: false, status: 'accepted')
 se4c.sport_session = s4
 se4c.user = u4
 se4c.save!
@@ -152,17 +152,17 @@ puts "Session4 ok"
 s5 = SportSession.new(location: "Taghazout", start_time: "2020-06-01", capacity: 2, title: "Kite in the desert", description: "May the wind be with you!", level: 'beginner')
 s5.activity = a5
 
-se5a = SessionUser.new(owner: true)
+se5a = SessionUser.new(owner: true, status: 'accepted')
 se5a.sport_session = s5
 se5a.user = u2
 se5a.save!
 
-se5b = SessionUser.new(owner: false)
+se5b = SessionUser.new(owner: false, status: 'accepted')
 se5b.sport_session = s5
 se5b.user = u3
 se5b.save!
 
-se5c = SessionUser.new(owner: false)
+se5c = SessionUser.new(owner: false, status: 'accepted')
 se5c.sport_session = s5
 se5c.user = u5
 se5c.save!
@@ -173,17 +173,17 @@ puts "Session5 ok"
 s6 = SportSession.new(location: "Tignes", start_time: "2021-02-03", capacity: 5, title: "Freestyle snowboarding", description: "Who's ready for a good race?", level: 'intermediate')
 s6.activity = a6
 
-se6a = SessionUser.new(owner: true)
+se6a = SessionUser.new(owner: true, status: 'accepted')
 se6a.sport_session = s6
 se6a.user = u5
 se6a.save!
 
-se6b = SessionUser.new(owner: false)
+se6b = SessionUser.new(owner: false, status: 'accepted')
 se6b.sport_session = s6
 se6b.user = u2
 se6b.save!
 
-se6c = SessionUser.new(owner: false)
+se6c = SessionUser.new(owner: false, status: 'accepted')
 se6c.sport_session = s6
 se6c.user = u1
 se6c.save!
