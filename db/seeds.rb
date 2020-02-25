@@ -7,11 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require "open-uri"
 
+puts "Destroy all Activities"
+Activity.destroy_all
+
 puts "Destroy all Sport Sessions"
 SportSession.destroy_all
 
-puts "Destroy all Activities"
-Activity.destroy_all
 
 puts "Destroy all Users"
 User.destroy_all
