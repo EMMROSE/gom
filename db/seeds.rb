@@ -24,32 +24,32 @@ puts "Create Activities"
 file = URI.open('https://res.cloudinary.com/timothee/image/upload/v1582638267/surf_activity.jpg')
 a1 = Activity.create!(name: "Surf")
 a1.photo.attach(io: file, filename: 'surf_activity.jpg', content_type: 'image/png')
-a1.save
+a1.save!
 
 file = URI.open('https://res.cloudinary.com/timothee/image/upload/v1582638314/ski_activity.jpg')
 a2 = Activity.create!(name: "Ski")
 a2.photo.attach(io: file, filename: 'ski_activity.jpg', content_type: 'image/png')
-a2.save
+a2.save!
 
 file = URI.open('https://res.cloudinary.com/timothee/image/upload/v1582638375/vtt_activity.webp')
 a3 = Activity.create!(name: "VTT")
 a3.photo.attach(io: file, filename: 'vtt_activity.webp', content_type: 'image/png')
-a3.save
+a3.save!
 
 file = URI.open('https://res.cloudinary.com/timothee/image/upload/v1582638332/kayak_activity.jpg')
 a4 = Activity.create!(name: "Kayak")
 a4.photo.attach(io: file, filename: 'kayak_activity.jpg', content_type: 'image/png')
-a4.save
+a4.save!
 
 file = URI.open('https://res.cloudinary.com/timothee/image/upload/v1582638358/snowboard_activity.jpg')
 a5 = Activity.create!(name: "Snowboard")
 a5.photo.attach(io: file, filename: 'snowboard_activity.jpg', content_type: 'image/png')
-a5.save
+a5.save!
 
 file = URI.open('https://res.cloudinary.com/timothee/image/upload/v1582638342/kite_activity.jpg')
 a6 = Activity.create!(name: "Kite-surf")
 a6.photo.attach(io: file, filename: 'kite_activity.jpg', content_type: 'image/png')
-a6.save
+a6.save!
 
 puts ">>>>>> Done, #{Activity.count} activities created!"
 puts "----------"
@@ -66,7 +66,7 @@ puts "----------"
 
 puts "Create SportSessions"
 s1 = SportSession.new(location: "Basque Country", start_time: Date.today, capacity: 3, title: "Maxi Sess", description: "Alright guys! Who's in for this one?", level: 'expert')
-s1.activity= a1
+s1.activity = a1
 
 se1a = SessionUser.new(owner: true)
 se1a.sport_session = s1

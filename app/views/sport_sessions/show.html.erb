@@ -1,9 +1,15 @@
 <div class="container mt-5">
   <h1>Show Session</h1>
-  <li>
-    <% @sport_session.users.each do |user| %>
-        <li><%= user.name %></li>
+  <li> Session Members:
+      <ul>
+    <% @sport_session.session_users.each do |session_user| %>
+        <% if session_user.owner %>
+          <li><b><%= session_user.user.username %> <%= "(owner)"  %></b></li>
+        <% else %>
+          <li><%= session_user.user.username %></li>
+        <% end %>
     <% end %>
+      </ul>
   </li>
   <li><%= @sport_session.title %></li>
   <li><%=  @sport_session.description %></li>
