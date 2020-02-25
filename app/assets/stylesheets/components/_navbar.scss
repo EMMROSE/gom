@@ -12,9 +12,9 @@
 }
 
 .navbar .search input {
-  width: 50%;
+  width: 100%;
   display: inline;
-  vertical-align: middle;
+  vertical-align: middle !important;
 }
 
 .navbar .navbar-login a {
@@ -23,4 +23,8 @@
 
 .navbar img {
   cursor: pointer;
+}
+
+.algolia-places {
+  width: 50%;
 }
