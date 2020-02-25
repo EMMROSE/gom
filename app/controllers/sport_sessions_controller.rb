@@ -16,4 +16,9 @@ class SportSessionsController < ApplicationController
     @sport_session = SportSession.find(params[:id])
   end
 
+  def create
+    @sport_session = SportSession.new
+
+  end
+
 end
