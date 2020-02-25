@@ -1,0 +1,37 @@
+.btn-gom {
+  background-color: $green;
+  color: white;
+  font-weight: 600;
+  opacity: 0.9;
+  transition: all .1s ease-out;
+  &:hover {
+    opacity: 1;
+    color: white;
+  }
+}
+
+.btn-white {
+  color: white;
+  opacity: 0.9;
+  border: 1px solid white;
+  transition: all .1s ease-out;
+  margin-left: 10px;
+  &:hover {
+    opacity: 1;
+    color: white;
+  }
+}
+
+.btn-black {
+  color: black;
+  opacity: 0.9;
+  border: 1px solid black;
+  transition: all .1s ease-out;
+  margin-left: 10px;
+  &:hover {
+    opacity: 1;
+    color: black;
+  }
+}
+
+

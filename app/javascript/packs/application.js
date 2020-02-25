@@ -22,3 +22,12 @@ require("channels")
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
 import "bootstrap";
+import { scrolledNav } from '../components/navbar';
+
+document.addEventListener('turbolinks:load', () => {
+  // Call your JS functions here
+  // [...]
+  scrolledNav(); // scroll effect of the navbar on Home Page
+
+});
+
