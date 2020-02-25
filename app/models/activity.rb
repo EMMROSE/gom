@@ -1,5 +1,5 @@
 class Activity < ApplicationRecord
-  has_many :sport_sessions
+  has_many :sport_sessions, dependent: :destroy
   has_one_attached :photo
 
   include PgSearch::Model
