@@ -1,15 +1,42 @@
-<h1>Index Session</h1>
-<% @sport_sessions.each do |sport_session| %>
-  <div class="card">
-    <li><%= sport_session.title %></li>
-    <li><%=  sport_session.description %></li>
-    <li><%= sport_session.start_time %></li>
-    <li><%= sport_session.level %></li>
-  </div>
-<% end %>
 
-<div id="map"
-  style="width:100%; height: 300px;"
-  data-markers="<%= @markers.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+<div class="row">
+  <div class="col pr-0">
+    <div class="container">
+      <h1>Sessions to come:</h1>
+      <% @sport_sessions.each do |sport_session| %>
+        <div class="small-card-session">
+
+          <div class="small-card-session-top text--center" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path sport_session.activity.photo.key, height: 250, width: 500, crop: :fill %>');">
+            <h2><%= sport_session.title %></h2>
+            <p><%= sport_session.description %></p>
+          </div>
+
+          <div class="small-card-session-bottom d-flex justify-content-between">
+            <div class="align-start">
+              <p><%= sport_session.location %></p>
+              <p><%= sport_session.start_time %></p>
+            </div>
+
+            <div class="text-right">
+              <p><%= sport_session.capacity %> riders</p>
+              <p><%= sport_session.level %> level</p>
+            </div>
+
+          </div>
+
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-8 pl-0">
+    <div class="container">
+      <div id="map"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+
+    </div>
+  </div>
 </div>
+
