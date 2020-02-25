@@ -1,4 +1,4 @@
 class DashboardsController < ApplicationController
-   def dashboard
+  def dashboard
   end
 end

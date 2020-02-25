@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :session_users
   has_many :sport_sessions, through: :session_users
+  has_one_attached :avatar
   validates :username, uniqueness: true
 end
