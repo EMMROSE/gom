@@ -2,6 +2,9 @@
 </ul>
   <% @activities.each do |activity| %>
   <li><%= activity.name %></li>
+  <% if activity.photo.present? %>
+    <li><%= cl_image_tag activity.photo.key, height: 300, width: 400, crop: :fill %></li>
+    <% end %>
   <% end %>
 <ul>
 

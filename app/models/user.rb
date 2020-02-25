@@ -3,8 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :session_users
+  has_many :session_users, dependent: :destroy
   has_many :sport_sessions, through: :session_users
-  has_one_attached :avatar
+  has_one_attached :photo
+
   validates :username, uniqueness: true
 end

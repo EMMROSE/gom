@@ -1,6 +1,13 @@
-<h1>Show Session</h1>
-
-<li><%= @sport_session.title %></li>
-<li><%=  @sport_session.description %></li>
-<li><%= @sport_session.start_time %></li>
-<li><%= @sport_session.level %></li>
+<div class="container mt-5">
+  <h1>Show Session</h1>
+  <li>
+    <% @sport_session.users.each do |user| %>
+        <li><%= user.name %></li>
+    <% end %>
+  </li>
+  <li><%= @sport_session.title %></li>
+  <li><%=  @sport_session.description %></li>
+  <li><%= @sport_session.start_time %></li>
+  <li><%= @sport_session.level %></li>
+  <li><a href="#" class="btn btn-gom">Join this Session!</a></li>
+</div>

@@ -6,14 +6,19 @@ class SportSessionsController < ApplicationController
       {
         lat: sport_session.latitude,
         lng: sport_session.longitude,
-        infoWindow: render_to_string(partial: "infowindow", locals: { sport_session: sport_session }),
-        image_url: helpers.asset_url('old-walker.png')
+        infoWindow: render_to_string(partial: "info_window", locals: { sport_session: sport_session })
+        # image_url: helpers.asset_url('old-walker.png')
       }
     end
   end
 
   def show
     @sport_session = SportSession.find(params[:id])
+  end
+
+  def create
+    @sport_session = SportSession.new
+
   end
 
 end

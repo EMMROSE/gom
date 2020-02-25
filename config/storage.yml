@@ -13,6 +13,8 @@ local:
 #   secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
 #   region: us-east-1
 #   bucket: your_own_bucket
+cloudinary:
+  service: Cloudinary
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:
