@@ -15,7 +15,7 @@
           <li><%= "Description: #{session.description}" %></li>
           <li><%= "Capacity: #{session.capacity}" %></li>
           <li><%= "Level: #{session.level}" %></li>
-          <li><%= "Begining on #{session.start_time.strftime("%d %B")}" %></li>
+          <li><%= "Starting from #{session.start_time.strftime("%-d %b %Y")}" %></li>
         </ul>
       <% end %>
     <% end %>
@@ -31,7 +31,7 @@
           <li><%= "Description: #{session.description}" %></li>
           <li><%= "Capacity: #{session.capacity}" %></li>
           <li><%= "Level: #{session.level}" %></li>
-          <li><%= "Begining on #{session.start_time.strftime("%d %B")}" %></li>
+          <li><%= "Starting from #{session.start_time.strftime("%-d %b %Y")}" %></li>
         </ul>
       <% end %>
     <% end %>
