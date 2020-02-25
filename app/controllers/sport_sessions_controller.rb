@@ -16,9 +16,30 @@ class SportSessionsController < ApplicationController
     @sport_session = SportSession.find(params[:id])
   end
 
-  def create
+  def new
+    @activities = Activity.all
     @sport_session = SportSession.new
+  end
 
+  def create
+    @activities = Activity.all
+    @sport_session = SportSession.new(sport_session_params)
+    @sport_session.activity = Activity.find(params[:activity_id]) if params[:activity_id].present?
+    @session_user = SessionUser.new(owner: true)
+    @session_user.sport_session = @sport_session
+    @session_user.user = current_user
+    if @sport_session.save
+      @session_user.save
+      redirect_to sport_session_path(@sport_session)
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def sport_session_params
+    params.require(:sport_session).permit(:title, :description, :location, :capacity, :activity_id, :level, :start_time, :end_time)
   end
 
 end

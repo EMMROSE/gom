@@ -8,8 +8,8 @@ class SportSession < ApplicationRecord
 
   validates :location, presence: true
   validates :start_time, presence: true
-  validates :capacity, inclusion: { in: CAPACITY }
-  validates :level, inclusion: { in: LEVEL }
+  validates :capacity, inclusion: { in: CAPACITY , message: ': Please choose between 1 and 5' }
+  validates :level, inclusion: { in: LEVEL , message: ': Please choose between Beginner, Intermediate and Expert' }
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
 end
