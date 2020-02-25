@@ -24,7 +24,11 @@
 }
 
 .banner-search input {
-  width: 50%;
+  width: 100%;
   display: inline;
-  vertical-align: middle;
+  vertical-align: middle!important;
+}
+
+.algolia-places {
+  width: 50%;
 }
