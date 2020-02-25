@@ -1,0 +1,9 @@
+<h1>Index Session</h1>
+<% @sessions.each do |session| %>
+  <div class="card">
+    <li><%= session.title %></li>
+    <li><%=  session.description %></li>
+    <li><%= session.start_time %></li>
+    <li><%= session.level %></li>
+  </div>
+<% end %>
