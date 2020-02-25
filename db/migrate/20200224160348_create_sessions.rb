@@ -9,7 +9,7 @@ class CreateSessions < ActiveRecord::Migration[6.0]
       t.references :activity, null: false, foreign_key: true
       t.date :start_time
       t.date :end_time
-      t.boolean :open_status, default: :true
+      t.boolean :open_status, default: true
 
       t.timestamps
     end
