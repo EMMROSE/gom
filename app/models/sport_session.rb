@@ -1,4 +1,4 @@
-class Session < ApplicationRecord
+class SportSession < ApplicationRecord
   CAPACITY = [1, 2, 3, 4, 5]
   LEVEL = ['beginner', 'intermediate', 'expert']
   belongs_to :activity, dependent: :destroy
