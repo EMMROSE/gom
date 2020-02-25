@@ -33,3 +33,21 @@
 .card-session .card-session-infos {
   padding: 16px;
 }
+
+.small-card-session {
+  background: white;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.small-card-session-top {
+  height: 10em;
+  color: white;
+  text-align: center;
+}
+
+.small-card-session-bottom {
+  padding: 16px 16px 0px 16px;
+}
