@@ -5,7 +5,12 @@ Rails.application.routes.draw do
   resources :sport_sessions, only: [:index, :show, :new, :create, :edit, :update] do
     resources :session_users, only: [:new, :create]
   end
-  resources :session_users, only: [:edit, :update]
+  resources :session_users, only: [:edit, :update] do
+    member do
+      get :accept
+      get :reject
+    end
+  end
   get 'dashboards', to: 'dashboards#dashboard'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
