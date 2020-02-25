@@ -4,6 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :session_users
-  has_many :sessions, through: :session_users
+  has_many :sport_sessions, through: :session_users
   validates :username, uniqueness: true
 end

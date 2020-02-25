@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_25_094410) do
+ActiveRecord::Schema.define(version: 2020_02_25_110335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,17 +22,17 @@ ActiveRecord::Schema.define(version: 2020_02_25_094410) do
   end
 
   create_table "session_users", force: :cascade do |t|
-    t.bigint "session_id", null: false
+    t.bigint "sport_session_id", null: false
     t.bigint "user_id", null: false
     t.boolean "owner"
     t.boolean "equipped"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["session_id"], name: "index_session_users_on_session_id"
+    t.index ["sport_session_id"], name: "index_session_users_on_sport_session_id"
     t.index ["user_id"], name: "index_session_users_on_user_id"
   end
 
-  create_table "sessions", force: :cascade do |t|
+  create_table "sport_sessions", force: :cascade do |t|
     t.string "location"
     t.string "title"
     t.string "description"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2020_02_25_094410) do
     t.datetime "updated_at", precision: 6, null: false
     t.float "latitude"
     t.float "longitude"
-    t.index ["activity_id"], name: "index_sessions_on_activity_id"
+    t.index ["activity_id"], name: "index_sport_sessions_on_activity_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2020_02_25_094410) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "session_users", "sessions"
+  add_foreign_key "session_users", "sport_sessions"
   add_foreign_key "session_users", "users"
-  add_foreign_key "sessions", "activities"
+  add_foreign_key "sport_sessions", "activities"
 end

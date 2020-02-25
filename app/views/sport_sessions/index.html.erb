@@ -1,0 +1,15 @@
+<h1>Index Session</h1>
+<% @sport_sessions.each do |sport_session| %>
+  <div class="card">
+    <li><%= sport_session.title %></li>
+    <li><%=  sport_session.description %></li>
+    <li><%= sport_session.start_time %></li>
+    <li><%= sport_session.level %></li>
+  </div>
+<% end %>
+
+<div id="map"
+  style="width:100%; height: 300px;"
+  data-marker="<%= @marker.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
