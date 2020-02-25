@@ -1,35 +1,50 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+<div id="<%= "navbar-homepage" if params[:action] == "home" %>" class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
+  <div class="navbar-brand">
+    <%= link_to root_path do %>
+      <%= image_tag "https://image.flaticon.com/icons/svg/403/403772.svg" %>
     <% end %>
+  </div>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Home", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link" %>
-        </li>
+  <div class="search flex-grow-1">
+    <%= form_tag activities_path, method: :get, novalidate: "novalidate", class: "simple_form search"  do %>
+      <div class="search-form-control form-group mb-0">
+        <%= text_field_tag :query,
+            params[:query],
+            class: "search-input form-control string required",
+            id: "search_query",
+            placeholder: "Find your next session",
+            value: ""
+        %>
+        <%= button_tag(type: "submit", class: "btn btn-gom") do %>
+          <i class="fas fa-search"></i> Search
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <% if user_signed_in? %>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <span id="js-navbar-balance" class="navbar-points text-white border-white">Balance: <%= current_user.points == nil ? "0" : current_user.points %> <i class="fas fa-coins"></i></span>
+          <%= image_tag current_user.avatar, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Action", "#", class: "dropdown-item" %>
-            <%= link_to "Another action", "#", class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            <%= link_to "Add a comic book", new_book_path, class: "dropdown-item" %>
+            <%= link_to "Dashboard", dashboard_path, class: "dropdown-item" %>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
+      </ul>
+    </div>
+  <% else %>
+    <div class="navbar-login">
+      <%= link_to "login", new_user_session_path, class: "btn btn-black" %>
+      <%= link_to "sign-up", new_user_registration_path, class: "btn btn-black" %>
+    </div>
+  <% end %>
 </div>
