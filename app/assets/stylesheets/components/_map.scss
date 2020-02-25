@@ -1,12 +1,23 @@
-.session-map #map {
-  border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 20px;
+.mapboxgl-popup {
+  max-width: 150px;
 }
 
 .mapboxgl-popup-content {
-  padding: 15px;
+  background-color: rgba(14,0 ,0 ,0.7);
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  border-radius: 8px;
   font-size: 14px;
   p {
     margin-bottom: 0px;
+    font-weight: bold;
+    text-align: left;
+  }
+  button {
+    width: 100%;
+    margin-top: 2px;
   }
 }

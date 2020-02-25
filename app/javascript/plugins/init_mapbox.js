@@ -3,6 +3,11 @@ import mapboxgl from 'mapbox-gl';
 
   // Create a HTML element for your custom marker
 
+const fitMapToMarkers = (map, markers) => {
+    const bounds = new mapboxgl.LngLatBounds();
+    markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
+    map.fitBounds(bounds, { padding: 70, maxZoom: 10, duration: 0 });
+};
 
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
@@ -13,27 +18,26 @@ const initMapbox = () => {
       style: 'mapbox://styles/mapbox/streets-v10'
     });
 
-  let marker = JSON.parse(mapElement.dataset.marker);
+  let markers = JSON.parse(mapElement.dataset.markers);
+  markers.forEach((marker) => {
+    const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // add this
+    console.log(marker);
+    new mapboxgl.Marker()
+      .setLngLat([ marker.lng, marker.lat ])
+      .setPopup(popup)
+      .addTo(map);
+  });
 
-  const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // add this
 
-  const element = document.createElement('div');
-  element.className = 'marker';
-  element.style.backgroundImage = `url('${marker.image_url}')`;
-  element.style.backgroundSize = 'contain';
-  element.style.width = '40px';
-  element.style.height = '40px';
+  // const element = document.createElement('div');
+  // element.className = 'marker';
+  // element.style.backgroundImage = `url('${marker.image_url}')`;
+  // element.style.backgroundSize = 'contain';
+  // element.style.width = '40px';
+  // element.style.height = '40px';
   // Pass the element as an argument to the new marker
 
-  marker = new mapboxgl.Marker(element)
-    .setLngLat([marker.lng, marker.lat])
-    .setPopup(popup)
-    .addTo(map);
-
-  const bounds = new mapboxgl.LngLatBounds();
-  bounds.extend([ marker._lngLat.lng, marker._lngLat.lat ]);
-  map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
-
+  fitMapToMarkers(map, markers);
   };
 };
 
