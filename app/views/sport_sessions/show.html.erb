@@ -1,19 +1,30 @@
 <div class="container mt-5">
-  <h1>Show Session</h1>
+  <h1><%= @sport_session.title %></h1>
   <li> Session Members:
       <ul>
     <% @sport_session.session_users.each do |session_user| %>
         <% if session_user.owner %>
-          <li><b><%= session_user.user.username %> <%= "(owner)"  %></b></li>
+          <% @session_owner = session_user.user %>
+          <li><b><%= @session_owner.username %> <%= "(owner)"  %></b></li>
         <% else %>
           <li><%= session_user.user.username %></li>
         <% end %>
     <% end %>
       </ul>
   </li>
-  <li><%= @sport_session.title %></li>
-  <li><%=  @sport_session.description %></li>
-  <li><%= @sport_session.start_time %></li>
-  <li><%= @sport_session.level %></li>
-  <li><a href="#" class="btn btn-gom">Join this Session!</a></li>
+  <li><b>Infos:</b> <%=  @sport_session.description %></li>
+  <li><b>Start Time:</b> <%= @sport_session.start_time %></li>
+  <li><b>Level:</b> <%= @sport_session.level %></li>
+
+  <% if @session_owner != current_user %>
+    <% if @sport_session.users.count < @sport_session.capacity %>
+      <% if @current_relevent_session_user && @current_relevent_session_user.status == "pending" %>
+        <li>PENDING REQUEST</li>
+      <% else %>
+        <li><%= link_to "Join!", sport_session_session_users_path(params[:id]), method: "post", class: "btn btn-gom" %></li>
+      <% end %>
+    <% else %>
+      <li><b>SESSION COMPLETE...</b></li>
+    <% end %>
+  <% end %>
 </div>

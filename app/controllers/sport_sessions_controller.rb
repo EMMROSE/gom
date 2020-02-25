@@ -14,6 +14,7 @@ class SportSessionsController < ApplicationController
 
   def show
     @sport_session = SportSession.find(params[:id])
+    @current_relevent_session_user = current_user.session_users.find_by(sport_session_id: params[:id])
   end
 
   def new
@@ -25,7 +26,7 @@ class SportSessionsController < ApplicationController
     @activities = Activity.all
     @sport_session = SportSession.new(sport_session_params)
     @sport_session.activity = Activity.find(params[:activity_id]) if params[:activity_id].present?
-    @session_user = SessionUser.new(owner: true)
+    @session_user = SessionUser.new(owner: true, status: 'accepted')
     @session_user.sport_session = @sport_session
     @session_user.user = current_user
     if @sport_session.save
