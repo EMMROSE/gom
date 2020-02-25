@@ -1,0 +1,80 @@
+<div class="container mt-5">
+  <div class="dashboard-cards">
+    <div class="dashboard-card card-left">
+      <div class="text-center list-unstyled">
+        <li><%= cl_image_tag current_user.avatar.key, width: 100, height: 100, crop: :fill, class: "avatar-large" %></li>
+        <li><h2><%= current_user.name ? current_user.name : "" %></h2></li>
+      </div>
+      <ul class="list-unstyled">
+        <li class= "dashboard-balance-color"><i class="fas fa-coins"></i> Your balance: <b><%= current_user.points %></b></li>
+        <li><i class="fas fa-home"></i> <%= current_user.address %></li>
+      </ul>
+    </div>
+    <div class="dashboard-card card-right">
+      <div class="dashboard-bookings">
+        <div class="current-readings">
+          <% current_readings = current_user.bookings.where "start_date <= ? AND end_date >= ?", Date.today, Date.today %>
+          <h5>Current Readings</h5>
+          <% current_readings.order('start_date ASC').each do |booking| %>
+            <div class="dashboard-booking">
+              <div class="dashboard-booking-cover">
+                <%= link_to book_path(booking.book) do %>
+                  <%= cl_image_tag booking.book.cover.key, crop: :fill %>
+                <% end %>
+              </div>
+              <div class="dashboard-booking-info">
+                <p><b><%= link_to booking.book.name, book_path(booking.book) %></b></p>
+                <ul class="list-unstyled">
+                  <li><b><i class="far fa-calendar-alt"></i></b> <%= booking.start_date.strftime("%d %B") %> - <%= booking.end_date.strftime("%d %B") %></li>
+                  <li><b><i class="fas fa-map-marker-alt"></i></b> <%= booking.book.user.address %> <%= link_to "(Map)", book_path(booking.book, anchor: "map"), class: "small map-link" %></li>
+                </ul>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="readings-to-come">
+          <% bookings_to_come = current_user.bookings.where "start_date >= ?", Date.today %>
+          <h5>Readings to Come</h5>
+          <% bookings_to_come.order('start_date ASC').each do |booking| %>
+            <div class="dashboard-booking">
+              <div class="dashboard-booking-cover">
+                <%= link_to book_path(booking.book) do %>
+                  <%= cl_image_tag booking.book.cover.key, crop: :fill %>
+                <% end %>
+              </div>
+              <div class="dashboard-booking-info">
+                <p><b><%= link_to booking.book.name, book_path(booking.book) %></b></p>
+                <ul class="list-unstyled">
+                  <li><b><i class="far fa-calendar-alt"></i></b> <%= booking.start_date.strftime("%d %B") %> - <%= booking.end_date.strftime("%d %B") %></li>
+                  <li><b><i class="fas fa-map-marker-alt"></i></b> <%= booking.book.user.address %> <%= link_to "(Map)", book_path(booking.book, anchor: "map"), class: "small map-link" %></li>
+                </ul>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="history">
+          <h5>History</h5>
+          <% passed_bookings = current_user.bookings.where "end_date < ?", Date.today %>
+          <% passed_bookings.order('start_date ASC').each do |booking| %>
+            <div class="dashboard-booking">
+              <div class="dashboard-booking-cover">
+                <%= link_to book_path(booking.book) do %>
+                  <%= cl_image_tag booking.book.cover.key, crop: :fill %>
+                <% end %>
+              </div>
+              <div class="dashboard-booking-info">
+                <p><b><%= link_to booking.book.name, book_path(booking.book) %></b></p>
+                <ul class="list-unstyled">
+                  <li><b><i class="far fa-calendar-alt"></i></b> <%= booking.start_date.strftime("%d %B") %> - <%= booking.end_date.strftime("%d %B") %></li>
+                  <li><b><i class="fas fa-map-marker-alt"></i></b> <%= booking.book.user.address %> <%= link_to "(Map)", book_path(booking.book, anchor: "map"), class: "small map-link" %></li>
+                </ul>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
