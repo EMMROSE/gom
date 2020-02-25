@@ -7,13 +7,33 @@
 
   <div class="next-sessions">
     <h3>Next sessions</h3>
-    <% current_sessions = current_user.sport_session_id %>
+    <% current_sessions = current_user.sport_sessions %>
     <% current_sessions.each do |session| %>
-    <%= session %>
+      <% if session.start_time >= Date.today  %>
+        <ul class="sessions-list">
+          <li><%= session.title %></li>
+          <li><%= "Description: #{session.description}" %></li>
+          <li><%= "Capacity: #{session.capacity}" %></li>
+          <li><%= "Level: #{session.level}" %></li>
+          <li><%= "Begining on #{session.start_time.strftime("%d %B")}" %></li>
+        </ul>
+      <% end %>
     <% end %>
   </div>
 
   <div class="past-sessions">
     <h3>Past sessions</h3>
+    <% past_sessions = current_user.sport_sessions %>
+    <% past_sessions.each do |session| %>
+      <% if session.start_time < Date.today  %>
+        <ul class="sessions-list">
+          <li><%= session.title %></li>
+          <li><%= "Description: #{session.description}" %></li>
+          <li><%= "Capacity: #{session.capacity}" %></li>
+          <li><%= "Level: #{session.level}" %></li>
+          <li><%= "Begining on #{session.start_time.strftime("%d %B")}" %></li>
+        </ul>
+      <% end %>
+    <% end %>
   </div>
 </div>

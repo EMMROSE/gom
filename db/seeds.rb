@@ -148,4 +148,47 @@ se4c.save!
 
 s4.save!
 puts "Session4 ok"
+
+s5 = SportSession.new(location: "Taghazout", start_time: "2020-06-01", capacity: 2, title: "Kite in the desert", description: "May the wind be with you!", level: 'beginner')
+s5.activity = a5
+
+se5a = SessionUser.new(owner: true)
+se5a.sport_session = s5
+se5a.user = u2
+se5a.save!
+
+se5b = SessionUser.new(owner: false)
+se5b.sport_session = s5
+se5b.user = u3
+se5b.save!
+
+se5c = SessionUser.new(owner: false)
+se5c.sport_session = s5
+se5c.user = u5
+se5c.save!
+
+s5.save!
+puts "Session5 ok"
+
+s6 = SportSession.new(location: "Tignes", start_time: "2021-02-03", capacity: 5, title: "Freestyle snowboarding", description: "Who's ready for a good race?", level: 'intermediate')
+s6.activity = a6
+
+se6a = SessionUser.new(owner: true)
+se6a.sport_session = s6
+se6a.user = u5
+se6a.save!
+
+se6b = SessionUser.new(owner: false)
+se6b.sport_session = s6
+se6b.user = u2
+se6b.save!
+
+se6c = SessionUser.new(owner: false)
+se6c.sport_session = s6
+se6c.user = u1
+se6c.save!
+
+s6.save!
+puts "Session6 ok"
+
 puts ">>>>>> Done, #{SportSession.count} sessions created!"
