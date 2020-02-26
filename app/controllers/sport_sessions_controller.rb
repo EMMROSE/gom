@@ -1,5 +1,5 @@
 class SportSessionsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index]
   def index
     @sport_sessions = SportSession.all
     @markers = @sport_sessions.map do |sport_session|
