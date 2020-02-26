@@ -36,4 +36,30 @@
       <% end %>
     <% end %>
   </div>
+
+  <div class="owned-sessions">
+    <h3>Sessions I Own</h3>
+    <% if @current_user_owned_sessions %>
+      <% @current_user_owned_sessions.each do |session| %>
+        <ul class="sessions-list">
+          <li><%= session.title %></li>
+          <li><%= "Description: #{session.description}" %></li>
+          <li><%= "Capacity: #{session.capacity}" %></li>
+          <li><%= "Level: #{session.level}" %></li>
+          <li><%= "Starting from #{session.start_time.strftime("%-d %b %Y")}" %></li>
+          <li><b>Requests:</b>
+            <ul>
+              <% session.session_users.each do |request| %>
+                <% if request.status == "pending" %>
+                  <li>1 request from: <%= request.user.username %> | <%= link_to "accept", accept_session_user_path(request) %> | <%= link_to "reject", reject_session_user_path(request) %></li>
+
+                <% end %>
+              <% end %>
+            </ul>
+          </li>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
 </div>
+
