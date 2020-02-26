@@ -150,7 +150,7 @@ se4c.save!
 s4.save!
 puts "Session4 ok"
 
-s5 = SportSession.new(location: "Tignes", start_time: "2021-02-03", capacity: 5, title: "Freestyle snowboarding", description: "Who's ready for a good race?", level: 'intermediate')
+s5 = SportSession.new(location: "Tignes", start_time: "2020-02-03", capacity: 5, title: "Freestyle snowboarding", description: "Who's ready for a good race?", level: 'intermediate')
 s5.activity = a5
 
 se5a = SessionUser.new(owner: true, status: 'accepted')
