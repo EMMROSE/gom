@@ -1,0 +1,92 @@
+.container {
+  display: flex;
+}
+
+// .user-profile {
+//   height: 50vh;
+//   position: sticky;
+//   top: 116px;
+//   padding : 16px;
+//   display: block;
+//   text-align: center;
+//   border: 1px solid rgba(0, 0, 0, 0.1);
+//   margin-bottom: 31px;
+//   width: 50%
+// }
+.left-dashboard {
+  height: 56vh;
+  position: sticky;
+  top: 116px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  display: block;
+  width: 40%;
+  text-align: center;
+  margin-right: 16px;
+}
+.right-dashboard {
+  padding: 0px 10px 10px 10px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: sticky;
+}
+h2 {
+  margin-bottom: 0.5rem;
+  font-family: "Poppins";
+  font-weight: 501;
+  line-height: 1.2;
+  font-size: 32px;
+  padding: 8px 0px;
+}
+
+h3 {
+  margin-bottom: 0.5rem;
+  font-family: "Poppins";
+  font-weight: 501;
+  line-height: 1.2;
+  font-size: 16px;
+}
+
+li {
+  font-size: 16px;
+  font-weight: lighter;
+  list-style-type: none
+}
+
+
+ li:first-child{
+   list-style-type: none !important;
+   margin: 0px !important;
+   font-weight: bold;
+ }
+
+.card-session {
+  // overflow: hidden;
+  height: auto;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  margin-bottom: 16px;
+  display: block;
+  padding: 8px;
+  box-shadow:none;
+}
+
+
+.sessions-navigation{
+  display: flex;
+  h3{
+    padding-right::8px;
+  }
+
+}
+
+.right-dashboard-bottom-elements{
+  height: 56vh;
+  overflow: scroll;
+}
