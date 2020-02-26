@@ -14,7 +14,16 @@ class SportSessionsController < ApplicationController
 
   def show
     @sport_session = SportSession.find(params[:id])
-    @current_relevent_session_user = current_user.session_users.find_by(sport_session_id: params[:id])
+
+    # Find session users that belongs to THIS Sport Session
+    @relevant_session_users = SessionUser.where(sport_session_id: params[:id])
+
+    # Find sport session owner
+    session_user_owner = SessionUser.find_by(sport_session_id: params[:id], owner: true)
+    @sport_session_owner = User.find(session_user_owner.user_id)
+
+    # Find session users, of the current user, that belongs to THIS Sport Session
+    @current_relevant_session_user = current_user.session_users.find_by(sport_session_id: params[:id])
   end
 
   def new

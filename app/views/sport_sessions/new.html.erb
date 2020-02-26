@@ -1,13 +1,27 @@
-<div class="container mt-5">
+<div class="container mt-5 form-container">
   <%= simple_form_for(@sport_session) do |f| %>
     <%= f.input :title %>
     <%= f.input :description %>
     <%= f.input :location %>
     <%= f.input :capacity, collection: SportSession::CAPACITY %>
     <%= f.input :level, collection: SportSession::LEVEL %>
-    <%= f.input :activity_id, as: :select, collection: @activities, prompt: 'Select Activity', label: false %>
+
+    <fieldset class="form-group required">
+      <input type="hidden" name="sport_session[activity_id][]" value="">
+
+      <div class="activity-choices">
+        <% @activities.each do |activity| %>
+          <input class="d-none required" type="radio" value="<%= activity.id %>" name="sport_session[activity_id][]" id="sport_session_activity_id_<%= activity.id %>">
+          <label class="form-check-label collection_radio_buttons activity-choice" data-id="<%= activity.id %>" for="sport_session_activity_id_<%= activity.id %>">
+            <%= activity.name %>
+          </label>
+        <% end %>
+      </div>
+    </fieldset>
+
     <%= f.input :start_time %>
     <%= f.input :end_time %>
     <%= f.submit %>
   <% end %>
 </div>
+
