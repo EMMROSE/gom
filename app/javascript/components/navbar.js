@@ -54,6 +54,4 @@ const scrolledNav = () => {
   }
 }
 
-
-
 export { scrolledNav }
