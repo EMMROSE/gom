@@ -1,0 +1,17 @@
+<div class="container-filters bg-white">
+  <!-- select one (or several) activities tag among all activities available at this location-->
+  <div class="filters">
+    <% @sport_sessions.each do |sport_session| %>
+      <%= link_to sport_sessions_path(query: params[:query], activity: sport_session.activity), class: "btn btn-black filter" do %>
+        <%= sport_session.activity.name %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <% if params[:activity] %>
+    <%= link_to sport_sessions_path(query: params[:query]), class: "clear-filters" do %>
+      Clear Filter
+    <% end %>
+  <% end %>
+</div>
+

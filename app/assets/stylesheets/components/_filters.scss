@@ -1,0 +1,13 @@
+.filter {
+  opacity: 0.6;
+}
+
+.container-filters {
+  display: flex;
+  align-items: center;
+  padding-top: 8px;
+}
+
+.container-filters .filters {
+  flex-grow: 1;
+}
