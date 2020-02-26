@@ -1,26 +1,34 @@
-<div class="container mt-5">
+<div class="container mt-5 bg-white">
   <h1><%= @sport_session.title %></h1>
-  <li> Session Members:
-      <ul>
-        <% @relevant_session_users.each do |session_user| %>
 
-          <!-- Differenciate session owner -->
-          <% if session_user.owner %>
-            <li><b><%= @sport_session_owner.username %> <%= "(owner)"  %></b></li>
-          <% else %>
+  Session Members:
+  <div class="session-members">
+    <% @relevant_session_users.each do |session_user| %>
 
-            <!-- Differenciate accepted session members -->
-            <% if session_user.status == "accepted" %>
-              <li><%= session_user.user.username %></li>
+      <!-- Differenciate session owner -->
+      <% if session_user.owner %>
+        <div class="session-member">
+          <img src="https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/migrated-images_parent/migrated-images_68/kelly-slater-in-france_s.jpg" alt="" class="avatar d-block">
+          <b><%= @sport_session_owner.username %> <%= "(owner)"  %></b>
+        </div>
+      <% else %>
 
-            <!-- Differenciate pending requests session members -->
-            <% elsif session_user.status == "pending" %>
-              <li>(pending: <%= session_user.user.username %>)</li>
-            <% end %>
-          <% end %>
+        <!-- Differenciate accepted session members -->
+        <% if session_user.status == "accepted" %>
+          <div class="session-member">
+            <img src="https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/migrated-images_parent/migrated-images_68/kelly-slater-in-france_s.jpg" alt="" class="avatar d-block">
+            <%= session_user.user.username %>
+          </div>
+
+        <!-- Differenciate pending requests session members -->
+        <% elsif session_user.status == "pending" %>
+          <div class="session-member">
+            <img src="https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/migrated-images_parent/migrated-images_68/kelly-slater-in-france_s.jpg" alt="" class="avatar d-block">
+            (pending: <%= session_user.user.username %>)
         <% end %>
-      </ul>
-  </li>
+      <% end %>
+    <% end %>
+  </div>
   <li><b>Infos:</b> <%=  @sport_session.description %></li>
   <li><b>Start Time:</b> <%= @sport_session.start_time %></li>
   <li><b>Level:</b> <%= @sport_session.level %></li>
@@ -47,8 +55,8 @@
   <% end %>
 
 
-  <h1>#<%= @chatroom.name %></h1>
-  <div class=<%= 'chatroom-channel' if current_user != @current_relevent_session_user%>>
+  <h2># Chat</h2>
+  <div class=<%= @current_relevant_session_user && @current_relevant_session_user.status == "accepted" ? "" : 'chatroom-channel' %>>
     <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
       <% if @chatroom.messages %>
         <% @chatroom.messages.each do |message| %>

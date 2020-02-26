@@ -31,9 +31,8 @@ class SportSessionsController < ApplicationController
 
     # Find session users, of the current user, that belongs to THIS Sport Session
     @current_relevant_session_user = current_user.session_users.find_by(sport_session_id: params[:id])
-    
     # Setup Chatroom and Message
-    @chatroom = Chatroom.where(sport_session_id: @sport_session.id).first
+    @chatroom = Chatroom.where(sport_session_id: @sport_session).first
     @message = Message.new
   end
 
