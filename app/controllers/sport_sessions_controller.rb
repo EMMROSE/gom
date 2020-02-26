@@ -15,6 +15,8 @@ class SportSessionsController < ApplicationController
   def show
     @sport_session = SportSession.find(params[:id])
     @current_relevent_session_user = current_user.session_users.find_by(sport_session_id: params[:id])
+    @chatroom = Chatroom.where(sport_session_id: @sport_session.id).first
+    @message = Message.new
   end
 
   def new
