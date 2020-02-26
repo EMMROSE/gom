@@ -31,6 +31,10 @@ class SportSessionsController < ApplicationController
 
     # Find session users, of the current user, that belongs to THIS Sport Session
     @current_relevant_session_user = current_user.session_users.find_by(sport_session_id: params[:id])
+    
+    # Setup Chatroom and Message
+    @chatroom = Chatroom.where(sport_session_id: @sport_session.id).first
+    @message = Message.new
   end
 
   def new
@@ -47,6 +51,7 @@ class SportSessionsController < ApplicationController
     @session_user.user = current_user
     if @sport_session.save
       @session_user.save
+      @chatroom = Chatroom.create(sport_session_id: @sport_session.id, name: "#{@sport_session.title} channel")
       redirect_to sport_session_path(@sport_session)
     else
       render :new

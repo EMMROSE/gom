@@ -1,65 +1,80 @@
 <div class="container mt-5">
-  <div class="user-profile">
+  <div class="left-dashboard">
     <h2><%=  current_user.username %></h2>
     <%= image_tag "https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/migrated-images_parent/migrated-images_68/kelly-slater-in-france_s.jpg", crop: :fill, class: "avatar-large" %>
 
   </div>
 
-  <div class="next-sessions">
-    <h3>Next sessions</h3>
-    <% current_sessions = current_user.sport_sessions %>
-    <% current_sessions.each do |session| %>
-      <% if session.start_time >= Date.today  %>
-        <ul class="sessions-list">
-          <li><%= session.title %></li>
-          <li><%= "Description: #{session.description}" %></li>
-          <li><%= "Capacity: #{session.capacity}" %></li>
-          <li><%= "Level: #{session.level}" %></li>
-          <li><%= "Starting from #{session.start_time.strftime("%-d %b %Y")}" %></li>
-        </ul>
-      <% end %>
-    <% end %>
-  </div>
+  <div class="right-dashboard">
+    <div class="right-dashboard-top-elements">
+      <h2>Sessions recap</h2>
+      <div class="sessions-navigation">
+        <h3><a href="#next-sessions-link">Next sessions</a></h3>
+        <h3><a href="#past-sessions-link">Past sessions</a></h3>
+        <h3><a href="#sessions-owned-link">Sessions I own</a></h3>
+      </div>
+    </div>
 
-  <div class="past-sessions">
-    <h3>Past sessions</h3>
-    <% past_sessions = current_user.sport_sessions %>
-    <% past_sessions.each do |session| %>
-      <% if session.start_time < Date.today  %>
-        <ul class="sessions-list">
-          <li><%= session.title %></li>
-          <li><%= "Description: #{session.description}" %></li>
-          <li><%= "Capacity: #{session.capacity}" %></li>
-          <li><%= "Level: #{session.level}" %></li>
-          <li><%= "Starting from #{session.start_time.strftime("%-d %b %Y")}" %></li>
-        </ul>
-      <% end %>
-    <% end %>
-  </div>
 
-  <div class="owned-sessions">
-    <h3>Sessions I Own</h3>
-    <% if @current_user_owned_sessions %>
-      <% @current_user_owned_sessions.each do |session| %>
-        <ul class="sessions-list">
-          <li><%= session.title %></li>
-          <li><%= "Description: #{session.description}" %></li>
-          <li><%= "Capacity: #{session.capacity}" %></li>
-          <li><%= "Level: #{session.level}" %></li>
-          <li><%= "Starting from #{session.start_time.strftime("%-d %b %Y")}" %></li>
-          <li><b>Requests:</b>
-            <ul>
-              <% session.session_users.each do |request| %>
-                <% if request.status == "pending" %>
-                  <li>1 request from: <%= request.user.username %> | <%= link_to "accept", accept_session_user_path(request) %> | <%= link_to "reject", reject_session_user_path(request) %></li>
-
-                <% end %>
-              <% end %>
+    <div class="right-dashboard-bottom-elements">
+      <h3 id="next-sessions-link">Next sessions</h3>
+      <div class="next-sessions card-session">
+        <% current_sessions = current_user.sport_sessions %>
+        <% current_sessions.each do |session| %>
+          <% if session.start_time >= Date.today  %>
+            <ul class="sessions-list">
+              <li class ="session-title"><%= session.title %></li>
+              <li><%= "Description: #{session.description}" %></li>
+              <li><%= "Capacity: #{session.capacity}" %></li>
+              <li><%= "Level: #{session.level}" %></li>
+              <li><%= "Starting from #{session.start_time.strftime("%-d %b %Y")}" %></li>
             </ul>
-          </li>
-        </ul>
-      <% end %>
-    <% end %>
+          <% end %>
+        <% end %>
+      </div>
+
+
+      <h3 id="past-sessions-link">Past sessions</h3>
+        <div class="past-sessions card-session">
+        <% past_sessions = current_user.sport_sessions %>
+        <% past_sessions.each do |session| %>
+          <% if session.start_time < Date.today  %>
+            <ul class="sessions-list">
+              <li class ="session-title"><%= session.title %></li>
+              <li><%= "Description: #{session.description}" %></li>
+              <li><%= "Capacity: #{session.capacity}" %></li>
+              <li><%= "Level: #{session.level}" %></li>
+              <li><%= "Starting from #{session.start_time.strftime("%-d %b %Y")}" %></li>
+            </ul>
+          <% end %>
+        <% end %>
+      </div>
+
+      <h3 id="sessions-owned-link"> Sessions I Own</h3>
+      <div class="owned-sessions card-session">
+        <% if @current_user_owned_sessions %>
+          <% @current_user_owned_sessions.each do |session| %>
+            <ul class="sessions-list">
+              <li class ="session-title"><%= session.title %></li>
+              <li><%= "Description: #{session.description}" %></li>
+              <li><%= "Capacity: #{session.capacity}" %></li>
+              <li><%= "Level: #{session.level}" %></li>
+              <li><%= "Starting from #{session.start_time.strftime("%-d %b %Y")}" %></li>
+              <li><b>Requests:</b>
+                <ul>
+                  <% session.session_users.each do |request| %>
+                    <% if request.status == "pending" %>
+                      <li>1 request from: <%= request.user.username %> | <%= link_to "accept", accept_session_user_path(request) %> | <%= link_to "reject", reject_session_user_path(request) %></li>
+
+                    <% end %>
+                  <% end %>
+                </ul>
+              </li>
+            </ul>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 

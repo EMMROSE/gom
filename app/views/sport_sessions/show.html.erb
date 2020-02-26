@@ -45,4 +45,25 @@
       <li><b>SESSION COMPLETE...</b></li>
     <% end %>
   <% end %>
+
+
+  <h1>#<%= @chatroom.name %></h1>
+  <div class=<%= 'chatroom-channel' if current_user != @current_relevent_session_user%>>
+    <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+      <% if @chatroom.messages %>
+        <% @chatroom.messages.each do |message| %>
+          <div class="message-container">
+            <i class="author">
+              <span><%= message.user.username %></span>
+              <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+            </i>
+            <p><%= message.content %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <%= simple_form_for [ @sport_session, @chatroom, @message ] do |f| %>
+      <%= f.input :content, label: false, placeholder: "Message ##{@chatroom.name}" %>
+    <% end %>
+  </div>
 </div>
