@@ -52,3 +52,21 @@
 .small-card-session-bottom {
   padding: 16px 16px 0px 16px;
 }
+
+.card-activity {
+  background: white;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  height: 300px;
+}
+
+.card-activity-left {
+  width: 400px;
+  h2 {
+    padding-top: 16px;
+    color:white;
+    opacity: 0.9;
+  }
+}
