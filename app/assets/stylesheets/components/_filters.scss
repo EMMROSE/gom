@@ -1,0 +1,12 @@
+.filter {
+  opacity: 0.6;
+}
+
+.container-filters {
+  display: flex;
+  align-items: center;
+}
+
+.container-filters .filters {
+  flex-grow: 1;
+}

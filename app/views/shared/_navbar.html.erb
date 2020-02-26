@@ -21,8 +21,7 @@
             placeholder: "Find your next session",
             value: params[:query]
         %>
-        <!-- select one (or several) activities tag among all activities available at this location-->
-        <%= select_tag "activity", options_from_collection_for_select(Activity.all, "id", "name")%>
+
         <%= button_tag(type: "submit", class: "btn btn-gom") do %>
           <i class="fas fa-search"></i> Search
         <% end %>
