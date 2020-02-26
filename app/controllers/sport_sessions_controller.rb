@@ -1,7 +1,7 @@
 class SportSessionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   def index
-    @sport_sessions = SportSession.all
+    @sport_sessions = SportSession.all.sort_by {|ss| ss.start_time}
     @markers = @sport_sessions.map do |sport_session|
       {
         lat: sport_session.latitude,
