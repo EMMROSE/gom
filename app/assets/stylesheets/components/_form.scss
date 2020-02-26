@@ -2,6 +2,7 @@
   background-color: white;
   padding: 30px;
   border-radius: 5px;
+  width: 40%;
 }
 
 .activity-choices {
@@ -32,6 +33,86 @@
   }
 }
 
-.activity-choice label {
-  cursor: pointer;
+
+.level-choices {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.level-choice {
+  flex-grow: 1;
+  flex: 0 0 30%;
+  opacity: 0.3;
+  text-align: center;
+  background-color: grey;
+  width: 100px;
+  height: 35px;
+  i {
+    font-size: 30px;
+  }
+  &:hover {
+    opacity: 1;
+  }
+  &.hover {
+    opacity: 1;
+  }
+  &.active {
+    background-color: $green;
+    opacity: 1;
+  }
+}
+
+.level-choice[data-level='1'] {
+  border-top-left-radius: 25px;
+   border-bottom-left-radius: 25px
+}
+
+.level-choice[data-level='3'] {
+  border-top-right-radius: 25px;
+   border-bottom-right-radius: 25px
+}
+
+
+.capacity-choices {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px 0px;
+}
+
+.capacity-choice {
+  flex: 0 0 20%;
+  opacity: 0.3;
+  text-align: center;
+  i {
+    font-size: 30px;
+  }
+  &:hover {
+    opacity: 1;
+  }
+  &.hover {
+    opacity: 1;
+  }
+  &.active {
+    color: $green;
+    opacity: 1;
+  }
+}
+
+
+.form-container .algolia-places {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.form-container .btn-submit {
+  margin-top: 10px;
+  width: 100%;
+  padding: 12px;
 }

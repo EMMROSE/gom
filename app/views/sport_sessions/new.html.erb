@@ -1,10 +1,33 @@
 <div class="container mt-5 form-container">
   <%= simple_form_for(@sport_session) do |f| %>
     <%= f.input :title %>
-    <%= f.input :description %>
-    <%= f.input :location %>
-    <%= f.input :capacity, collection: SportSession::CAPACITY %>
-    <%= f.input :level, collection: SportSession::LEVEL %>
+    <%= f.input :description, as: :text %>
+
+    <label class="select optional" for="sport_session_capacity">Location</label>
+    <input type="text" name="test" id="test" value="" style="text-align: left; position: relative; vertical-align: top; width: 100%" class="search_query" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="both" aria-expanded="false" aria-owns="algolia-places-listbox-1" dir="auto">
+
+    <fieldset class="form-group radio_buttons optional sport_session_level">
+      <input type="hidden" name="sport_session[capacity]" value="">
+      <label class="select optional" for="sport_session_capacity">capacity</label>
+      <div class="capacity-choices">
+        <% SportSession::CAPACITY.each_with_index do |capacity, i| %>
+          <input class="d-none" type="radio" value="<% capacity %>" name="sport_session[capacity]" id="sport_session_capacity_<%= capacity %>">
+          <label class="form-check-label collection_radio_buttons capacity-choice" data-capacity="<%= i + 1 %>" for="sport_session_capacity_<%= capacity %>"><i class="far fa-user"></i></label>
+        <% end %>
+      </div>
+    </fieldset>
+
+    <fieldset class="form-group radio_buttons optional sport_session_level">
+      <input type="hidden" name="sport_session[level]" value="">
+      <label class="select optional" for="sport_session_capacity">Level</label>
+      <div class="level-choices">
+        <% SportSession::LEVEL.each_with_index do |level, i| %>
+          <input class="d-none" type="radio" value="<% level %>" name="sport_session[level]" id="sport_session_level_<%= level %>">
+          <label class="form-check-label collection_radio_buttons level-choice" data-level="<%= i + 1 %>" for="sport_session_level_<%= level %>"></label>
+        <% end %>
+      </div>
+    </fieldset>
+
 
     <fieldset class="form-group required">
       <input type="hidden" name="sport_session[activity_id][]" value="">
@@ -12,7 +35,7 @@
       <div class="activity-choices">
         <% @activities.each do |activity| %>
           <input class="d-none required" type="radio" value="<%= activity.id %>" name="sport_session[activity_id][]" id="sport_session_activity_id_<%= activity.id %>">
-          <label class="form-check-label collection_radio_buttons activity-choice" data-id="<%= activity.id %>" for="sport_session_activity_id_<%= activity.id %>">
+          <label class="form-check-label collection_radio_buttons activity-choice" for="sport_session_activity_id_<%= activity.id %>">
             <%= activity.name %>
           </label>
         <% end %>
@@ -20,8 +43,7 @@
     </fieldset>
 
     <%= f.input :start_time %>
-    <%= f.input :end_time %>
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-gom btn-submit' %>
   <% end %>
 </div>
 
