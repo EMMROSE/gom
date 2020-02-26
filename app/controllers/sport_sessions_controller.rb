@@ -1,14 +1,18 @@
 class SportSessionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
-    @sport_sessions = SportSession.all
-    @markers = @sport_sessions.map do |sport_session|
-      {
-        lat: sport_session.latitude,
-        lng: sport_session.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { sport_session: sport_session }),
-        image_url: helpers.asset_url('old-walker.png')
-      }
+    if params[:query].nil? || params[:activity].nil?
+      @sport_sessions = SportSession.all
+    else
+      @sport_sessions = SportSession.where("location = ? AND activity_id = ?", params[:query], params[:activity]).near(params[:query], 50)
+      @markers = @sport_sessions.map do |sport_session|
+        {
+          lat: sport_session.latitude,
+          lng: sport_session.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { sport_session: sport_session }),
+          image_url: helpers.asset_url('old-walker.png')
+        }
+      end
     end
   end
 

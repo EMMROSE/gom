@@ -11,7 +11,7 @@
 
 
   <div class="search flex-grow-1">
-    <%= form_tag activities_path, method: :get, novalidate: "novalidate", class: "simple_form search"  do %>
+    <%= form_tag sport_sessions_path, method: :get, novalidate: "novalidate", class: "simple_form search"  do %>
       <div class="search-form-control form-group mb-0">
         <%= text_field_tag :query,
             params[:query],
@@ -19,13 +19,16 @@
             class: "search_query",
             style: "text-align: left",
             placeholder: "Find your next session",
-            value: ""
+            value: params[:query]
         %>
+        <!-- select one (or several) activities tag among all activities available at this location-->
+        <%= select_tag "activity", options_from_collection_for_select(Activity.all, "id", "name")%>
         <%= button_tag(type: "submit", class: "btn btn-gom") do %>
           <i class="fas fa-search"></i> Search
         <% end %>
       </div>
     <% end %>
+</div>
   </div>
 
   <% if user_signed_in? %>
