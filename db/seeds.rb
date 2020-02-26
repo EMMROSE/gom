@@ -85,6 +85,8 @@ se1c.user = u3
 se1c.save!
 
 s1.save!
+Chatroom.create(sport_session_id: s1.id, name: "#{s1.title} channel")
+
 puts "Session1 ok"
 
 s2 = SportSession.new(location: "Basque Country", start_time: Date.today, capacity: 3, title: "Ski Paradise", description: "Conditions are awesome! Let's go!", level: 'intermediate')
@@ -106,6 +108,8 @@ se2c.user = u4
 se2c.save!
 
 s2.save!
+Chatroom.create(sport_session_id: s2.id, name: "#{s2.title} channel")
+
 puts "Session2 ok"
 
 s3 = SportSession.new(location: "Basque Country", start_time: Date.today, capacity: 4, title: "Bike Mountain with friends", description: "Who's motivated to hit the road again?", level: 'intermediate')
@@ -127,6 +131,8 @@ se3c.user = u4
 se3a.save!
 
 s3.save!
+Chatroom.create(sport_session_id: s3.id, name: "#{s3.title} channel")
+
 puts "Session3 ok"
 
 s4 = SportSession.new(location: "Basque Country", start_time: Date.today, capacity: 2, title: "Kayak with friends", description: "Really motivated for this morning session!", level: 'beginner')
@@ -148,6 +154,8 @@ se4c.user = u4
 se4c.save!
 
 s4.save!
+Chatroom.create(sport_session_id: s4.id, name: "#{s4.title} channel")
+
 puts "Session4 ok"
 
 s5 = SportSession.new(location: "Tignes", start_time: "2020-02-03", capacity: 5, title: "Freestyle snowboarding", description: "Who's ready for a good race?", level: 'intermediate')
@@ -169,6 +177,8 @@ se5c.user = u5
 se5c.save!
 
 s5.save!
+Chatroom.create(sport_session_id: s5.id, name: "#{s5.title} channel")
+
 puts "Session5 ok"
 
 s6 = SportSession.new(location: "Taghazout", start_time: "2020-06-01", capacity: 2, title: "Kite in the desert", description: "May the wind be with you!", level: 'beginner')
@@ -190,6 +200,8 @@ se6c.user = u1
 se6c.save!
 
 s6.save!
+Chatroom.create(sport_session_id: s6.id, name: "#{s6.title} channel")
+
 puts "Session6 ok"
 
 s7 = SportSession.new(location: "Basque Country", start_time: "2020-07-01", capacity: 2, title: "Surf imsouane", description: "Let's go to the bay", level: 'intermediate')
@@ -211,6 +223,8 @@ se7c.user = u1
 se7c.save!
 
 s7.save!
-puts "Session6 ok"
+Chatroom.create(sport_session_id: s7.id, name: "#{s7.title} channel")
+
+puts "Session7 ok"
 
 puts ">>>>>> Done, #{SportSession.count} sessions created!"

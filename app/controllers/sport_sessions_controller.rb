@@ -33,6 +33,7 @@ class SportSessionsController < ApplicationController
     @session_user.user = current_user
     if @sport_session.save
       @session_user.save
+      @chatroom = Chatroom.create(sport_session_id: @sport_session.id, name: "#{@sport_session.title} channel")
       redirect_to sport_session_path(@sport_session)
     else
       render :new
