@@ -13,9 +13,6 @@
 
   <body>
     <%= render 'shared/navbar' %>
-    <% if params[:query] %>
-      <%= render 'shared/search_filters' %>
-    <% end %>
     <%= render 'shared/flashes' %>
 
     <%= yield %>

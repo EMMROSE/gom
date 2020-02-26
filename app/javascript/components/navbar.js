@@ -3,12 +3,15 @@ const scrolledNav = () => {
 
   if (navbarHomepage) {
 
+    const navbarContent = document.querySelector('#navbar-homepage .navbar-content');
     const navbarSearch = document.querySelector('#navbar-homepage .search');
     const navbarSearchButton = document.querySelector('#navbar-homepage .search .btn');
     const navbarBrand = document.querySelector('#navbar-homepage .navbar-brand');
     const navbarLoginButtons = document.querySelectorAll('#navbar-homepage .navbar-login .btn');
 
     navbarHomepage.classList.add('bg-transparent');
+    navbarContent.classList.remove('border-bottom');
+    navbarHomepage.classList.remove('border-bottom');
     navbarBrand.classList.add('flex-grow-1');
     navbarSearch.classList.add('d-none');
 

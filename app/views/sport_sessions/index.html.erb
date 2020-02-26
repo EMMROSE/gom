@@ -1,11 +1,11 @@
-<div class="container">
+<div class="container mt-5">
 
 <div class="row">
   <div class="col pr-0">
     <div class="container">
       <h4>Sessions to come</h4>
       <% @sport_sessions.each do |sport_session| %>
-        <%= link_to sport_session_path(sport_session) do %>
+        <%= link_to sport_session_path(sport_session), class: "small-card-session-link" do %>
           <div class="small-card-session">
 
             <div class="small-card-session-top text--center" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path sport_session.activity.photo.key, height: 250, width: 500, crop: :fill %>');">
