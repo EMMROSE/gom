@@ -21,43 +21,43 @@ const initMapbox = () => {
       zoom: 9
     });
 
-  map.on('load', function() {
-    map.addSource('dem', {
-        'type': 'raster-dem',
-        'url': 'mapbox://mapbox.terrain-rgb'
+    map.on('load', function() {
+      map.addSource('dem', {
+          'type': 'raster-dem',
+          'url': 'mapbox://mapbox.terrain-rgb'
+      });
+      map.addLayer(
+          {
+              'id': 'hillshading',
+              'source': 'dem',
+              'type': 'hillshade'
+              // insert below waterway-river-canal-shadow;
+              // where hillshading sits in the Mapbox Outdoors style
+          },
+          'waterway-river-canal-shadow'
+      );
     });
-    map.addLayer(
-        {
-            'id': 'hillshading',
-            'source': 'dem',
-            'type': 'hillshade'
-            // insert below waterway-river-canal-shadow;
-            // where hillshading sits in the Mapbox Outdoors style
-        },
-        'waterway-river-canal-shadow'
-    );
-  });
-  let markers = JSON.parse(mapElement.dataset.markers);
+
+    let markers = JSON.parse(mapElement.dataset.markers);
     markers.forEach((marker) => {
-    if (markers.length > 0) {
-      const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // add this
+      if (markers.length > 0) {
+        const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // add this
 
-      const element = document.createElement('div');
-      element.className = 'marker';
-      element.style.backgroundImage = `url('${marker.image_url}')`;
-      element.style.backgroundSize = 'contain';
-      element.style.width = '80px';
-      element.style.height = '80px';
-      element.style.cursor = 'pointer';
+        const element = document.createElement('div');
+        element.className = 'marker';
+        element.style.backgroundImage = `url('${marker.image_url}')`;
+        element.style.backgroundSize = 'contain';
+        element.style.width = '80px';
+        element.style.height = '80px';
+        element.style.cursor = 'pointer';
 
-      new mapboxgl.Marker(element)
-        .setLngLat([ marker.lng, marker.lat ])
-        .setPopup(popup)
-        .addTo(map);
+        new mapboxgl.Marker(element)
+          .setLngLat([ marker.lng, marker.lat ])
+          .setPopup(popup)
+          .addTo(map);
+        fitMapToMarkers(map, markers);
+      };
     });
-
-    fitMapToMarkers(map, markers);
-    };
   };
 };
 
