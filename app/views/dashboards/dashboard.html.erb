@@ -1,7 +1,7 @@
 <div class="container mt-5 d-flex">
   <div class="left-dashboard">
     <h2><%=  current_user.username %></h2>
-    <%= image_tag "https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/migrated-images_parent/migrated-images_68/kelly-slater-in-france_s.jpg", crop: :fill, class: "avatar-large" %>
+    <%= cl_image_tag current_user.photo.key, crop: :fill, class: "avatar-large" %>
       <div class="sessions-navigation">
         <h3><a href="#next-sessions-link" id="nav-link-1" class="nav-link">Next sessions</a></h3>
         <h3><a href="#past-sessions-link" id="nav-link-2" class="nav-link">Past sessions</a></h3>
