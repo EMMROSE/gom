@@ -25,7 +25,7 @@ class SportSessionsController < ApplicationController
         lat: sport_session.latitude,
         lng: sport_session.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { sport_session: sport_session }),
-        image_url: helpers.asset_url("#{sport_session.activity.name.downcase}.png")
+        image_url: helpers.asset_url("#{sport_session.activity.name.downcase}-icon.png")
       }
     end
   end
