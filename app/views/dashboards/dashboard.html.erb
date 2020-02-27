@@ -2,17 +2,16 @@
   <div class="left-dashboard">
     <h2><%=  current_user.username %></h2>
     <%= image_tag "https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/migrated-images_parent/migrated-images_68/kelly-slater-in-france_s.jpg", crop: :fill, class: "avatar-large" %>
-
+      <div class="sessions-navigation">
+        <h3><a href="#next-sessions-link" id="nav-link-1" class="nav-link">Next sessions</a></h3>
+        <h3><a href="#past-sessions-link" id="nav-link-2" class="nav-link">Past sessions</a></h3>
+        <h3><a href="#sessions-owned-link" id="nav-link-3" class="nav-link">Sessions I own</a></h3>
+      </div>
   </div>
 
   <div class="right-dashboard">
     <div class="right-dashboard-top-elements">
       <h2>Sessions recap</h2>
-      <div class="sessions-navigation">
-        <h3><a href="#next-sessions-link">Next sessions</a></h3>
-        <h3><a href="#past-sessions-link">Past sessions</a></h3>
-        <h3><a href="#sessions-owned-link">Sessions I own</a></h3>
-      </div>
     </div>
 
 
@@ -22,13 +21,15 @@
         <% current_sessions = current_user.sport_sessions %>
         <% current_sessions.each do |session| %>
           <% if session.start_time >= Date.today  %>
-            <ul class="sessions-list">
-              <li class ="session-title"><%= session.title %></li>
-              <li><%= "Description: #{session.description}" %></li>
-              <li><%= "Capacity: #{session.capacity}" %></li>
-              <li><%= "Level: #{session.level}" %></li>
-              <li><%= "Starting from #{session.start_time.strftime("%-d %b %Y")}" %></li>
-            </ul>
+            <%= link_to sport_session_path(session) do%>
+              <ul id="sessions-list-next">
+                <li class ="li-nxt-session session-title"><%= session.title %></li>
+                <li class ="li-nxt-session"><%= "Description: #{session.description}" %></li>
+                <li class ="li-nxt-session"><%= "Capacity: #{session.capacity}" %></li>
+                <li class ="li-nxt-session"><%= "Level: #{session.level}" %></li>
+                <li class ="li-nxt-session"><%= "Starting from #{session.start_time.strftime("%-d %b %Y")}" %></li>
+              </ul>
+            <% end %>
           <% end %>
         <% end %>
       </div>
@@ -39,13 +40,15 @@
         <% past_sessions = current_user.sport_sessions %>
         <% past_sessions.each do |session| %>
           <% if session.start_time < Date.today  %>
-            <ul class="sessions-list">
-              <li class ="session-title"><%= session.title %></li>
-              <li><%= "Description: #{session.description}" %></li>
-              <li><%= "Capacity: #{session.capacity}" %></li>
-              <li><%= "Level: #{session.level}" %></li>
-              <li><%= "Starting from #{session.start_time.strftime("%-d %b %Y")}" %></li>
-            </ul>
+            <%= link_to sport_session_path(session) do%>
+              <ul id="sessions-list-past">
+                <li class ="session-title"><%= session.title %></li>
+                <li><%= "Description: #{session.description}" %></li>
+                <li><%= "Capacity: #{session.capacity}" %></li>
+                <li><%= "Level: #{session.level}" %></li>
+                <li><%= "Starting from #{session.start_time.strftime("%-d %b %Y")}" %></li>
+              </ul>
+            <% end %>
           <% end %>
         <% end %>
       </div>
@@ -54,7 +57,8 @@
       <div class="owned-sessions card-session">
         <% if @current_user_owned_sessions %>
           <% @current_user_owned_sessions.each do |session| %>
-            <ul class="sessions-list">
+          <%= link_to sport_session_path(session) do%>
+            <ul id="sessions-list-owned">
               <li class ="session-title"><%= session.title %></li>
               <li><%= "Description: #{session.description}" %></li>
               <li><%= "Capacity: #{session.capacity}" %></li>
@@ -71,6 +75,7 @@
                 </ul>
               </li>
             </ul>
+          <% end %>
           <% end %>
         <% end %>
       </div>

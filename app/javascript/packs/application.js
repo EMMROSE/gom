@@ -27,6 +27,7 @@ import { scrolledNav } from '../components/navbar';
 import { formSportSessions } from '../components/form';
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
+import { initNavLink } from '../Dashboard/dashbord_menu';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your JS functions here
@@ -40,6 +41,5 @@ document.addEventListener('turbolinks:load', () => {
   if (messagesContainer) {
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
   }
-
 });
 
