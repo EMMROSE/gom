@@ -1,8 +1,12 @@
 .blur-chatroom {
-  filter: blur(0.4rem);
+  filter: blur(0.25rem);
 }
 
 #messages {
   overflow: scroll;
   height: 30vh;
+}
+
+#message-author {
+ text-align: end;
 }

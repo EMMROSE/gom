@@ -8,7 +8,7 @@
       <!-- Differenciate session owner -->
       <% if session_user.owner %>
         <div class="session-member">
-          <img src="https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/migrated-images_parent/migrated-images_68/kelly-slater-in-france_s.jpg" alt="" class="avatar d-block">
+          <%= cl_image_tag session_user.user.photo.key, class: "avatar d-block" %>
           <b><%= @sport_session_owner.username %> <%= "(owner)"  %></b>
         </div>
       <% else %>
@@ -16,14 +16,14 @@
         <!-- Differenciate accepted session members -->
         <% if session_user.status == "accepted" %>
           <div class="session-member">
-            <img src="https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/migrated-images_parent/migrated-images_68/kelly-slater-in-france_s.jpg" alt="" class="avatar d-block">
+            <%= cl_image_tag session_user.user.photo.key, class:"avatar d-block"%>
             <%= session_user.user.username %>
           </div>
 
         <!-- Differenciate pending requests session members -->
         <% elsif session_user.status == "pending" %>
           <div class="session-member">
-            <img src="https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/migrated-images_parent/migrated-images_68/kelly-slater-in-france_s.jpg" alt="" class="avatar d-block">
+            <%= cl_image_tag session_user.user.photo.key, class:"avatar d-block"%>
             (pending: <%= session_user.user.username %>)
         <% end %>
       <% end %>
@@ -60,7 +60,7 @@
       <div id="messages" data-sport-session-id="<%= @sport_session.id %>">
         <% if @sport_session.messages %>
           <% @sport_session.messages.each do |message| %>
-            <div class="message-container">
+            <div class="message-container" id=<%= "message-author" if current_user == message.user %>>
               <i class="author">
                 <span><%= message.user.username %></span>
                 <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
