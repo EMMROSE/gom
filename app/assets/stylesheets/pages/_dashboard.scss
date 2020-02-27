@@ -31,8 +31,9 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  position: sticky;
+  scroll-behavior: smooth;
 }
+
 h2 {
   margin-bottom: 0.5rem;
   font-family: "Poppins";
@@ -43,7 +44,7 @@ h2 {
 }
 
 h3 {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1px;
   font-family: "Poppins";
   font-weight: 501;
   line-height: 1.2;
@@ -51,17 +52,65 @@ h3 {
 }
 
 li {
-  font-size: 16px;
+  font-size: 12px;
   font-weight: lighter;
-  list-style-type: none
+  list-style-type: none;
+  text-decoration: none;
 }
 
 
- li:first-child{
-   list-style-type: none !important;
-   margin: 0px !important;
-   font-weight: bold;
+li:first-child{
+  font-size: 16px;
+  list-style-type: none !important;
+  margin: 0px !important;
+  font-weight: bold;
  }
+
+#sessions-list-next {
+  border-bottom: 1px solid rgba(79, 180, 119, 0.2);
+  margin-bottom: 8px;
+  width: 100%;
+  display: inline-block;
+  background-color: rgba(79, 180, 119, 0.1);
+  border-radius: 4px 4px 0px 0px;
+  padding: 4px 8px;
+  color: black;
+}
+#sessions-list-next:hover {
+  background-color: rgba(79, 180, 119, 0.5);
+  color: black;
+}
+
+#sessions-list-past {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 8px;
+  width: 100%;
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.02);
+  border-radius: 4px 4px 0px 0px;
+  padding: 4px 8px;
+  color: black;
+}
+
+#sessions-list-past:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: black;
+}
+
+#sessions-list-owned {
+  border-bottom: 1px solid rgba(109, 152, 186, 0.2);
+  margin-bottom: 8px;
+  width: 100%;
+  display: inline-block;
+  background-color: rgba(109, 152, 186, 0.1);
+  border-radius: 4px 4px 0px 0px;
+  padding: 4px 8px;
+  color: black;
+ }
+#sessions-list-owned:hover {
+  background-color: rgba(109, 152, 186, 0.25);
+  color: black;
+}
 
 .card-session {
   // overflow: hidden;
@@ -70,20 +119,38 @@ li {
   border-radius: 2px;
   margin-bottom: 16px;
   display: block;
-  padding: 8px;
+  padding: 8px 8px 1px 8px;
   box-shadow:none;
+  text-decoration:none;
 }
 
+.sessions-navigation {
+  margin-top: 40px;
+  text-align: center;
+}
 
-.sessions-navigation{
-  display: flex;
-  h3{
-    padding-right::8px;
+a.nav-link {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  margin-bottom: 8px;
+  width: 70%;
+  display: inline-block;
+  text-decoration: none;
+  color: black ;
+  border-radius: 4px 4px 0px 0px;
+  background-color: rgba(0, 0, 0, 0.05) ;
+}
+a.nav-link:hover {
+  text-decoration: none;
+  border-radius: 4px 4px 0px 0px;
+  background-color: $green;
+  color: white;
+  opacity: 0.8;
   }
 
-}
-
-.right-dashboard-bottom-elements{
-  height: 56vh;
-  overflow: scroll;
+#sessions-owned-link:before,
+  #next-sessions-link:before,
+  #past-sessions-link:before {
+    height: 100px;
+    content: "";
+    display:block;
 }
