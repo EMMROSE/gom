@@ -211,6 +211,7 @@ puts ">>>>>> Done, #{User.count} users created!"
 puts "----------"
 
 puts "Create SportSessions"
+
 s1 = SportSession.new(location: "Guethary", start_time: (Date.today - 182), end_time: (Date.today - 182),  capacity: 2, title: "Big Wave Sesh", description: "Alright guys! Who's in for this one?", level: 'expert', open_status: false)
 s1.activity = a1
 file = URI.open('https://res.cloudinary.com/timothee/image/upload/v1582820064/surf_guethary_r6ju52.jpg')
@@ -281,6 +282,7 @@ s3.save!
 
 puts "Session3 ok"
 
+
 s4 = SportSession.new(location: "Cenitz", start_time: (Date.today + 7), capacity: 5, title: "Chill Sessions with friends", description: "Looking for fellow longboarders!", level: 'beginner')
 s4.activity = a4
 
@@ -329,7 +331,6 @@ se5c.save!
 s5.save!
 puts "Session5 ok"
 
-
 s6 = SportSession.new(location: "hossegor", start_time: (Date.today + 10), capacity: 2, title: "First surf at la Nord", description: "Keen to brave the beast?", level: 'expert')
 s6.activity = a1
 
@@ -340,7 +341,6 @@ se6a.save!
 
 s6.save!
 puts "Session6 ok"
-
 
 s7 = SportSession.new(location: "La Pierre saint martin, 64570", start_time: (Date.today -20), end_time: (Date.today -20), capacity: 2, title: "I'm in love with the coco", description: "Big powder day comin!!!", level: 'expert')
 s7.activity = a2

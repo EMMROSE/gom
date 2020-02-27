@@ -6,7 +6,7 @@ import mapboxgl from 'mapbox-gl';
 const fitMapToMarkers = (map, markers) => {
     const bounds = new mapboxgl.LngLatBounds();
     markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-    map.fitBounds(bounds, { padding: 70, maxZoom: 10, duration: 0 });
+    map.fitBounds(bounds, { padding: 20, maxZoom: 10, duration: 0 });
 };
 
 const initMapbox = () => {
@@ -20,6 +20,7 @@ const initMapbox = () => {
       bearing: 20, // bearing in degrees
       zoom: 9
     });
+
   map.on('load', function() {
     map.addSource('dem', {
         'type': 'raster-dem',
@@ -37,33 +38,26 @@ const initMapbox = () => {
     );
   });
   let markers = JSON.parse(mapElement.dataset.markers);
-  markers.forEach((marker) => {
-    const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // add this
+    markers.forEach((marker) => {
+    if (markers.length > 0) {
+      const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // add this
 
-    const element = document.createElement('div');
-    element.className = 'marker';
-    element.style.backgroundImage = `url('${marker.image_url}')`;
-    element.style.backgroundSize = 'contain';
-    element.style.width = '80px';
-    element.style.height = '80px';
-    element.style.cursor = 'pointer';
+      const element = document.createElement('div');
+      element.className = 'marker';
+      element.style.backgroundImage = `url('${marker.image_url}')`;
+      element.style.backgroundSize = 'contain';
+      element.style.width = '80px';
+      element.style.height = '80px';
+      element.style.cursor = 'pointer';
 
-    new mapboxgl.Marker(element)
-      .setLngLat([ marker.lng, marker.lat ])
-      .setPopup(popup)
-      .addTo(map);
-  });
+      new mapboxgl.Marker(element)
+        .setLngLat([ marker.lng, marker.lat ])
+        .setPopup(popup)
+        .addTo(map);
+    });
 
-
-  // const element = document.createElement('div');
-  // element.className = 'marker';
-  // element.style.backgroundImage = `url('${marker.image_url}')`;
-  // element.style.backgroundSize = 'contain';
-  // element.style.width = '40px';
-  // element.style.height = '40px';
-  // Pass the element as an argument to the new marker
-
-  fitMapToMarkers(map, markers);
+    fitMapToMarkers(map, markers);
+    };
   };
 };
 
