@@ -13,7 +13,6 @@ Activity.destroy_all
 puts "Destroy all Sport Sessions"
 SportSession.destroy_all
 
-
 puts "Destroy all Users"
 User.destroy_all
 
@@ -85,7 +84,6 @@ se1c.user = u3
 se1c.save!
 
 s1.save!
-Chatroom.create(sport_session_id: s1.id, name: "#{s1.title} channel")
 
 puts "Session1 ok"
 
@@ -108,7 +106,6 @@ se2c.user = u4
 se2c.save!
 
 s2.save!
-Chatroom.create(sport_session_id: s2.id, name: "#{s2.title} channel")
 
 puts "Session2 ok"
 
@@ -131,7 +128,6 @@ se3c.user = u4
 se3a.save!
 
 s3.save!
-Chatroom.create(sport_session_id: s3.id, name: "#{s3.title} channel")
 
 puts "Session3 ok"
 
@@ -154,7 +150,6 @@ se4c.user = u4
 se4c.save!
 
 s4.save!
-Chatroom.create(sport_session_id: s4.id, name: "#{s4.title} channel")
 
 puts "Session4 ok"
 
@@ -177,7 +172,6 @@ se5c.user = u5
 se5c.save!
 
 s5.save!
-Chatroom.create(sport_session_id: s5.id, name: "#{s5.title} channel")
 
 puts "Session5 ok"
 
@@ -200,7 +194,6 @@ se6c.user = u1
 se6c.save!
 
 s6.save!
-Chatroom.create(sport_session_id: s6.id, name: "#{s6.title} channel")
 
 puts "Session6 ok"
 
@@ -223,7 +216,6 @@ se7c.user = u1
 se7c.save!
 
 s7.save!
-Chatroom.create(sport_session_id: s7.id, name: "#{s7.title} channel")
 
 puts "Session7 ok"
 

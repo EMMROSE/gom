@@ -1,13 +1,12 @@
 class MessagesController < ApplicationController
   def create
     @sport_session = SportSession.find(params[:sport_session_id])
-    @chatroom = Chatroom.where(sport_session_id: @sport_session.id).first
     @message = Message.new(message_params)
-    @message.chatroom = @chatroom
+    @message.sport_session = @sport_session
     @message.user = current_user
     if @message.save
       ChatroomChannel.broadcast_to(
-        @chatroom,
+        @sport_session,
         render_to_string(partial: "shared/message", locals: { message: @message })
       )
       redirect_to sport_session_path(@sport_session)

@@ -1,3 +1,8 @@
-.chatroom-channel {
+.blur-chatroom {
   filter: blur(0.4rem);
+}
+
+#messages {
+  overflow: scroll;
+  height: 75vh;
 }
