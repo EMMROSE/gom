@@ -4,7 +4,7 @@ class SportSession < ApplicationRecord
   belongs_to :activity
   has_many :session_users, dependent: :destroy
   has_many :users, through: :session_users
-  has_one :chatroom, dependent: :destroy
+  has_many :messages, dependent: :destroy
   has_one_attached :photo
 
   validates :location, presence: true

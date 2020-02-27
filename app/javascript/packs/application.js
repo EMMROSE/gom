@@ -36,6 +36,10 @@ document.addEventListener('turbolinks:load', () => {
   formSportSessions(); // change activity class when clicked on (on sport session form creation)
   initMapbox();
   initAutocomplete();
-  // initNavLink();
+
+  const messagesContainer = document.getElementById('messages');
+  if (messagesContainer) {
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
 });
 

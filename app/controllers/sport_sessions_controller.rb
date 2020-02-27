@@ -1,20 +1,31 @@
 class SportSessionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   def index
-    if !params[:query] && !params[:activity]
-      @sport_sessions = SportSession.all
-    elsif params[:query] && !params[:activity]
-      @sport_sessions = SportSession.all.near(params[:query], 100)
-    else
-      @sport_sessions = SportSession.where(activity: params[:activity]).near(params[:query], 100)
-    end
+     @sport_sessions = SportSession.all
+
+     # Location filter
+     @sport_sessions = @sport_sessions.near(params[:query], 100) if params[:query].present?
+
+     # Activity filter
+     @sport_sessions = @sport_sessions.where(activity: params[:activity]) if params[:activity].present?
+
+     # Open status filter
+     @sport_sessions = @sport_sessions.where(open_status: params[:open_status]) if params[:open_status].present?
+
+     # Start time filter
+     @sport_sessions = @sport_sessions.where(start_time: params[:start_time]) if params[:start_time].present?
+
+     # Level filter
+     @sport_sessions = @sport_sessions.where(level: params[:level]) if params[:level].present?
+
 
     @markers = @sport_sessions.map do |sport_session|
+
       {
         lat: sport_session.latitude,
         lng: sport_session.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { sport_session: sport_session }),
-        image_url: helpers.asset_url('old-walker.png')
+        image_url: helpers.asset_url("#{sport_session.activity.name.downcase}.png")
       }
     end
   end
@@ -32,7 +43,8 @@ class SportSessionsController < ApplicationController
     # Find session users, of the current user, that belongs to THIS Sport Session
     @current_relevant_session_user = current_user.session_users.find_by(sport_session_id: params[:id])
     # Setup Chatroom and Message
-    @chatroom = Chatroom.where(sport_session_id: @sport_session).first
+    # @chatroom = Chatroom.where(sport_session_id: @sport_session).first
+    @messages = @sport_session.messages
     @message = Message.new
   end
 
@@ -50,7 +62,6 @@ class SportSessionsController < ApplicationController
     @session_user.user = current_user
     if @sport_session.save
       @session_user.save
-      @chatroom = Chatroom.create(sport_session_id: @sport_session.id, name: "#{@sport_session.title} channel")
       redirect_to sport_session_path(@sport_session)
     else
       render :new
@@ -62,5 +73,4 @@ class SportSessionsController < ApplicationController
   def sport_session_params
     params.require(:sport_session).permit(:title, :description, :location, :capacity, :activity_id, :level, :start_time, :end_time)
   end
-
 end

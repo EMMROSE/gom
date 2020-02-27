@@ -1,21 +1,88 @@
 <div class="container-filters bg-white border-top">
   <!-- select one (or several) activities tag among all activities available at this location-->
   <div class="filters">
-    <% activities = [] %>
-    <% @sport_sessions.each do |sport_session| %>
-      <% activities << sport_session.activity %>
-    <% end %>
-    <% activities.uniq.each do |activity| %>
-      <%= link_to sport_sessions_path(query: params[:query], activity: activity), class: "btn btn-black filter" do %>
-        <%= activity.name %>
-      <% end %>
-    <% end %>
-  </div>
 
   <% if params[:activity] %>
-    <%= link_to sport_sessions_path(query: params[:query]), class: "clear-filters" do %>
-      Clear Filter
+    <%= link_to sport_sessions_path(request.query_parameters.except(:activity)), class: "btn fitler-btn" do %>
+      <%= @sport_sessions.find_by(activity: params[:activity]).activity.name %> (x)
     <% end %>
+  <% else %>
+    <div class="filter activity-filters dropdown">
+      <button class="btn filter-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Activities
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <% activities = [] %>
+        <% @sport_sessions.each do |sport_session| %>
+          <% activities << sport_session.activity %>
+        <% end %>
+        <% activities.uniq.each do |activity| %>
+          <% request.query_parameters[:activity] = activity %>
+          <%= link_to sport_sessions_path(request.query_parameters), class: "dropdown-item" do %>
+            <%= activity.name %>
+          <% end %>
+          <% request.query_parameters.except!(:activity) %>
+        <% end %>
+      </div>
+    </div>
   <% end %>
+
+
+  <% if params[:level] %>
+    <%= link_to sport_sessions_path(request.query_parameters.except(:level)), class: "btn fitler-btn" do %>
+      <%= @sport_sessions.find_by(level: params[:level]).level %> (x)
+    <% end %>
+  <% else %>
+    <div class="filter level-filters dropdown">
+      <button class="btn filter-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Level
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <% levels = [] %>
+        <% @sport_sessions.each do |sport_session| %>
+          <% levels << sport_session.level %>
+        <% end %>
+        <% levels.uniq.each do |level| %>
+          <% request.query_parameters[:level] = level %>
+          <%= link_to sport_sessions_path(request.query_parameters), class: "dropdown-item" do %>
+            <%= level %>
+          <% end %>
+          <% request.query_parameters.except!(:level) %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if params[:start_time] %>
+    <%= link_to sport_sessions_path(request.query_parameters.except(:start_time)), class: "btn fitler-btn" do %>
+      <%= @sport_sessions.find_by(start_time: params[:start_time]).start_time %> (x)
+    <% end %>
+  <% else %>
+    <div class="filter level-filters dropdown">
+      <button class="btn filter-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Start Time
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <% dates = [] %>
+        <% @sport_sessions.each do |sport_session| %>
+          <% dates << sport_session.start_time %>
+        <% end %>
+        <% dates.uniq.each do |start_time| %>
+          <% request.query_parameters[:start_time] = start_time %>
+          <%= link_to sport_sessions_path(request.query_parameters), class: "dropdown-item" do %>
+            <%= start_time %>
+          <% end %>
+          <% request.query_parameters.except!(:start_time) %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+
+  </div>
+
+    <%= link_to sport_sessions_path, class: "clear-filters" do %>
+      Clear All Filters
+    <% end %>
 </div>
 

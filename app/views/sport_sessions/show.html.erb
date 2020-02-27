@@ -54,24 +54,26 @@
     <% end %>
   <% end %>
 
-
-  <h2># Chat</h2>
-  <div class=<%= @current_relevant_session_user && @current_relevant_session_user.status == "accepted" ? "" : 'chatroom-channel' %>>
-    <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
-      <% if @chatroom.messages %>
-        <% @chatroom.messages.each do |message| %>
-          <div class="message-container">
-            <i class="author">
-              <span><%= message.user.username %></span>
-              <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-            </i>
-            <p><%= message.content %></p>
-          </div>
+  <div class="chatroom-container" style="width:33%;">
+    <h2>#Chat</h2>
+    <div class=<%= @current_relevant_session_user && @current_relevant_session_user.status == "accepted" ? "" : 'blur-chatroom' %>>
+      <div id="messages" data-sport-session-id="<%= @sport_session.id %>">
+        <% if @sport_session.messages %>
+          <% @sport_session.messages.each do |message| %>
+            <div class="message-container">
+              <i class="author">
+                <span><%= message.user.username %></span>
+                <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+              </i>
+              <p><%= message.content %></p>
+            </div>
+          <% end %>
         <% end %>
+      </div>
+      <%= simple_form_for [ @sport_session, @message ], remote: true do |f| %>
+        <%= f.input :content, label: false, placeholder: "Message #Chat" %>
       <% end %>
     </div>
-    <%= simple_form_for [ @sport_session, @chatroom, @message ] do |f| %>
-      <%= f.input :content, label: false, placeholder: "Message ##{@chatroom.name}" %>
-    <% end %>
+
   </div>
 </div>
