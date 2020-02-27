@@ -1,9 +1,13 @@
-<div class="container-filters bg-white">
+<div class="container-filters bg-white border-top">
   <!-- select one (or several) activities tag among all activities available at this location-->
   <div class="filters">
+    <% activities = [] %>
     <% @sport_sessions.each do |sport_session| %>
-      <%= link_to sport_sessions_path(query: params[:query], activity: sport_session.activity), class: "btn btn-black filter" do %>
-        <%= sport_session.activity.name %>
+      <% activities << sport_session.activity %>
+    <% end %>
+    <% activities.uniq.each do |activity| %>
+      <%= link_to sport_sessions_path(query: params[:query], activity: activity), class: "btn btn-black filter" do %>
+        <%= activity.name %>
       <% end %>
     <% end %>
   </div>

@@ -1,5 +1,5 @@
 <div id="<%= "navbar-homepage" if params[:action] == "home" %>" class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top border-bottom">
-  <div class="navbar-content border-bottom">
+  <div class="navbar-content">
     <div class="navbar-brand">
       <%= link_to root_path do %>
         <%= image_tag("GOMLogo.png")%>
@@ -56,6 +56,8 @@
 </div>
 
 
-<% if params[:action] != "home" %>
+<% if params[:query] %>
   <div style="height:134px;"></div>
+<% elsif params[:action] != "home" %>
+  <div style="height:87px;"></div>
 <% end %>
