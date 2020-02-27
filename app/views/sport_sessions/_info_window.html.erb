@@ -1,6 +1,35 @@
-<h5><%= sport_session.title %></h5>
-<p><%= sport_session.activity.name %></p>
-<p><%= sport_session.start_time %></p>
-<%= link_to sport_session_path(sport_session) do %>
-  <button type="submit" href="#" class="btn btn-gom">Join</button>
-<% end %>
+<!-- <h5> <%= sport_session.title %></h5> -->
+<h5><%= image_tag ("#{sport_session.activity.name.downcase}"), class: "info-window-icon" %> <%= sport_session.activity.name %></h5>
+<p><i class="fas fa-calendar-alt"></i> <%= sport_session.start_time %></p>
+<p>
+  <% accepted_users_count = sport_session.session_users.where(status: "accepted").count.times do %>
+    <i class="fas fa-user"></i>
+  <% end %>
+  <% if accepted_users_count < sport_session.capacity %>
+      <% (sport_session.capacity - accepted_users_count).times do %>
+        <i class="far fa-user"></i>
+      <% end %>
+  <% end %>
+</p>
+<p><i class="fas fa-map-marker-alt"></i> <%= sport_session.location %></p>
+
+<div class="info-window-levels">
+  <span class="text-center mb-0">level</span>
+
+  <% if sport_session.level == "beginner" %>
+    <div class="info-window-level first full"></div>
+    <div class="info-window-level"></div>
+    <div class="info-window-level last"></div>
+  <% elsif sport_session.level == "intermediate" %>
+    <div class="info-window-level first full"></div>
+    <div class="info-window-level full"></div>
+    <div class="info-window-level last"></div>
+  <% else %>
+    <div class="info-window-level first full"></div>
+    <div class="info-window-level full"></div>
+    <div class="info-window-level last full"></div>
+  <% end %>
+</div>
+
+
+<%= link_to "more info", sport_session_path(sport_session), class: "btn btn-gom btn-map" %>
