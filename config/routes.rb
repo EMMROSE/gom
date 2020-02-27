@@ -4,9 +4,7 @@ Rails.application.routes.draw do
   resources :activities, only: [:index]
   resources :sport_sessions, only: [:index, :show, :new, :create, :edit, :update] do
     resources :session_users, only: [:new, :create]
-    resources :chatrooms, only: [:show] do
-      resources :messages, only: :create
-    end
+    resources :messages, only: :create
   end
   resources :session_users, only: [:edit, :update] do
     member do
