@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
     @message.sport_session = @sport_session
     @message.user = current_user
     if @message.save
-      ChatroomChannel.broadcast_to(
+      SportSessionChannel.broadcast_to(
         @sport_session,
         render_to_string(partial: "shared/message", locals: { message: @message })
       )

@@ -70,7 +70,7 @@
           <% end %>
         <% end %>
       </div>
-      <%= simple_form_for [ @sport_session, @message ] do |f| %>
+      <%= simple_form_for [ @sport_session, @message ], remote: true do |f| %>
         <%= f.input :content, label: false, placeholder: "Message #Chat" %>
       <% end %>
     </div>

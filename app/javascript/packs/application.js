@@ -36,5 +36,10 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initAutocomplete();
 
+  const messagesContainer = document.getElementById('messages');
+  if (messagesContainer) {
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+
 });
 
