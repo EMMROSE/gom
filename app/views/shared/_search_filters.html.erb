@@ -1,20 +1,92 @@
 <div class="container-filters bg-white border-top">
   <!-- select one (or several) activities tag among all activities available at this location-->
   <div class="filters">
-    <% activities = [] %>
-    <% @sport_sessions.each do |sport_session| %>
-      <% activities << sport_session.activity %>
-    <% end %>
-    <% activities.uniq.each do |activity| %>
-      <%= link_to sport_sessions_path(query: params[:query], activity: activity), class: "btn btn-black filter" do %>
-        <%= activity.name %>
-      <% end %>
-    <% end %>
-  </div>
 
   <% if params[:activity] %>
+    <%= link_to sport_sessions_path(query: params[:query]), class: "btn fitler-btn" do %>
+      <%= Activity.find(params[:activity]).name %> (x)
+    <% end %>
+  <% else %>
+    <div class="filter activity-filters dropdown">
+      <button class="btn filter-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Activities
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <% activities = [] %>
+        <% @sport_sessions.each do |sport_session| %>
+          <% activities << sport_session.activity %>
+        <% end %>
+        <% activities.uniq.each do |activity| %>
+          <%= link_to sport_sessions_path(query: params[:query], activity: activity), class: "dropdown-item" do %>
+            <%= activity.name %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+
+  <% if params[:level] %>
+    <%= link_to sport_sessions_path(query: params[:query]), class: "btn fitler-btn" do %>
+      <%= @sport_sessions.find_by(level: params[:level]).level %> (x)
+    <% end %>
+  <% else %>
+    <div class="filter level-filters dropdown">
+      <button class="btn filter-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Level
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <% levels = [] %>
+        <% @sport_sessions.each do |sport_session| %>
+          <% levels << sport_session.level %>
+        <% end %>
+        <% levels.uniq.each do |level| %>
+          <%= link_to sport_sessions_path(query: params[:query], level: level), class: "dropdown-item" do %>
+            <%= level %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+    <div class="filter level-filters dropdown">
+      <button class="btn filter-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Dates
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <% dates = [] %>
+        <% @sport_sessions.each do |sport_session| %>
+          <% dates << sport_session.start_time %>
+        <% end %>
+        <% dates.uniq.each do |start_time| %>
+          <%= link_to sport_sessions_path(query: params[:query], dates: dates), class: "dropdown-item" do %>
+            <%= start_time %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+
+    <div class="filter open-status-filters">
+      <% if params[:closed_sessions] || params[:closed_sessions] == "false" %>
+        <%= link_to sport_sessions_path(query: params[:query], closed_sessions: false), class: "btn filter-btn" do %>
+            Hide Closed Sessions
+        <% end %>
+      <% else %>
+        <%= link_to sport_sessions_path(query: params[:query], closed_sessions: true), class: "btn filter-btn" do %>
+            Show Closed Sessions?
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <% if params[:activity] || params[:level] || params[:open_status] %>
     <%= link_to sport_sessions_path(query: params[:query]), class: "clear-filters" do %>
-      Clear Filter
+      Clear Filters
+    <% end %>
+  <% else %>
+    <%= link_to sport_sessions_path, class: "clear-filters" do %>
+      Clear Filters
     <% end %>
   <% end %>
 </div>

@@ -1,13 +1,23 @@
 class SportSessionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   def index
-    if !params[:query] && !params[:activity]
-      @sport_sessions = SportSession.all
-    elsif params[:query] && !params[:activity]
-      @sport_sessions = SportSession.all.near(params[:query], 100)
-    else
-      @sport_sessions = SportSession.where(activity: params[:activity]).near(params[:query], 100)
-    end
+     @sport_sessions = SportSession.all
+
+     # Location filter
+     @sport_sessions = @sport_sessions.near(params[:query], 100) if params[:query].present?
+
+     # Activity filter
+     @sport_sessions = @sport_sessions.where(activity: params[:activity]) if params[:activity].present?
+
+     # Open status filter
+     @sport_sessions = @sport_sessions.where(open_status: params[:open_status]) if params[:open_status].present?
+
+     # Start time filter
+     @sport_sessions = @sport_sessions.where(start_time: params[:start_time]) if params[:start_time].present?
+
+     # Level filter
+     @sport_sessions = @sport_sessions.where(level: params[:level]) if params[:level].present?
+
 
     @markers = @sport_sessions.map do |sport_session|
       {
@@ -62,5 +72,4 @@ class SportSessionsController < ApplicationController
   def sport_session_params
     params.require(:sport_session).permit(:title, :description, :location, :capacity, :activity_id, :level, :start_time, :end_time)
   end
-
 end
