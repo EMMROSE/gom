@@ -10,11 +10,12 @@ class SportSessionsController < ApplicationController
     end
 
     @markers = @sport_sessions.map do |sport_session|
+
       {
         lat: sport_session.latitude,
         lng: sport_session.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { sport_session: sport_session }),
-        image_url: helpers.asset_url('old-walker.png')
+        image_url: helpers.asset_url("#{sport_session.activity.name.downcase}.png")
       }
     end
   end
