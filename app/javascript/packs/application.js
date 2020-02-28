@@ -27,6 +27,7 @@ import { scrolledNav } from '../components/navbar';
 import { formSportSessions } from '../components/form';
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
+import { initAutocomplete2 } from '../plugins/init_autocomplete';
 import { initNavLink } from '../Dashboard/dashbord_menu';
 
 document.addEventListener('turbolinks:load', () => {
@@ -36,6 +37,7 @@ document.addEventListener('turbolinks:load', () => {
   formSportSessions(); // change activity class when clicked on (on sport session form creation)
   initMapbox();
   initAutocomplete();
+  initAutocomplete2();
 
   const messagesContainer = document.getElementById('messages');
   if (messagesContainer) {
