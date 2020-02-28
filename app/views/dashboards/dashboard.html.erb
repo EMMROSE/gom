@@ -18,7 +18,8 @@
     <div class="right-dashboard-bottom-elements">
       <h3 id="next-sessions-link">Next sessions</h3>
       <div class="next-sessions card-session">
-        <% current_sessions = current_user.sport_sessions %>
+        <%# sport_sessions = SportSession.all.sort_by {|ss| ss.start_time} #%>
+        <% current_sessions = current_user.sport_sessions.sort_by {|ss| ss.start_time} %>
         <% current_sessions.each do |session| %>
           <% if session.start_time >= Date.today  %>
             <%= link_to sport_session_path(session) do%>
@@ -37,7 +38,7 @@
 
       <h3 id="past-sessions-link">Past sessions</h3>
         <div class="past-sessions card-session">
-        <% past_sessions = current_user.sport_sessions %>
+        <% past_sessions = current_user.sport_sessions.sort_by {|ss| ss.start_time} %>
         <% past_sessions.each do |session| %>
           <% if session.start_time < Date.today  %>
             <%= link_to sport_session_path(session) do%>
@@ -55,7 +56,7 @@
 
       <h3 id="sessions-owned-link"> Sessions I Own</h3>
       <div class="owned-sessions card-session">
-        <% if @current_user_owned_sessions %>
+        <% if @current_user_owned_sessions.sort_by {|ss| ss.start_time} %>
           <% @current_user_owned_sessions.each do |session| %>
           <%= link_to sport_session_path(session) do%>
             <ul id="sessions-list-owned">
