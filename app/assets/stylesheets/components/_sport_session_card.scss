@@ -1,0 +1,51 @@
+.sport-session-background {
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+  height: calc(100vh - 87px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.sport-session-card {
+  width: 60%;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  display:flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 30px;
+  li {
+    font-size: 16px;
+  }
+}
+
+.sport-session-card-left {
+  flex-grow: 1;
+  border-right: 1px solid lightgrey;
+  padding: 0px 10px;
+}
+
+.sport-session-card-right {
+  padding: 0px 10px;
+}
+
+.sport-session-card .owner {
+  font-size: smaller;
+}
+
+.sport-session-card .avatar-owner {
+  border: 2px solid $green;
+  padding: 1px;
+}
+
+.sport-session-info {
+  img {
+    width: 30px;
+  }
+}
