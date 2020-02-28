@@ -4,7 +4,7 @@ class SportSessionsController < ApplicationController
      @sport_sessions = SportSession.all
 
      # Location filter
-     @sport_sessions = @sport_sessions.near(params[:query], 100) if params[:query].present?
+     @sport_sessions = @sport_sessions.near(params[:query], 50) if params[:query].present?
 
      # Activity filter
      @sport_sessions = @sport_sessions.where(activity: params[:activity]) if params[:activity].present?
