@@ -3,7 +3,7 @@
 
   <div class="sport-session-card" style="">
     <div class="sport-session-card-left">
-      <h1 class="text-center sport-session-title"><%= image_tag ("#{@sport_session.activity.name.downcase}-picto") %><%= @sport_session.title %></h1>
+      <h1 class="text-center sport-session-title"><%= image_tag ("#{@sport_session.activity.name.downcase}-picto.png") %><%= @sport_session.title %></h1>
       <p class="text-center"><%=  @sport_session.description %></p>
       <div class="session-members">
         <% accepted_users_count = 1 %> <!-- Start at 1 to count the session owner -->
