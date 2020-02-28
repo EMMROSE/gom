@@ -1,7 +1,9 @@
-<div class="sport-session-background" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('http://res.cloudinary.com/timothee/image/upload/ttqz1cvwpbsyi8walhaoz9w91glh');">
+<div class="sport-session-background" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('<%= cl_image_path @sport_session.activity.photo.key %>');">
+
+
   <div class="sport-session-card" style="">
     <div class="sport-session-card-left">
-      <h1 class="text-center"><%= @sport_session.title %></h1>
+      <h1 class="text-center sport-session-title"><%= image_tag ("#{@sport_session.activity.name.downcase}-picto") %><%= @sport_session.title %></h1>
       <p class="text-center"><%=  @sport_session.description %></p>
       <div class="session-members">
         <% accepted_users_count = 1 %> <!-- Start at 1 to count the session owner -->
