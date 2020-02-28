@@ -42,7 +42,7 @@
       </div>
     </fieldset>
 
-    <%= f.input :start_time %>
+    <%= f.input :start_time, as: :string, input_html: { class: "datepickr" } %>
     <%= f.submit class: 'btn btn-gom btn-submit' %>
   <% end %>
 </div>

@@ -349,7 +349,7 @@ s7.photo.attach(io: file, filename: 'ski_powder_ac2unl.jpg', content_type: 'imag
 
 se7a = SessionUser.new(owner: true, status: 'accepted')
 se7a.sport_session = s7
-se7a.user = u9
+se7a.user = u1
 se7a.save!
 
 se7b = SessionUser.new(owner: false, status: 'accepted')
@@ -504,7 +504,7 @@ se14a.save!
 
 se14a = SessionUser.new(owner: false, status: 'accepted')
 se14a.sport_session = s14
-se14a.user = u9
+se14a.user = u1
 se14a.save!
 
 se14a = SessionUser.new(owner: false, status: 'accepted')
@@ -516,7 +516,7 @@ s14.save!
 puts "Session14 ok"
 
 
-s15 = SportSession.new(location: "Labenne", start_time: (Date.today + 30), capacity: 2, title: "Cruise on the lake", description: "Looking for someone to join me!", level: 'intermediate')
+s15 = SportSession.new(location: "Labenne", start_time: (Date.today + 30), capacity: 3, title: "Cruise on the lake", description: "Looking for someone to join me!", level: 'intermediate')
 s15.activity = a4
 
 se15a = SessionUser.new(owner: true, status: 'accepted')
@@ -524,6 +524,10 @@ se15a.sport_session = s15
 se15a.user = u10
 se15a.save!
 
+se15a = SessionUser.new(owner: true, status: 'accepted')
+se15a.sport_session = s15
+se15a.user = u1
+se15a.save!
 
 s15.save!
 puts "Session15 ok"
@@ -611,7 +615,7 @@ s19.save!
 puts "Session19 ok"
 
 
-s20 = SportSession.new(location: "Soustons", start_time: (Date.today +17), capacity: 2, title: "freestyle kite", description: "Let's try new tricks", level: 'intermediate')
+s20 = SportSession.new(location: "Soustons", start_time: (Date.today +17), capacity: 3, title: "freestyle kite", description: "Let's try new tricks", level: 'intermediate')
 s20.activity = a6
 
 se20a = SessionUser.new(owner: true, status: 'accepted')
@@ -622,6 +626,11 @@ se20a.save!
 se20b = SessionUser.new(owner: false, status: 'accepted')
 se20b.sport_session = s20
 se20b.user = u29
+se20b.save!
+
+se20b = SessionUser.new(owner: false, status: 'accepted')
+se20b.sport_session = s20
+se20b.user = u1
 se20b.save!
 
 s20.save!
