@@ -231,7 +231,7 @@ s1.save!
 puts "Session1 ok"
 
 
-s2 = SportSession.new(location: "Cote des basques", start_time: (Date.today - 210), end_time: (Date.today - 210), capacity: 3, title: "Surf women only!!", description: "Conditions are awesome! Let's go!", level: 'intermediate', open_status: false)
+s2 = SportSession.new(location: "Etxola Bibi", start_time: (Date.today - 210), end_time: (Date.today - 210), capacity: 3, title: "Surf women only!!", description: "Conditions are awesome! Let's go!", level: 'intermediate', open_status: false)
 s2.activity = a1
 file = URI.open('https://res.cloudinary.com/timothee/image/upload/v1582820067/surf_btz_f2rlto.jpg')
 s1.photo.attach(io: file, filename: 'surf_btz_f2rlto.jpg', content_type: 'image/png')
@@ -255,7 +255,7 @@ s2.save!
 puts "Session2 ok"
 
 
-s3 = SportSession.new(location: "Anglet", start_time: (Date.today + 4), capacity: 4, title: "Perfomance surfing", description: "Who's motivated to hit the road again?", level: 'intermediate')
+s3 = SportSession.new(location: "Chambre d'Amour, Anglet", start_time: (Date.today + 4), capacity: 4, title: "Perfomance surfing", description: "Who's motivated to hit the road again?", level: 'intermediate')
 s3.activity = a1
 
 se3a = SessionUser.new(owner: true, status: 'accepted')
@@ -284,7 +284,7 @@ puts "Session3 ok"
 
 
 s4 = SportSession.new(location: "Cenitz", start_time: (Date.today + 7), capacity: 5, title: "Chill Sessions with friends", description: "Looking for fellow longboarders!", level: 'beginner')
-s4.activity = a4
+s4.activity = a1
 
 se4a = SessionUser.new(owner: true, status: 'accepted')
 se4a.sport_session = s4
@@ -331,7 +331,7 @@ se5c.save!
 s5.save!
 puts "Session5 ok"
 
-s6 = SportSession.new(location: "hossegor", start_time: (Date.today + 10), capacity: 2, title: "First surf at la Nord", description: "Keen to brave the beast?", level: 'expert')
+s6 = SportSession.new(location: "Seignosse", start_time: (Date.today + 10), capacity: 2, title: "First surf at la Nord", description: "Keen to brave the beast?", level: 'expert')
 s6.activity = a1
 
 se6a = SessionUser.new(owner: true, status: 'accepted')
@@ -361,7 +361,7 @@ s7.save!
 puts "Session7 ok"
 
 
-s8 = SportSession.new(location: "La Pierre saint martin, 64570", start_time: (Date.today + 8), capacity: 4, title: "learning ski", description: "Looking for someone to show me the ropes !", level: 'beginner')
+s8 = SportSession.new(location: "Arudy", start_time: (Date.today + 8), capacity: 4, title: "learning ski", description: "Looking for someone to show me the ropes !", level: 'beginner')
 s8.activity = a2
 
 se8a = SessionUser.new(owner: true, status: 'accepted')
@@ -575,7 +575,7 @@ s17.save!
 puts "Session17 ok"
 
 
-s18 = SportSession.new(location: "Pic du Midi", start_time: (Date.today + 22), capacity: 2, title: "Kook-friendly", description: "Looking to learn snowboard!", level: 'beginner')
+s18 = SportSession.new(location: "Arthez-d'Asson, Nouvelle-Aquitaine, France", start_time: (Date.today + 22), capacity: 2, title: "Kook-friendly", description: "Looking to learn snowboard!", level: 'beginner')
 s18.activity = a5
 
 se18a = SessionUser.new(owner: true, status: 'accepted')
@@ -611,7 +611,7 @@ s19.save!
 puts "Session19 ok"
 
 
-s20 = SportSession.new(location: "Souston", start_time: (Date.today +17), capacity: 2, title: "freestyle kite", description: "Let's try new tricks", level: 'intermediate')
+s20 = SportSession.new(location: "Soustons", start_time: (Date.today +17), capacity: 2, title: "freestyle kite", description: "Let's try new tricks", level: 'intermediate')
 s20.activity = a6
 
 se20a = SessionUser.new(owner: true, status: 'accepted')
