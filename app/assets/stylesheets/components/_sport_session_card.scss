@@ -1,3 +1,16 @@
+.session-members {
+  display: flex;
+  justify-content: space-around;
+  .pending-member {
+    opacity: 0.4;
+  }
+}
+
+.session-member .avatar {
+  margin: 0px auto;
+}
+
+
 .sport-session-background {
   background-size: cover;
   background-position: center;
@@ -19,7 +32,7 @@
   display:flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 20px 30px;
+  padding: 20px 10px 20px 30px;
   li {
     font-size: 16px;
   }
@@ -28,14 +41,17 @@
 .sport-session-card-left {
   flex-grow: 1;
   border-right: 1px solid lightgrey;
-  padding: 0px 10px;
+  padding: 0px 20px;
 }
 
 .sport-session-card-right {
-  padding: 0px 10px;
+  padding: 0px 10px 0px 20px;
+  max-width: 40%;
+  overflow: hidden;
 }
 
-.sport-session-card .owner {
+.sport-session-card .owner,
+.sport-session-card .pending {
   font-size: smaller;
 }
 
@@ -45,7 +61,30 @@
 }
 
 .sport-session-info {
-  img {
-    width: 30px;
+  margin-top: 30px;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  .sport-session-info-left {
+    margin-right: 20px;
+  }
+  .sport-session-join {
+    flex-grow: 1;
+  }
+}
+
+.sport-session-join {
+  .btn {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  }
+  .btn-pending {
+    background-color: #F4E76E;
+    opacity: 0.5;
+    color: #4F4A23;
+  }
+  .btn-complete {
+    background-color: lightgrey;
+    opacity: 0.5;
   }
 }
