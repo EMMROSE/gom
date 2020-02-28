@@ -3,10 +3,24 @@
 }
 
 #messages {
-  overflow: scroll;
-  height: 30vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 40vh;
+  padding-right: 10px;
 }
 
 #message-author {
  text-align: end;
+}
+
+.chatroom-container h2 {
+  padding: 0px;
+}
+
+#messages::-webkit-scrollbar {
+  width: 3px;
+}
+
+#messages::-webkit-scrollbar-thumb {
+  background: #4a4a4a;
 }
