@@ -1,5 +1,5 @@
 <!-- <h5> <%= sport_session.title %></h5> -->
-<h5><%= image_tag ("#{sport_session.activity.name.downcase}-icon"), class: "info-window-icon" %> <%= sport_session.activity.name %></h5>
+<h5><%= image_tag ("#{sport_session.activity.name.downcase}-icon.png"), class: "info-window-icon" %> <%= sport_session.activity.name %></h5>
 <p><i class="fas fa-calendar-alt"></i> <%= sport_session.start_time %></p>
 <p>
   <% accepted_users_count = sport_session.session_users.where(status: "accepted").count.times do %>
