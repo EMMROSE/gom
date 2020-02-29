@@ -1,8 +1,6 @@
 .form-container {
   background-color: white;
-  padding: 30px;
   border-radius: 5px;
-  width: 40%;
 }
 
 .activity-choices {
@@ -52,8 +50,13 @@
   background-color: grey;
   width: 100px;
   height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent;
   &:hover {
     opacity: 1;
+    color: black;
   }
   &.hover {
     opacity: 1;
@@ -62,6 +65,10 @@
     background-color: $green;
     opacity: 1;
   }
+}
+
+.level-input[type=radio]:checked + label {
+  color: white;
 }
 
 .level-choice[data-level='1'] {
@@ -84,7 +91,7 @@
 }
 
 .capacity-choice {
-  flex: 0 0 20%;
+  flex: 0 0 10%;
   opacity: 0.3;
   text-align: center;
   i {
