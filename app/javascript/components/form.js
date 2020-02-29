@@ -5,6 +5,7 @@ const formSportSessions = () => {
 
     const activities = document.querySelectorAll('.form-container .activity-choices .activity-choice');
 
+    // Add click effect on activities radio-button
     activities.forEach((activity) => {
       activity.addEventListener('click', (event) => {
         let previousActivity = document.querySelector('.activity-choice.active')
@@ -15,154 +16,75 @@ const formSportSessions = () => {
       });
     });
 
-    const levelContainer = document.querySelector('.form-container .level-choices');
+
+    // Hover effect function for form range element
+
+    const hoverEffect = (arr, data) => {
+      arr.forEach((element) => {
+        element.addEventListener('mouseover', (event) => {
+          const currentElement = (event.currentTarget.dataset[`${data}`]);
+          arr.slice(0, currentElement).forEach((element) => {
+            element.classList.add('hover');
+          });
+        });
+
+        element.addEventListener('mouseleave', (event) => {
+          arr.forEach((element) => {
+            element.classList.remove('hover');
+          })
+        });
+      });
+    };
+
+
+    // Click effect function for form range element
+
+    const clickEffect = (arr, data) => {
+      arr.forEach((element) => {
+        element.addEventListener('click', (event) => {
+          const currentElement = (event.currentTarget.dataset[`${data}`]);
+          arr.slice(0, currentElement).forEach((element) => {
+            element.classList.add('active');
+          });
+
+          arr.slice(currentElement, arr.length).forEach((element) => {
+            element.classList.remove('active');
+          });
+        });
+      });
+    };
+
+    // LEVELS
+
     const levels = document.querySelectorAll('.form-container .level-choices .level-choice');
 
-    levelContainer.addEventListener('mouseleave', (event) => {
-      document.querySelector(".level-choice[data-level='1'").classList.remove('hover');
-      document.querySelector(".level-choice[data-level='2'").classList.remove('hover');
-      document.querySelector(".level-choice[data-level='3'").classList.remove('hover');
-    });
-
-
+    let levelsArr = [];
     levels.forEach((level) => {
-      level.addEventListener('mouseover', (event) => {
-        let currentLevel = (event.currentTarget.dataset.level)
-        if (currentLevel == 1) {
-          document.querySelector(".level-choice[data-level='2'").classList.remove('hover');
-        } else if (currentLevel == 2) {
-          document.querySelector(".level-choice[data-level='1'").classList.add('hover');
-        } else if (currentLevel == 3 ) {
-          document.querySelector(".level-choice[data-level='1'").classList.add('hover');
-          document.querySelector(".level-choice[data-level='2'").classList.add('hover');
-        }
-      });
+      levelsArr.push(level);
     });
 
+    // Add hover effect on level range
+    hoverEffect(levelsArr, 'level');
 
-    levels.forEach((level) => {
-      level.addEventListener('click', (event) => {
-        let currentLevel = (event.currentTarget.dataset.level)
-        if (currentLevel == 1) {
-          document.querySelector(".level-choice[data-level='1'").classList.add('active');
-          document.querySelector(".level-choice[data-level='2'").classList.remove('active');
-          document.querySelector(".level-choice[data-level='3'").classList.remove('active');
+    // Add click effect on level range
+    clickEffect(levelsArr, 'level');
 
-        } else if (currentLevel == 2) {
-          document.querySelector(".level-choice[data-level='1'").classList.add('active');
-          document.querySelector(".level-choice[data-level='2'").classList.add('active');
-
-          document.querySelector(".level-choice[data-level='3'").classList.remove('active');
-
-        } else if (currentLevel == 3 ) {
-          document.querySelector(".level-choice[data-level='1'").classList.add('active');
-          document.querySelector(".level-choice[data-level='2'").classList.add('active');
-
-          document.querySelector(".level-choice[data-level='3'").classList.add('active');
-
-        }
-      });
-    });
 
     // CAPACITY
 
-    const capacityContainer = document.querySelector('.form-container .capacity-choices');
     const capacities = document.querySelectorAll('.form-container .capacity-choices .capacity-choice');
 
-    capacityContainer.addEventListener('mouseleave', (event) => {
-      document.querySelector(".capacity-choice[data-capacity='1'").classList.remove('hover');
-      document.querySelector(".capacity-choice[data-capacity='2'").classList.remove('hover');
-      document.querySelector(".capacity-choice[data-capacity='3'").classList.remove('hover');
-      document.querySelector(".capacity-choice[data-capacity='4'").classList.remove('hover');
-      document.querySelector(".capacity-choice[data-capacity='5'").classList.remove('hover');
-    });
-
-
+    let capacitiesArr = [];
     capacities.forEach((capacity) => {
-      capacity.addEventListener('mouseover', (event) => {
-        let currentCapacity = (event.currentTarget.dataset.capacity)
-        if (currentCapacity == 1) {
-          document.querySelector(".capacity-choice[data-capacity='2'").classList.remove('hover');
-        } else if (currentCapacity == 2) {
-          document.querySelector(".capacity-choice[data-capacity='1'").classList.add('hover');
-        } else if (currentCapacity == 3 ) {
-          document.querySelector(".capacity-choice[data-capacity='1'").classList.add('hover');
-          document.querySelector(".capacity-choice[data-capacity='2'").classList.add('hover');
-        } else if (currentCapacity == 4) {
-          document.querySelector(".capacity-choice[data-capacity='1'").classList.add('hover');
-          document.querySelector(".capacity-choice[data-capacity='2'").classList.add('hover');
-          document.querySelector(".capacity-choice[data-capacity='3'").classList.add('hover');
-        } else if (currentCapacity == 5) {
-          document.querySelector(".capacity-choice[data-capacity='1'").classList.add('hover');
-          document.querySelector(".capacity-choice[data-capacity='2'").classList.add('hover');
-          document.querySelector(".capacity-choice[data-capacity='3'").classList.add('hover');
-          document.querySelector(".capacity-choice[data-capacity='4'").classList.add('hover');
-        }
-      });
+      capacitiesArr.push(capacity);
     });
 
+    // Add hover effect on level range
+    hoverEffect(capacitiesArr, 'capacity');
 
-    capacities.forEach((capacity) => {
-      capacity.addEventListener('click', (event) => {
-        let currentCapacity = (event.currentTarget.dataset.capacity)
-        if (currentCapacity == 1) {
-          document.querySelector(".capacity-choice[data-capacity='1'").classList.add('active');
-          document.querySelector(".capacity-choice[data-capacity='1'").innerHTML = '<i class="fas fa-user"></i>'
-          document.querySelector(".capacity-choice[data-capacity='2'").classList.remove('active');
-          document.querySelector(".capacity-choice[data-capacity='2'").innerHTML = '<i class="far fa-user"></i>'
-          document.querySelector(".capacity-choice[data-capacity='3'").classList.remove('active');
-          document.querySelector(".capacity-choice[data-capacity='3'").innerHTML = '<i class="far fa-user"></i>'
-          document.querySelector(".capacity-choice[data-capacity='4'").classList.remove('active');
-          document.querySelector(".capacity-choice[data-capacity='4'").innerHTML = '<i class="far fa-user"></i>'
-          document.querySelector(".capacity-choice[data-capacity='5'").classList.remove('active');
-          document.querySelector(".capacity-choice[data-capacity='5'").innerHTML = '<i class="far fa-user"></i>'
-        } else if (currentCapacity == 2) {
-          document.querySelector(".capacity-choice[data-capacity='1'").classList.add('active');
-          document.querySelector(".capacity-choice[data-capacity='1'").innerHTML = '<i class="fas fa-user"></i>'
-          document.querySelector(".capacity-choice[data-capacity='2'").classList.add('active');
-          document.querySelector(".capacity-choice[data-capacity='2'").innerHTML = '<i class="fas fa-user"></i>'
-          document.querySelector(".capacity-choice[data-capacity='3'").classList.remove('active');
-          document.querySelector(".capacity-choice[data-capacity='3'").innerHTML = '<i class="far fa-user"></i>'
-          document.querySelector(".capacity-choice[data-capacity='4'").classList.remove('active');
-          document.querySelector(".capacity-choice[data-capacity='4'").innerHTML = '<i class="far fa-user"></i>'
-          document.querySelector(".capacity-choice[data-capacity='5'").classList.remove('active');
-          document.querySelector(".capacity-choice[data-capacity='5'").innerHTML = '<i class="far fa-user"></i>'
-        } else if (currentCapacity == 3 ) {
-          document.querySelector(".capacity-choice[data-capacity='1'").classList.add('active');
-          document.querySelector(".capacity-choice[data-capacity='1'").innerHTML = '<i class="fas fa-user"></i>'
-          document.querySelector(".capacity-choice[data-capacity='2'").classList.add('active');
-          document.querySelector(".capacity-choice[data-capacity='2'").innerHTML = '<i class="fas fa-user"></i>'
-          document.querySelector(".capacity-choice[data-capacity='3'").classList.add('active');
-          document.querySelector(".capacity-choice[data-capacity='3'").innerHTML = '<i class="fas fa-user"></i>'
-          document.querySelector(".capacity-choice[data-capacity='4'").classList.remove('active');
-          document.querySelector(".capacity-choice[data-capacity='4'").innerHTML = '<i class="far fa-user"></i>'
-          document.querySelector(".capacity-choice[data-capacity='5'").classList.remove('active');
-          document.querySelector(".capacity-choice[data-capacity='5'").innerHTML = '<i class="far fa-user"></i>'
-        } else if (currentCapacity == 4 ) {
-          document.querySelector(".capacity-choice[data-capacity='1'").classList.add('active');
-          document.querySelector(".capacity-choice[data-capacity='1'").innerHTML = '<i class="fas fa-user"></i>'
-          document.querySelector(".capacity-choice[data-capacity='2'").classList.add('active');
-          document.querySelector(".capacity-choice[data-capacity='2'").innerHTML = '<i class="fas fa-user"></i>'
-          document.querySelector(".capacity-choice[data-capacity='3'").classList.add('active');
-          document.querySelector(".capacity-choice[data-capacity='3'").innerHTML = '<i class="fas fa-user"></i>'
-          document.querySelector(".capacity-choice[data-capacity='4'").classList.add('active');
-          document.querySelector(".capacity-choice[data-capacity='4'").innerHTML = '<i class="fas fa-user"></i>'
-          document.querySelector(".capacity-choice[data-capacity='5'").classList.remove('active');
-          document.querySelector(".capacity-choice[data-capacity='5'").innerHTML = '<i class="far fa-user"></i>'
-        } else if (currentCapacity == 5 ) {
-          document.querySelector(".capacity-choice[data-capacity='1'").classList.add('active');
-          document.querySelector(".capacity-choice[data-capacity='1'").innerHTML = '<i class="fas fa-user"></i>'
-          document.querySelector(".capacity-choice[data-capacity='2'").classList.add('active');
-          document.querySelector(".capacity-choice[data-capacity='2'").innerHTML = '<i class="fas fa-user"></i>'
-          document.querySelector(".capacity-choice[data-capacity='3'").classList.add('active');
-          document.querySelector(".capacity-choice[data-capacity='3'").innerHTML = '<i class="fas fa-user"></i>'
-          document.querySelector(".capacity-choice[data-capacity='4'").classList.add('active');
-          document.querySelector(".capacity-choice[data-capacity='4'").innerHTML = '<i class="fas fa-user"></i>'
-          document.querySelector(".capacity-choice[data-capacity='5'").classList.add('active');
-          document.querySelector(".capacity-choice[data-capacity='5'").innerHTML = '<i class="fas fa-user"></i>'
-        }
-      });
-    });
+    // Add click effect on level range
+    clickEffect(capacitiesArr, 'capacity');
+
   };
 };
 
