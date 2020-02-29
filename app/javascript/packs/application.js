@@ -25,6 +25,7 @@ require("channels")
 import "bootstrap";
 import { scrolledNav } from '../components/navbar';
 import { formSportSessions } from '../components/form';
+import { smoothScrollDashboard } from '../components/dashboard';
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initNavLink } from '../Dashboard/dashbord_menu';
@@ -38,10 +39,12 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initAutocomplete();
   initFlatpickr();
+  smoothScrollDashboard();
 
   const messagesContainer = document.getElementById('messages');
   if (messagesContainer) {
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
   }
 });
+
 
