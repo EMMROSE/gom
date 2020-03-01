@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
-  database: gom_production
-  username: gom
-  password: <%= ENV['GOM_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  # database: gom_production
+  # username: gom
+  # password: <%= ENV['GOM_DATABASE_PASSWORD'] %>

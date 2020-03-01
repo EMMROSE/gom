@@ -3,9 +3,9 @@
     <h2><%=  current_user.username %></h2>
     <%= cl_image_tag current_user.photo.key, crop: :fill, class: "avatar-large" %>
       <div class="sessions-navigation">
-        <h3><a href="#next-sessions-link" id="nav-link-1" class="nav-link">Next sessions</a></h3>
-        <h3><a href="#past-sessions-link" id="nav-link-2" class="nav-link">Past sessions</a></h3>
-        <h3><a href="#sessions-owned-link" id="nav-link-3" class="nav-link">Sessions I own</a></h3>
+        <button id="nav-link-1" class="nav-link">Next Session</button>
+        <button id="nav-link-2" class="nav-link">Past Sessions</button>
+        <button id="nav-link-3" class="nav-link">Owned Sessions</button>
       </div>
   </div>
 
