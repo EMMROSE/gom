@@ -58,25 +58,24 @@
       <div class="owned-sessions card-session">
         <% if @current_user_owned_sessions.sort_by {|ss| ss.start_time} %>
           <% @current_user_owned_sessions.each do |session| %>
-          <%= link_to sport_session_path(session) do%>
-            <ul id="sessions-list-owned">
-              <li class ="session-title"><%= session.title %></li>
-              <li><%= "Description: #{session.description}" %></li>
-              <li><%= "Capacity: #{session.capacity}" %></li>
-              <li><%= "Level: #{session.level}" %></li>
-              <li><%= "Starting from #{session.start_time.strftime("%-d %b %Y")}" %></li>
-              <li><b>Requests:</b>
-                <ul>
+            <%= link_to sport_session_path(session) do%>
+              <ul id="sessions-list-owned">
+                <li class ="session-title"><%= session.title %></li>
+                <li><%= "Description: #{session.description}" %></li>
+                <li><%= "Capacity: #{session.capacity}" %></li>
+                <li><%= "Level: #{session.level}" %></li>
+                <li><%= "Starting from #{session.start_time.strftime("%-d %b %Y")}" %></li>
+                <li>
                   <% session.session_users.each do |request| %>
                     <% if request.status == "pending" %>
-                      <li>1 request from: <%= request.user.username %> | <%= link_to "accept", accept_session_user_path(request) %> | <%= link_to "reject", reject_session_user_path(request) %></li>
-
+                      <div class="dashboard-requests">
+                        1 request from: <%= request.user.username %> <%= link_to "accept", accept_session_user_path(request), class: "dashboard-accept" %><%= link_to "reject", reject_session_user_path(request), class: "dashboard-reject" %>
+                      </div>
                     <% end %>
                   <% end %>
-                </ul>
-              </li>
-            </ul>
-          <% end %>
+                </li>
+              </ul>
+            <% end %>
           <% end %>
         <% end %>
       </div>
