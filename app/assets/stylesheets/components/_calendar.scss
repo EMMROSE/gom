@@ -1,12 +1,45 @@
 .flatpickr-months {
-  background: $green!important;
-  color: white!important;
+  background: $green;
 }
 
-.flatpickr-weekdays {
+.flatpickr-months .flatpickr-month {
+  color: white;
+}
+
+.flatpickr-weekdays,
+.flatpickr-day.selected {
   background-color: $green;
 }
 
-.selected {
-  background-color: $green!important;
+.flatpickr-day.selected {
+  border-color: $green;
+  opacity: 0.9;
 }
+
+.flatpickr-day.selected:hover {
+  background-color: $green;
+  border-color: $green;
+  opacity: 1;
+}
+
+span.flatpickr-weekday {
+  color: white;
+  opacity: 0.9;
+}
+
+.flatpickr-months .flatpickr-prev-month,
+.flatpickr-months .flatpickr-next-month {
+  fill: white;
+  opacity: 0.7;
+}
+
+.flatpickr-months .flatpickr-prev-month:hover,
+.flatpickr-months .flatpickr-next-month:hover {
+  opacity: 1;
+}
+
+.flatpickr-months .flatpickr-prev-month:hover svg,
+.flatpickr-months .flatpickr-next-month:hover svg {
+  fill: white;
+}
+

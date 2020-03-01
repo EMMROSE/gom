@@ -36,7 +36,7 @@
           <li class="nav-item dropdown">
              <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <%= link_to "Create Session", new_sport_session_path, class: "dropdown-item" %>
+              <a type="button" class="dropdown-item" data-toggle="modal" data-target="#sport-session-creation-modal">Create Sport Session</a>
               <%= link_to "Dashboard", dashboards_path, class: "dropdown-item" %>
               <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>

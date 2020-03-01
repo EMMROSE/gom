@@ -18,6 +18,8 @@ const formSportSessions = () => {
 
 
     // Hover effect function for form range element
+    // - Array of HTML elements of the range
+    // - Name of the dataset
 
     const hoverEffect = (arr, data) => {
       arr.forEach((element) => {
@@ -37,18 +39,23 @@ const formSportSessions = () => {
     };
 
 
-    // Click effect function for form range element
+    // Click effect function for form range element, takes 3 arguments:
+    // - Array of HTML elements of the range
+    // - Name of the dataset
+    // - Name of icon (if needed)
 
-    const clickEffect = (arr, data) => {
+    const clickEffect = (arr, data, icon = null) => {
       arr.forEach((element) => {
         element.addEventListener('click', (event) => {
           const currentElement = (event.currentTarget.dataset[`${data}`]);
           arr.slice(0, currentElement).forEach((element) => {
             element.classList.add('active');
+            if (icon !== null) element.innerHTML = `<i class="fas fa-${icon}"></i>`;
           });
 
           arr.slice(currentElement, arr.length).forEach((element) => {
             element.classList.remove('active');
+            if (icon !== null) element.innerHTML = `<i class="far fa-${icon}"></i>`;
           });
         });
       });
@@ -83,7 +90,16 @@ const formSportSessions = () => {
     hoverEffect(capacitiesArr, 'capacity');
 
     // Add click effect on level range
-    clickEffect(capacitiesArr, 'capacity');
+    clickEffect(capacitiesArr, 'capacity', 'user');
+
+    capacities.forEach((capacity) => {
+      capacity.addEventListener('click', (event) => {
+        const capacity = (event.currentTarget.dataset.capacity);
+        const count = document.querySelector('.rider-count');
+        count.innerHTML = `${capacity}`;
+      });
+    });
+
 
   };
 };
