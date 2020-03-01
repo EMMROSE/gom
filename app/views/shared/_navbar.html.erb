@@ -50,13 +50,13 @@
       </div>
     <% end %>
   </div>
-  <% if params[:query] %>
+  <% if params[:controller] == "sport_sessions" && params[:action] == "index" %>
     <%= render 'shared/search_filters' %>
   <% end %>
 </div>
 
 
-<% if params[:query] %>
+<% if params[:controller] == "sport_sessions" && params[:action] == "index" %>
   <div style="height:122px;"></div>
 <% elsif params[:action] != "home" %>
   <div style="height:87px;"></div>

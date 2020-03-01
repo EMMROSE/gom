@@ -3,8 +3,8 @@
   <div class="filters">
 
   <% if params[:activity] %>
-    <%= link_to sport_sessions_path(request.query_parameters.except(:activity)), class: "btn fitler-btn" do %>
-      <%= @sport_sessions.find_by(activity: params[:activity]).activity.name %> (x)
+    <%= link_to sport_sessions_path(request.query_parameters.except(:activity)), class: "btn filter filter-selected" do %>
+      <%= @sport_sessions.find_by(activity: params[:activity]).activity.name %> <i class="fas fa-times"></i>
     <% end %>
   <% else %>
     <div class="filter activity-filters dropdown">
@@ -29,8 +29,8 @@
 
 
   <% if params[:level] %>
-    <%= link_to sport_sessions_path(request.query_parameters.except(:level)), class: "btn fitler-btn" do %>
-      <%= @sport_sessions.find_by(level: params[:level]).level %> (x)
+    <%= link_to sport_sessions_path(request.query_parameters.except(:level)), class: "btn filter filter-selected" do %>
+      <%= @sport_sessions.find_by(level: params[:level]).level %> <i class="fas fa-times"></i>
     <% end %>
   <% else %>
     <div class="filter level-filters dropdown">
@@ -54,8 +54,8 @@
   <% end %>
 
   <% if params[:start_time] %>
-    <%= link_to sport_sessions_path(request.query_parameters.except(:start_time)), class: "btn fitler-btn" do %>
-      <%= @sport_sessions.find_by(start_time: params[:start_time]).start_time %> (x)
+    <%= link_to sport_sessions_path(request.query_parameters.except(:start_time)), class: "btn filter filter-selected" do %>
+      <%= @sport_sessions.find_by(start_time: params[:start_time]).start_time %> <i class="fas fa-times"></i>
     <% end %>
   <% else %>
     <div class="filter level-filters dropdown">
@@ -70,7 +70,7 @@
         <% dates.uniq.each do |start_time| %>
           <% request.query_parameters[:start_time] = start_time %>
           <%= link_to sport_sessions_path(request.query_parameters), class: "dropdown-item" do %>
-            <%= start_time %>
+            <%= start_time.strftime("%-d %b %Y") %>
           <% end %>
           <% request.query_parameters.except!(:start_time) %>
         <% end %>
