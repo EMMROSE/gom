@@ -195,21 +195,22 @@ const initMapbox = () => {
     const query = document.getElementById('query').value;
 
     // Generate a Marker according to location query
+    if (query) {
+      fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?access_token=${mapElement.dataset.mapboxApiKey}`)
+      .then(response => response.json())
+      .then((data) => {
+        const longitude = data.features[0].geometry.coordinates[0];
+        const latitude = data.features[0].geometry.coordinates[1];
 
-    fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?access_token=${mapElement.dataset.mapboxApiKey}`)
-    .then(response => response.json())
-    .then((data) => {
-      const longitude = data.features[0].geometry.coordinates[0];
-      const latitude = data.features[0].geometry.coordinates[1];
+        const superMarker = new mapboxgl.Marker()
+          .setLngLat([ longitude, latitude ])
+          .addTo(map);
 
-      const superMarker = new mapboxgl.Marker()
-        .setLngLat([ longitude, latitude ])
-        .addTo(map);
-
-      const bounds = new mapboxgl.LngLatBounds();
-      bounds.extend([ longitude, latitude ]);
-      map.fitBounds(bounds, { padding: 20, maxZoom: 10, duration: 0 });
-    });
+        const bounds = new mapboxgl.LngLatBounds();
+        bounds.extend([ longitude, latitude ]);
+        map.fitBounds(bounds, { padding: 20, maxZoom: 10, duration: 0 });
+      });
+    }
   };
 };
 
