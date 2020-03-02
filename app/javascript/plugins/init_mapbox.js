@@ -66,7 +66,7 @@ const initMapbox = () => {
 
       let images_url = [...new Set(allImagesUrl)];
 
-      // load all images URL
+      // load all images URL to the map
       images_url.forEach(image_url => {
         map.loadImage(
          image_url,
@@ -74,9 +74,9 @@ const initMapbox = () => {
           if (error) throw error;
           map.addImage(image_url, image);
         });
-        console.log(image_url);
       })
 
+      // load sportSessions infos
       map.addSource('sportSessions', {
         type: 'geojson',
         data: geoJson,
@@ -85,51 +85,55 @@ const initMapbox = () => {
         clusterRadius: 50 // Radius of each cluster when clustering points (defaults to 50)
       });
 
+      // add cluster layer (when there are a lot of sessions at the same place)
       map.addLayer({
         id: 'clusters',
         type: 'circle',
         source: 'sportSessions',
         filter: ['has', 'point_count'],
         paint: {
-            'circle-color': 'red',
-            'circle-radius': 30,
-            'circle-stroke-width': 1,
-            'circle-stroke-color': '#fff'
+          'circle-color': 'black',
+          'circle-radius': 30,
+          'circle-stroke-width': 1,
+          'circle-stroke-color': '#ffffff'
           }
         });
 
+      // add 'count' layer, to count sessions within a cluster
       map.addLayer({
-      id: 'cluster-count',
-      type: 'symbol',
-      source: 'sportSessions',
-      filter: ['has', 'point_count'],
-      layout: {
-      'text-field': '{point_count_abbreviated}',
-      'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
-      'text-size': 12
-      }
+        id: 'cluster-count',
+        type: 'symbol',
+        source: 'sportSessions',
+        filter: ['has', 'point_count'],
+        layout: {
+          'text-field': '{point_count_abbreviated}',
+          'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+          'text-size': 16,
+        },
+        paint: {
+          'text-color': 'white'
+        }
       });
 
       // inspect a cluster on click
       map.on('click', 'clusters', (event) => {
-      var features = map.queryRenderedFeatures(event.point, {
-      layers: ['clusters']
-      });
-      var clusterId = features[0].properties.cluster_id;
-      map.getSource('sportSessions').getClusterExpansionZoom(
-      clusterId,
-      function(err, zoom) {
-      if (err) return;
-      map.easeTo({
-      center: features[0].geometry.coordinates,
-      zoom: zoom
-      });
-      }
-      );
+        const features = map.queryRenderedFeatures(event.point, {
+          layers: ['clusters']
+        });
+
+        const clusterId = features[0].properties.cluster_id;
+
+        map.getSource('sportSessions').getClusterExpansionZoom(clusterId, (err, zoom) => {
+          if (err) return;
+          map.easeTo({
+            center: features[0].geometry.coordinates,
+            zoom: zoom
+          });
+        });
       });
 
-
-      geoJson.features.forEach(feature => {
+      // Create sportsessions layer
+      geoJson.features.forEach((feature) => {
         let symbol = feature.properties['image_url'];
         let layerID = feature.properties['activity'];
 
@@ -151,9 +155,28 @@ const initMapbox = () => {
         map.on('click', layerID, event => {
           map.flyTo({ center: event.features[0].geometry.coordinates });
         });
+
+
+        // Change the cursor to a pointer when the it enters a feature in the sportSessions layer.
+        map.on('mouseenter', layerID, function() {
+          map.getCanvas().style.cursor = 'pointer';
+        });
+
+        // Change it back to a pointer when it leaves.
+        map.on('mouseleave', layerID, function() {
+          map.getCanvas().style.cursor = '';
+        });
+
+        // Change the cursor to a pointer when the it enters a feature in the clusters layer.
+        map.on('mouseenter', 'clusters', function() {
+          map.getCanvas().style.cursor = 'pointer';
+        });
+
+        // Change it back to a pointer when it leaves.
+        map.on('mouseleave', 'clusters', function() {
+          map.getCanvas().style.cursor = '';
+        });
       });
-
-
     });
 
 
