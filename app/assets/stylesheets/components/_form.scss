@@ -4,7 +4,7 @@
 }
 
 .activity-choices {
-  display: flex;
+  display: -webkit-box!important;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
@@ -109,6 +109,14 @@
   }
 }
 
+#sport-session-creation-modal .modal-header {
+  background-color: $green;
+  color: white;
+}
+
+.modal-dialog {
+  max-width: 600px!important;
+}
 
 .form-container .algolia-places {
   width: 100%;
@@ -120,3 +128,15 @@
   width: 100%;
   padding: 12px;
 }
+
+.icon-small {
+  width:32px;
+}
+
+.form-check-label-activity {
+  justify-content: space-evenly;
+  align-items: center;
+  height: -webkit-fill-available;
+  padding: 32px;
+}
+
