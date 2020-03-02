@@ -10,6 +10,7 @@ const fitMapToMarkers = (map, markers) => {
 };
 
 const initMapbox = () => {
+
   const mapElement = document.getElementById('map');
   if (mapElement) { // only build a map if there's a div#map to inject into
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
@@ -20,6 +21,7 @@ const initMapbox = () => {
       bearing: 20, // bearing in degrees
       zoom: 9
     });
+    map.addControl(new mapboxgl.NavigationControl());
 
     map.on('load', function() {
       map.addSource('dem', {
