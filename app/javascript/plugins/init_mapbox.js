@@ -1,15 +1,5 @@
 import mapboxgl from 'mapbox-gl';
 
-
-  // Create a HTML element for your custom marker
-
-const fitMapToMarkers = (map, markers) => {
-    const bounds = new mapboxgl.LngLatBounds();
-    markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-    map.fitBounds(bounds, { padding: 20, maxZoom: 10, duration: 0 });
-};
-
-
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
 
@@ -22,9 +12,12 @@ const initMapbox = () => {
       bearing: 20, // bearing in degrees
       zoom: 9
     });
+
     map.addControl(new mapboxgl.NavigationControl());
 
-    map.on('load', function() {
+    map.on('load', () => {
+
+      // Add relief layer
       map.addSource('dem', {
           'type': 'raster-dem',
           'url': 'mapbox://mapbox.terrain-rgb'
@@ -40,41 +33,49 @@ const initMapbox = () => {
           'waterway-river-canal-shadow'
       );
 
+
+
+      // Build geoJson format with sportSession markers dataset
       let sportSessions = JSON.parse(mapElement.dataset.markers);
-        const arr = [];
-        sportSessions.forEach(sportSession => {
-          arr.push(
-            {
-            "type": "Feature",
-            "properties": {
-                "id": sportSession.id,
-                "activity": sportSession.activity,
-                "image_url": sportSession.image_url
-                },
-            "geometry":
-              {
-                "type": "Point",
-                "coordinates": [sportSession.lng, sportSession.lat]
-              }
+      let features = []
+      sportSessions.forEach(sportSession => {
+        features.push({
+          type: "Feature",
+          properties: {
+              "activity": sportSession.activity,
+              "image_url": sportSession.image_url
+              },
+          "geometry": {
+              "type": "Point",
+              "coordinates": [sportSession.lng, sportSession.lat]
             }
-            );
-          });
+          }
+        );
+      })
 
-        let geoJson = {
-        features: arr
-        }
+      let geoJson = {
+        type: 'FeatureCollection',
+        features: features
+      }
 
-
+      // Get all images URL and delete duplicates
+      let allImagesUrl = [];
         geoJson.features.forEach((feature) => {
-            map.loadImage(
-                 feature.properties.image_url,
-                  function(error, image) {
-                  if (error) throw error;
-                  map.addImage(`icon-${feature.properties.activity}`, image);
-            });
-            console.log(`${feature.properties.activity}`);
-        })
+          allImagesUrl.push(feature.properties.image_url);
+      })
 
+      let images_url = [...new Set(allImagesUrl)];
+
+      // load all images URL
+      images_url.forEach(image_url => {
+        map.loadImage(
+         image_url,
+          function(error, image) {
+          if (error) throw error;
+          map.addImage(image_url, image);
+        });
+        console.log(image_url);
+      })
 
       map.addSource('sportSessions', {
         type: 'geojson',
@@ -109,18 +110,6 @@ const initMapbox = () => {
       }
       });
 
-      map.addLayer({
-      id: `unclustered-point-ski`,
-      type: 'symbol',
-      source: 'sportSessions',
-      filter: ['!', ['has', 'point_count']],
-        'layout': {
-        'icon-image': `cats`,
-        'icon-size': 0.15
-        }
-      });
-
-
       // inspect a cluster on click
       map.on('click', 'clusters', (event) => {
       var features = map.queryRenderedFeatures(event.point, {
@@ -138,6 +127,32 @@ const initMapbox = () => {
       }
       );
       });
+
+
+      geoJson.features.forEach(feature => {
+        let symbol = feature.properties['image_url'];
+        let layerID = feature.properties['activity'];
+
+        // Add a layer for this symbol type if it hasn't been added already.
+        if (!map.getLayer(layerID)) {
+          map.addLayer({
+            'id': layerID,
+            'type': 'symbol',
+            'source': 'sportSessions',
+            layout: {
+            'icon-image': symbol,
+            'icon-size': 0.1,
+            "icon-allow-overlap": true
+            },
+            'filter': ['==', 'activity', layerID]
+          });
+        };
+
+        map.on('click', layerID, event => {
+          map.flyTo({ center: event.features[0].geometry.coordinates });
+        });
+      });
+
 
     });
 
@@ -159,46 +174,6 @@ const initMapbox = () => {
       const bounds = new mapboxgl.LngLatBounds();
       bounds.extend([ longitude, latitude ]);
       map.fitBounds(bounds, { padding: 20, maxZoom: 10, duration: 0 });
-    });
-
-
-    // Generate Markers according to sport sessions
-
-    // let markers = JSON.parse(mapElement.dataset.markers);
-
-    // markers.forEach((marker) => {
-    //   const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
-
-    //   const element = document.createElement('div');
-    //   element.className = 'marker';
-    //   element.dataset.lat = marker.lat;
-    //   element.dataset.lng = marker.lng;
-    //   element.style.backgroundImage = `url('${marker.image_url}')`;
-    //   element.style.backgroundSize = 'contain';
-    //   element.style.width = '80px';
-    //   element.style.height = '80px';
-    //   element.style.cursor = 'pointer';
-
-    //   new mapboxgl.Marker(element)
-    //     .setLngLat([ marker.lng, marker.lat ])
-    //     .setPopup(popup)
-    //     .addTo(map);
-
-    // });
-
-
-    // center map on marker when click on it
-
-    const markersDiv = document.querySelectorAll('.marker');
-
-    markersDiv.forEach((markerDiv) => {
-      markerDiv.addEventListener('click', (event) => {
-        map.flyTo({
-          center: [ event.currentTarget.dataset.lng, event.currentTarget.dataset.lat
-          ],
-          essential: true // this animation is considered essential with respect to prefers-reduced-motion
-        });
-      })
     });
   };
 };
