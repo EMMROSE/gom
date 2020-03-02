@@ -18,18 +18,20 @@
     <div class="right-dashboard-bottom-elements">
       <h3 id="next-sessions-link">Next sessions</h3>
       <div class="next-sessions card-session">
-        <%# sport_sessions = SportSession.all.sort_by {|ss| ss.start_time} #%>
-        <% current_sessions = current_user.sport_sessions.sort_by {|ss| ss.start_time} %>
-        <% current_sessions.each do |session| %>
-          <% if session.start_time >= Date.today  %>
-            <%= link_to sport_session_path(session) do%>
-              <ul id="sessions-list-next">
-                <li class ="li-nxt-session session-title"><%= session.title %></li>
-                <li class ="li-nxt-session"><%= "Description: #{session.description}" %></li>
-                <li class ="li-nxt-session"><%= "Capacity: #{session.capacity}" %></li>
-                <li class ="li-nxt-session"><%= "Level: #{session.level}" %></li>
-                <li class ="li-nxt-session"><%= "Starting from #{session.start_time.strftime("%-d %b %Y")}" %></li>
-              </ul>
+        <% current_sessions = current_user.sport_sessions %>
+        <% if current_sessions %>
+          <% sorted_current_sessions = current_sessions.sort_by {|ss| ss.start_time} %>
+          <% sorted_current_sessions.each do |session| %>
+            <% if session.start_time >= Date.today  %>
+              <%= link_to sport_session_path(session) do%>
+                <ul id="sessions-list-next">
+                  <li class ="li-nxt-session session-title"><%= session.title %></li>
+                  <li class ="li-nxt-session"><%= "Description: #{session.description}" %></li>
+                  <li class ="li-nxt-session"><%= "Capacity: #{session.capacity}" %></li>
+                  <li class ="li-nxt-session"><%= "Level: #{session.level}" %></li>
+                  <li class ="li-nxt-session"><%= "Starting from #{session.start_time.strftime("%-d %b %Y")}" %></li>
+                </ul>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>
@@ -38,17 +40,20 @@
 
       <h3 id="past-sessions-link">Past sessions</h3>
         <div class="past-sessions card-session">
-        <% past_sessions = current_user.sport_sessions.sort_by {|ss| ss.start_time} %>
-        <% past_sessions.each do |session| %>
-          <% if session.start_time < Date.today  %>
-            <%= link_to sport_session_path(session) do%>
-              <ul id="sessions-list-past">
-                <li class ="session-title"><%= session.title %></li>
-                <li><%= "Description: #{session.description}" %></li>
-                <li><%= "Capacity: #{session.capacity}" %></li>
-                <li><%= "Level: #{session.level}" %></li>
-                <li><%= "Starting from #{session.start_time.strftime("%-d %b %Y")}" %></li>
-              </ul>
+        <% past_sessions = current_user.sport_sessions%>
+        <% if past_sessions %>
+          <% sorted_past_sessions = past_sessions.sort_by {|ss| ss.start_time}.reverse %>
+          <% sorted_past_sessions.each do |session| %>
+            <% if session.start_time < Date.today  %>
+              <%= link_to sport_session_path(session) do%>
+                <ul id="sessions-list-past">
+                  <li class ="session-title"><%= session.title %></li>
+                  <li><%= "Description: #{session.description}" %></li>
+                  <li><%= "Capacity: #{session.capacity}" %></li>
+                  <li><%= "Level: #{session.level}" %></li>
+                  <li><%= "Starting from #{session.start_time.strftime("%-d %b %Y")}" %></li>
+                </ul>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>
@@ -56,8 +61,9 @@
 
       <h3 id="sessions-owned-link"> Sessions I Own</h3>
       <div class="owned-sessions card-session">
-        <% if @current_user_owned_sessions.sort_by {|ss| ss.start_time} %>
-          <% @current_user_owned_sessions.each do |session| %>
+        <% if @current_user_owned_sessions %>
+          <% sorted_owned_sessions = @current_user_owned_sessions.sort_by {|ss| ss.start_time}.reverse %>
+          <% sorted_owned_sessions.each do |session| %>
             <%= link_to sport_session_path(session) do%>
               <ul id="sessions-list-owned">
                 <li class ="session-title"><%= session.title %></li>
