@@ -1,21 +1,27 @@
-<div class="animated fadeInRight mapbox-popup-flexbox">
+<div class="animated fadeInLeft mapbox-popup-flexbox">
   <div class="mapbox-popup-info ">
-    <div class="mapbox-popup-info-header">
-      <h5><%= image_tag ("#{sport_session.activity.name.downcase}-picto.png"), class: "info-window-icon" %> <%= sport_session.activity.name %></h5>
+    <div class="mapbox-popup-info-header" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(<%= cl_image_path sport_session.activity.photo.key %>);">,
+      <h3><%= image_tag ("#{sport_session.activity.name.downcase}-picto.png"), class: "info-window-icon" %> <%= sport_session.activity.name %></h5>
       <p class="text-center">"<%= sport_session.description %>"</p>
     </div>
     <div class="mapbox-popup-bottom">
       <p><i class="fas fa-calendar-alt"></i> <%= sport_session.start_time.strftime("%-d %b %Y") %></p>
-      <p>
-        <% accepted_users_count = sport_session.session_users.where(status: "accepted").count.times do %>
-          <i class="fas fa-user"></i>
-        <% end %>
-        <% if accepted_users_count < sport_session.capacity %>
-            <% (sport_session.capacity - accepted_users_count).times do %>
-              <i class="far fa-user"></i>
+      <div class="info-window-capacity">
+        <p>
+          <% accepted_users_count = sport_session.session_users.where(status: "accepted").count.times do %>
+            <i class="fas fa-user"></i>
+          <% end %>
+          <% if accepted_users_count < sport_session.capacity %>
+              <% (sport_session.capacity - accepted_users_count).times do %>
+                <i class="far fa-user"></i>
+              <% end %>
+            <% if (sport_session.capacity - accepted_users_count)==1 %>
+              <p><%= (sport_session.capacity - accepted_users_count)%> place left</p>
+            <% else %> <p><%= (sport_session.capacity - accepted_users_count)%> places left</p>
             <% end %>
-        <% end %>
-      </p>
+          <% end %>
+        </p>
+      </div>
       <p><i class="fas fa-map-marker-alt"></i> <%= sport_session.location %></p>
 
       <div class="info-window-levels text-left">
