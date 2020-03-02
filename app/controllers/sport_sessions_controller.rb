@@ -23,7 +23,8 @@ class SportSessionsController < ApplicationController
         lng: sport_session.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { sport_session: sport_session }),
         image_url: helpers.asset_url("#{sport_session.activity.name.downcase}-icon.png"),
-        id: sport_session.id
+        id: sport_session.id,
+        activity: sport_session.activity.name.downcase
       }
     end
   end

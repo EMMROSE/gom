@@ -47,8 +47,9 @@ const initMapbox = () => {
             {
             "type": "Feature",
             "properties": {
-                "image_url": sportSession.image_url,
-                "id": sportSession.id
+                "id": sportSession.id,
+                "activity": sportSession.activity,
+                "image_url": sportSession.image_url
                 },
             "geometry":
               {
@@ -69,9 +70,9 @@ const initMapbox = () => {
                  feature.properties.image_url,
                   function(error, image) {
                   if (error) throw error;
-                  map.addImage(`icon-${feature.properties.id}`, image);
+                  map.addImage(`icon-${feature.properties.activity}`, image);
             });
-            console.log(`${feature.properties.id}`);
+            console.log(`${feature.properties.activity}`);
         })
 
 
@@ -108,17 +109,15 @@ const initMapbox = () => {
       }
       });
 
-      geoJson.features.forEach((feature) => {
-        map.addLayer({
-        id: 'unclustered-point',
-        type: 'symbol',
-        source: 'sportSessions',
-        filter: ['!', ['has', 'point_count']],
-          'layout': {
-          'icon-image': `icon-${feature.properties.id}`,
-          'icon-size': 0.15
-          }
-        });
+      map.addLayer({
+      id: `unclustered-point-ski`,
+      type: 'symbol',
+      source: 'sportSessions',
+      filter: ['!', ['has', 'point_count']],
+        'layout': {
+        'icon-image': `cats`,
+        'icon-size': 0.15
+        }
       });
 
 
