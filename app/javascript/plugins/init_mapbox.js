@@ -43,7 +43,8 @@ const initMapbox = () => {
           type: "Feature",
           properties: {
               "activity": sportSession.activity,
-              "image_url": sportSession.image_url
+              "image_url": sportSession.image_url,
+              "infoWindow": sportSession.infoWindow
               },
           "geometry": {
               "type": "Point",
@@ -153,7 +154,18 @@ const initMapbox = () => {
         };
 
         map.on('click', layerID, event => {
+
+          // When clicked on a Sport Session, center the map on this sportSession
           map.flyTo({ center: event.features[0].geometry.coordinates });
+
+          // Open a popup when clicked on a Sport Session
+          let infoWindow = event.features[0].properties.infoWindow;
+          console.log(infoWindow);
+          let coordinates = event.features[0].geometry.coordinates.slice();
+          new mapboxgl.Popup()
+          .setLngLat(coordinates)
+          .setHTML(infoWindow)
+          .addTo(map);
         });
 
 
