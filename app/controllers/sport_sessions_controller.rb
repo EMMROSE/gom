@@ -3,9 +3,6 @@ class SportSessionsController < ApplicationController
   def index
      @sport_sessions = SportSession.all
 
-     # Location filter
-     @sport_sessions = @sport_sessions.near(params[:query], 1000) if params[:query].present?
-
      # Activity filter
      @sport_sessions = @sport_sessions.where(activity: params[:activity]) if params[:activity].present?
 
@@ -25,7 +22,8 @@ class SportSessionsController < ApplicationController
         lat: sport_session.latitude,
         lng: sport_session.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { sport_session: sport_session }),
-        image_url: helpers.asset_url("#{sport_session.activity.name.downcase}-icon.png")
+        image_url: helpers.asset_url("#{sport_session.activity.name.downcase}-icon.png"),
+        id: sport_session.id
       }
     end
   end
