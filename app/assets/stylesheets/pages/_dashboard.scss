@@ -142,12 +142,13 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.35);
   background-color: transparent;
   margin-bottom: 8px;
-  width: 50%;
+  width: 64%;
   display: inline-block;
   text-decoration: none;
   color: rgba(0, 0, 0, 0.35);
-  font-size: 10px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: lighter;
+  padding: 4px 4px;
 }
 
 .dashboard-container button.nav-link:hover {
