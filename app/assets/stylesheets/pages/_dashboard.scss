@@ -1,16 +1,22 @@
 
 .left-dashboard {
-  height: 56vh;
-  position: sticky;
-  top: 116px;
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 4px;
   display: block;
-  width: 40%;
+  width: 100%;
   text-align: center;
+  padding: 0px 16px 16px 16px;
+  position: sticky;
+  top: 116px;
+}
+
+.dashboards-left-container {
+  position: sticky;
+  top: 116px;
   margin-right: 16px;
+  display: block;
 }
 .right-dashboard {
   padding: 0px 10px 10px 10px;
