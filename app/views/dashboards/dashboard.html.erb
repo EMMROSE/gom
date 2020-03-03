@@ -25,7 +25,7 @@
       </ul>
     </div>
 
-    <div class="tab-content" id="myTabContent">
+    <div class="tab-content right-dashbd-bot-elements" id="myTabContent">
       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
           <% if @next_sessions %>
               <% sorted_next_sessions = @next_sessions.sort_by {|ss| ss.start_time} %>
@@ -33,10 +33,10 @@
                   <%= link_to sport_session_path(session) do%>
                     <ul id="sessions-list-next">
                       <li class ="li-nxt-session session-title"><%= session.title %></li>
-                      <li class ="li-nxt-session"><%= "Description: #{session.description}" %></li>
-                      <li class ="li-nxt-session"><%= "Capacity: #{session.capacity}" %></li>
-                      <li class ="li-nxt-session"><%= "Level: #{session.level}" %></li>
-                      <li class ="li-nxt-session"><%= "Starting from #{session.start_time.strftime("%-d %b %Y")}" %></li>
+                      <li class ="li-nxt-session"><i class="far fa-hand-peace"></i></i><strong>Description:</strong><%= " #{session.description}" %></li>
+                      <li class ="li-nxt-session"><i class="fas fa-users"></i><b>Capacity:</b><%= " #{session.capacity}" %></li>
+                      <li class ="li-nxt-session"><i class="fas fa-skull-crossbones"></i><b>Level:</b><%= " #{session.level}" %></li>
+                      <li class ="li-nxt-session"><i class="fas fa-calendar-alt"></i><%= "Starting from #{session.start_time.strftime("%-d %b %Y")}" %></li>
                     </ul>
                   <% end %>
               <% end %>
@@ -48,11 +48,11 @@
                 <% sorted_past_sessions.each do |session| %>
                   <%= link_to sport_session_path(session) do%>
                     <ul id="sessions-list-past">
-                      <li class ="session-title"><%= session.title %></li>
-                      <li><%= "Description: #{session.description}" %></li>
-                      <li><%= "Capacity: #{session.capacity}" %></li>
-                      <li><%= "Level: #{session.level}" %></li>
-                      <li><%= "Starting from #{session.start_time.strftime("%-d %b %Y")}" %></li>
+                      <li ><%= session.title %></li>
+                      <li ><i class="far fa-hand-peace"></i><b>Description:</b><%= " #{session.description}" %></li>
+                      <li ><i class="fas fa-users"></i><b>Capacity:</b><%= " #{session.capacity}" %></li>
+                      <li ><i class="fas fa-skull-crossbones"></i><b>Level:</b><%= " #{session.level}" %></li>
+                      <li ><i class="fas fa-calendar-alt"></i><%= "Starting from #{session.start_time.strftime("%-d %b %Y")}" %></li>
                     </ul>
                   <% end %>
                 <% end %>

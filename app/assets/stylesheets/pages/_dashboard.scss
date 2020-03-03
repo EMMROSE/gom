@@ -30,7 +30,18 @@
       color: #black !important;
     }
   }
-}
+ }
+
+.right-dashbd-bot-elements .fas {
+    content: "\f073";
+    margin-right: 4px;
+  }
+
+.right-dashbd-bot-elements
+  .far {
+    content: "\f25b";
+    margin-right: 4px;
+  }
 
 .right-dashboard .nav-tabs .nav-link.active {
   color: black;
