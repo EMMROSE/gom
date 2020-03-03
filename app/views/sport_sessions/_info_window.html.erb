@@ -1,26 +1,55 @@
-<div class="animated fadeInLeft mapbox-popup-flexbox">
-  <div class="mapbox-popup-info" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(<%= cl_image_path sport_session.activity.photo.key %>);">
-    <div class="mapbox-popup-info-header">
-      <h3 class="text-center mt-2"><%= image_tag ("#{sport_session.activity.name.downcase}-picto.png"), class: "info-window-icon" %> <%= sport_session.activity.name %></h3>
-      <p class="text-left font-weight-bold mt-2"><%= sport_session.description %></p>
-      <div class="info-window-levels text-left mt-2">
-        <span class="text-center mb-0">level</span>
+<div class="animated fadeInLeft mapbox-popup-animation">
+  <div class="mapbox-popup-info">
+    <div class="zoom-background" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(<%= cl_image_path sport_session.activity.photo.key %>);">
+    </div>
+    <div class="mapbox-popup-sport-session">
+      <h2 class="text-center mt-2"><%= image_tag ("#{sport_session.activity.name.downcase}-picto.png"), class: "info-window-icon" %> <%= sport_session.activity.name %></h2>
+        <p class="text-center font-weight-lighter mt-2"><em>"<%= sport_session.description %>"</em></p><br>
+      <div class="info-window-levels text-center mt-2">
         <% if sport_session.level == "beginner" %>
-          <div class="info-window-level first full"></div>
-          <div class="info-window-level"></div>
-          <div class="info-window-level last"></div>
+          <div class="info-window-levels-pictos">
+            <div class="info-window-level-content">
+              <p>Beginner</p>
+              <div class="arrow-level"></div>
+              <div class="info-window-level first full"></div>
+            </div>
+            <div class="info-window-level-content">
+              <div class="info-window-level"></div>
+            </div>
+            <div class="info-window-level-content">
+              <div class="info-window-level last"></div>
+            </div>
+          </div>
         <% elsif sport_session.level == "intermediate" %>
-          <div class="info-window-level first full"></div>
-          <div class="info-window-level full"></div>
-          <div class="info-window-level last"></div>
+          <div class="info-window-levels-pictos">
+            <div class="info-window-level-content">
+              <div class="info-window-level first full"></div>
+            </div>
+            <div class="info-window-level-content">
+              <p>Intermediate</p>
+              <div class="arrow-level"></div>
+              <div class="info-window-level full"></div>
+            </div>
+            <div class="info-window-level-content">
+              <div class="info-window-level last"></div>
+            </div>
+          </div>
         <% else %>
-          <div class="info-window-level first full"></div>
-          <div class="info-window-level full"></div>
-          <div class="info-window-level last full"></div>
+          <div class="info-window-levels-pictos">
+            <div class="info-window-level-content">
+              <div class="info-window-level first full"></div>
+            </div>
+            <div class="info-window-level-content">
+              <div class="info-window-level full"></div>
+            </div>
+            <div class="info-window-level-content">
+              <p>Expert</p>
+              <div class="arrow-level"></div>
+              <div class="info-window-level full last"></div>
+            </div>
+          </div>
         <% end %>
       </div>
-    </div>
-    <div class="mapbox-popup-bottom">
       <div class="d-flex justify-content-around">
         <div>
           <img src="/assets/calendar.png" height="32px" width="32px">
@@ -45,12 +74,9 @@
         </div>
       </div>
       <p id="info-window-location"><i class="fas fa-map-marker-alt"></i> <%= sport_session.location %></p>
-
-
     </div>
-
-  </div>
     <%= link_to "more info", sport_session_path(sport_session), class: "btn btn-gom btn-map" %>
+  </div>
   <div class="mapbox-popup-arrow"></div>
 </div>
 
