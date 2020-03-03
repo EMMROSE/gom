@@ -86,4 +86,6 @@
     </div>
   </div>
 </div>
+<% @dates = current_user.sport_sessions.map { |sport_session| sport_session.start_time.to_s } %>
+<input type="text" class="dashboard-calendar d-none" data-dates="<%= @dates %>">
 
