@@ -28,7 +28,6 @@ import { formSportSessions } from '../components/form';
 import { smoothScrollDashboard } from '../components/dashboard';
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
-import { initNavLink } from '../Dashboard/dashbord_menu';
 import { initFlatpickr } from "../plugins/flatpickr";
 
 document.addEventListener('turbolinks:load', () => {
