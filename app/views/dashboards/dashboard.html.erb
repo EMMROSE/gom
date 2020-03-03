@@ -36,12 +36,19 @@
               <% sorted_next_sessions = @next_sessions.sort_by {|ss| ss.start_time} %>
               <% sorted_next_sessions.each do |session| %>
                   <%= link_to sport_session_path(session) do%>
-                    <ul id="sessions-list-next">
-                      <li class ="li-nxt-session session-title"><%= session.title %></li>
-                      <li class ="li-nxt-session"><i class="fas fa-hand-peace fa-fw"></i></i><strong>Description:</strong><%= " #{session.description}" %></li>
-                      <li class ="li-nxt-session"><i class="fas fa-users fa-fw"></i><b>Capacity:</b><%= " #{session.capacity}" %></li>
-                      <li class ="li-nxt-session"><i class="fas fa-skull-crossbones fa-fw"></i><b>Level:</b><%= " #{session.level}" %></li>
-                      <li class ="li-nxt-session"><i class="fas fa-calendar-alt fa-fw"></i><%= "Starting from #{session.start_time.strftime("%-d %b %Y")}" %></li>
+                    <ul id="sessions-list-next" class="d-flex justify-content-between">
+                      <div class="session-infos">
+                        <li class ="li-nxt-session session-title"><%= session.title %></li>
+                        <li class ="li-nxt-session"><i class="fas fa-hand-peace fa-fw"></i></i><strong>Description:</strong><%= " #{session.description}" %></li>
+                        <li class ="li-nxt-session"><i class="fas fa-users fa-fw"></i><b>Capacity:</b><%= " #{session.capacity}" %></li>
+                        <li class ="li-nxt-session"><i class="fas fa-skull-crossbones fa-fw"></i><b>Level:</b><%= " #{session.level}" %></li>
+                        <li class ="li-nxt-session"><i class="fas fa-calendar-alt fa-fw"></i><%= "Starting from #{session.start_time.strftime("%-d %b %Y")}" %></li>
+                      </div>
+                      <div class="session-users-avatars">
+                        <% session.session_users.each do |session_user| %>
+                          <%= cl_image_tag session_user.user.photo.key, crop: :fill, class: "avatar-small" %>
+                        <% end %>
+                      </div>
                     </ul>
                   <% end %>
               <% end %>
