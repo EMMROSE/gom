@@ -43,7 +43,22 @@ span.flatpickr-weekday {
   fill: white;
 }
 
-.flatpickr-calendar .flatpickr-day.flatpickr-disabled {
+// !! Calendar for Dashboard
+
+.container-dashboard-calendar {
+  margin-top: 20px;
+}
+
+.container-dashboard-calendar .flatpickr-calendar {
+  border-radius: 4px;
+  top: 0px;
+}
+
+.container-dashboard-calendar .flatpickr-months {
+  border-radius: 4px 4px 0px 0px;
+}
+
+.container-dashboard-calendar .flatpickr-calendar .flatpickr-day.flatpickr-disabled {
   cursor: not-allowed;
   color: rgba(0,0,0,0.8);
   background-color: white;
@@ -53,7 +68,14 @@ span.flatpickr-weekday {
   }
 }
 
-.flatpickr-calendar .flatpickr-day {
+.container-dashboard-calendar p {
+  color: rgba(0,0,0,0.8);
+  border-top: 2px solid rgba(0,0,0,0.2);
+  margin-bottom: 10px;
+  padding-top: 10px;
+}
+
+.container-dashboard-calendar .flatpickr-calendar .flatpickr-day {
   color: white;
   background-color: rgba(79,180,119, 0.7);
   border:none;

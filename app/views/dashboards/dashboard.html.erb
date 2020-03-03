@@ -1,11 +1,16 @@
 <div class="dashboard-container container mt-5 d-flex">
-  <div class="left-dashboard">
-    <h2><%=  current_user.username %></h2>
-    <%= cl_image_tag current_user.photo.key, crop: :fill, class: "avatar-large" %>
+  <div class="dashboards-left-container">
+    <div class="left-dashboard">
+      <h2><%=  current_user.username %></h2>
+      <%= cl_image_tag current_user.photo.key, crop: :fill, class: "avatar-large" %>
       <div class="sessions-navigation">
-
-
       </div>
+      <div class="container-dashboard-calendar">
+        <p>Your Schedule</p>
+        <% @dates = current_user.sport_sessions.map { |sport_session| sport_session.start_time.to_s } %>
+        <input type="text" class="dashboard-calendar d-none" data-dates="<%= @dates %>">
+      </div>
+    </div>
   </div>
 
 <!-- recoller ici ancien code -->
@@ -62,6 +67,4 @@
   </div>
 </div>
 
-<% @dates = current_user.sport_sessions.map { |sport_session| sport_session.start_time.to_s } %>
-<input type="text" class="dashboard-calendar d-none" data-dates="<%= @dates %>">
 
