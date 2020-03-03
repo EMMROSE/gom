@@ -33,7 +33,6 @@ const dashboardFlatipickr = () => {
       dateFormat: "Y-m-d",
       enable: datesArray,
       onChange: (selectedDates) => {
-
         // window.location.href = 'www.google.fr';
       }
     })

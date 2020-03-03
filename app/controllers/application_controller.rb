@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   private
 
   def sport_session_new
-    @sport_session = SportSession.new
+    @new_sport_session = SportSession.new
   end
 
   def notifications_generation
