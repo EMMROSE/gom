@@ -138,6 +138,13 @@ const initMapbox = () => {
         let symbol = feature.properties['image_url'];
         let layerID = feature.properties['activity'];
 
+
+        // new mapboxgl.Marker()
+        //   .setLngLat(feature.geometry.coordinates)
+        //   .addTo(map);
+
+
+
         // Add a layer for this symbol type if it hasn't been added already.
         if (!map.getLayer(layerID)) {
           map.addLayer({
@@ -153,19 +160,22 @@ const initMapbox = () => {
           });
         };
 
+
+
         map.on('click', layerID, event => {
 
+          console.log(event.currentTarget);
           // When clicked on a Sport Session, center the map on this sportSession
           map.flyTo({ center: event.features[0].geometry.coordinates });
 
           // Open a popup when clicked on a Sport Session
           let infoWindow = event.features[0].properties.infoWindow;
-          console.log(infoWindow);
           let coordinates = event.features[0].geometry.coordinates.slice();
           new mapboxgl.Popup()
           .setLngLat(coordinates)
           .setHTML(infoWindow)
           .addTo(map);
+
         });
 
 
