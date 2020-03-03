@@ -11,7 +11,7 @@
       <button class="btn filter-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Activities
       </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <div class="dropdown-menu animated fadeIn" aria-labelledby="dropdownMenuButton">
         <% activities = [] %>
         <% @sport_sessions.each do |sport_session| %>
           <% activities << sport_session.activity %>
@@ -37,7 +37,7 @@
       <button class="btn filter-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Level
       </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <div class="dropdown-menu animated fadeIn" aria-labelledby="dropdownMenuButton">
         <% levels = [] %>
         <% @sport_sessions.each do |sport_session| %>
           <% levels << sport_session.level %>
@@ -62,7 +62,7 @@
       <button class="btn filter-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Start Time
       </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <div class="dropdown-menu animated fadeIn" aria-labelledby="dropdownMenuButton">
         <% dates = [] %>
         <% @sport_sessions.each do |sport_session| %>
           <% dates << sport_session.start_time %>
@@ -74,6 +74,27 @@
           <% end %>
           <% request.query_parameters.except!(:start_time) %>
         <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if params[:open_status] %>
+    <%= link_to sport_sessions_path(request.query_parameters.except(:open_status)), class: "" do %>
+      Show Closed Sessions?
+
+      <label class="switch">
+      <input type="checkbox">
+      <span class="slider round"></span>
+      </label>
+    <% end %>
+  <% else %>
+      <button class="">
+          <% request.query_parameters[:open_status] = true %>
+          <%= link_to sport_sessions_path(request.query_parameters), class: "dropdown-item" do %>
+            Hide Closed Sessions?
+          <% end %>
+          <% request.query_parameters.except!(:open_status) %>
+      </button>
       </div>
     </div>
   <% end %>

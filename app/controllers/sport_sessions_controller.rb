@@ -7,7 +7,7 @@ class SportSessionsController < ApplicationController
      @sport_sessions = @sport_sessions.where(activity: params[:activity]) if params[:activity].present?
 
      # Open status filter
-     @sport_sessions = @sport_sessions.where(open_status: params[:open_status]) if params[:open_status].present?
+     @sport_sessions = @sport_sessions.where(open_status: true) if params[:open_status].present?
 
      # Start time filter
      @sport_sessions = @sport_sessions.where(start_time: params[:start_time]) if params[:start_time].present?

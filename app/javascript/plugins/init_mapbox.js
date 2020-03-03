@@ -1,5 +1,6 @@
 import mapboxgl from 'mapbox-gl';
 
+
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
 
@@ -12,6 +13,7 @@ const initMapbox = () => {
       bearing: 20, // bearing in degrees
       zoom: 9
     });
+    let hoveredSportSessionId = null;
 
     map.addControl(new mapboxgl.NavigationControl());
 
@@ -41,6 +43,7 @@ const initMapbox = () => {
       sportSessions.forEach(sportSession => {
         features.push({
           type: "Feature",
+          id: sportSession.id,
           properties: {
               "activity": sportSession.activity,
               "image_url": sportSession.image_url,
@@ -123,7 +126,7 @@ const initMapbox = () => {
         });
 
         const clusterId = features[0].properties.cluster_id;
-
+        // console.log(map.getSource('sportSessions'));
         map.getSource('sportSessions').getClusterExpansionZoom(clusterId, (err, zoom) => {
           if (err) return;
           map.easeTo({
@@ -137,7 +140,6 @@ const initMapbox = () => {
       geoJson.features.forEach((feature) => {
         let symbol = feature.properties['image_url'];
         let layerID = feature.properties['activity'];
-
 
         // new mapboxgl.Marker()
         //   .setLngLat(feature.geometry.coordinates)
@@ -156,6 +158,14 @@ const initMapbox = () => {
             'icon-size': 0.1,
             "icon-allow-overlap": true
             },
+            paint: {
+              'icon-opacity': [
+              'case',
+              ['boolean', ['feature-state', 'hover'], false],
+              1,
+              0.7
+              ]
+              },
             'filter': ['==', 'activity', layerID]
           });
         };
@@ -164,7 +174,6 @@ const initMapbox = () => {
 
         map.on('click', layerID, event => {
 
-          console.log(event.currentTarget);
           // When clicked on a Sport Session, center the map on this sportSession
           map.flyTo({ center: event.features[0].geometry.coordinates });
 
@@ -179,8 +188,37 @@ const initMapbox = () => {
         });
 
 
+        map.on('click', layerID, function(e) {
+
+          if (e.features.length > 0) {
+            if (hoveredSportSessionId) {
+              map.setFeatureState(
+                { source: 'sportSessions', id: hoveredSportSessionId },
+                { hover: false }
+              );
+            }
+
+            hoveredSportSessionId = e.features[0].id;
+            map.setFeatureState(
+              { source: 'sportSessions', id: hoveredSportSessionId },
+              { hover: true }
+            );
+          }
+        });
+
+        // map.on('click', function(e) {
+        // if (hoveredSportSessionId) {
+        // map.setFeatureState(
+        // { source: 'sportSessions', id: hoveredSportSessionId },
+        // { hover: false }
+        // );
+        // }
+        // hoveredSportSessionId = null;
+        // });
+
+
         // Change the cursor to a pointer when the it enters a feature in the sportSessions layer.
-        map.on('mouseenter', layerID, function() {
+        map.on('mouseenter', layerID, function(e) {
           map.getCanvas().style.cursor = 'pointer';
         });
 
