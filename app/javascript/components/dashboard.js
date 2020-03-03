@@ -28,7 +28,6 @@ const smoothScrollDashboard = () => {
       smoothScrolltoTarget(ownedSessions);
     });
   }
-
 };
 
 export { smoothScrollDashboard }

@@ -1,0 +1,16 @@
+<span id='notification-count'>1</span>
+  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+    <%= link_to dashboards_path do %>
+      <div class="container notifs-container">
+          <%  if @session_user != nil %>
+            <div class="d-flex">
+              <div class="avatar-name">
+                <%= cl_image_tag @session_user.user.photo.key, class: "avatar d-block"%>
+                <%= @session_user.user.username %>
+              </div>
+              <p>wants to join you on <%= @session_user.sport_session.title %>!</p>
+            </div>
+          <% end %>
+      </div>
+    <% end %>
+  </ul>
