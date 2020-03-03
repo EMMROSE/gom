@@ -33,15 +33,14 @@
  }
 
 .right-dashbd-bot-elements .fas {
-    content: "\f073";
-    margin-right: 4px;
+  padding: 4px 4px 4px 0px;
+  font-size: 12px;
+  width: 2em;
+  display: inline-block;
+  text-align: center;
+  margin-left: -4px;
   }
 
-.right-dashbd-bot-elements
-  .far {
-    content: "\f25b";
-    margin-right: 4px;
-  }
 
 .right-dashboard .nav-tabs .nav-link.active {
   color: black;
