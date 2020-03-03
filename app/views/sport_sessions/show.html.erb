@@ -12,7 +12,7 @@
 
           <!-- Differenciate session owner -->
           <% if session_user.owner %>
-            <div class="session-member text-center">
+            <div class="session-member text-center" id="owner" data-user-id="<%= @sport_session_owner.id %>">
               <%= cl_image_tag session_user.user.photo.key, class: "avatar-large d-block avatar-owner" %>
               <b><%= @sport_session_owner == current_user ? "You" : @sport_session_owner.username %></b><br><span class="owner">Owner</span>
             </div>

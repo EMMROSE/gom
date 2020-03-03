@@ -13,4 +13,8 @@ class SportSession < ApplicationRecord
   validates :level, inclusion: { in: LEVEL , message: ': Please choose between Beginner, Intermediate and Expert' }
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
+
+  def owner
+    session_users.where(owner: true).first.user
+  end
 end

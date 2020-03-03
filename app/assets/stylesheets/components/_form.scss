@@ -130,7 +130,8 @@
 }
 
 .icon-small {
-  width:32px;
+  width: 32px;
+  margin-right: 10px;
 }
 
 .form-check-label-activity {
@@ -138,5 +139,12 @@
   align-items: center;
   height: -webkit-fill-available;
   padding: 32px;
+}
+
+.close {
+  color: white;
+  &:hover {
+    color:white!important;
+  }
 }
 
