@@ -7,7 +7,7 @@ class SportSessionsController < ApplicationController
      @sport_sessions = @sport_sessions.where(activity: params[:activity]) if params[:activity].present?
 
      # Open status filter
-     @sport_sessions = @sport_sessions.where(open_status: params[:open_status]) if params[:open_status].present?
+     @sport_sessions = @sport_sessions.where(open_status: true) if params[:open_status].present?
 
      # Start time filter
      @sport_sessions = @sport_sessions.where(start_time: params[:start_time]) if params[:start_time].present?
@@ -22,7 +22,7 @@ class SportSessionsController < ApplicationController
         lat: sport_session.latitude,
         lng: sport_session.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { sport_session: sport_session }),
-        image_url: helpers.asset_url("#{sport_session.activity.name.downcase}-icon.png"),
+        image_url: helpers.asset_url("#{sport_session.activity.name.downcase}-icon-small.png"),
         id: sport_session.id,
         activity: sport_session.activity.name.downcase
       }
