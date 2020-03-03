@@ -20,7 +20,42 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  .nav-item a {
+    padding: 8px 8px;
+    font-family: "Poppins" !important;
+    font-weight: bold !important;
+    font-size: 16px !important;
+    color: #495057;
+    a:active {
+      color: #black !important;
+    }
+  }
 }
+
+.right-dashboard .nav-tabs .nav-link.active {
+  color: black;
+  background-color: #F4F4F4;
+  border-color: #dee2e6 #dee2e6 #F4F4F4;
+}
+
+.right-dashboard .nav-tabs .nav-link:hover {
+  color: black;
+}
+
+.dashboard-container a:active {
+  ;
+}
+// .nav-item a{
+//   padding: 8px 16px;
+//   font-family: "Poppins" !important;
+//   font-weight: bolder !important;
+//   font-size: 16px !important;
+// }
+
+// .right-dashboard .fas{
+//   font-family: 'Font Awesome\ 5 Free' !important;
+//   font-weight: 900 !important;
+// }
 
 .bgred {
   background-color: red;
@@ -67,7 +102,21 @@
   border-radius: 4px 4px 0px 0px;
   padding: 4px 8px;
   color: black;
+  li:first-child{
+    font-size: 16px;
+    list-style-type: none !important;
+    margin: 0px !important;
+    font-weight: bold;
+  }
+
+  li {
+  font-size: 12px;
+  font-weight: lighter;
+  list-style-type: none;
+  text-decoration: none;
+  }
 }
+
 #sessions-list-next:hover {
   background-color: rgba(79, 180, 119, 0.5);
   color: black;
@@ -82,28 +131,23 @@
   border-radius: 4px 4px 0px 0px;
   padding: 4px 8px;
   color: black;
+  li:first-child{
+    font-size: 16px;
+    list-style-type: none !important;
+    margin: 0px !important;
+    font-weight: bold;
+  }
+
+  li {
+    font-size: 12px;
+    font-weight: lighter;
+    list-style-type: none;
+    text-decoration: none;
+  }
 }
 
 #sessions-list-past:hover {
   background-color: rgba(0, 0, 0, 0.05);
-  color: black;
-}
-
-#sessions-list-owned {
-  border-bottom: 1px solid rgba(109, 152, 186, 0.2);
-  margin-bottom: 8px;
-  width: 100%;
-  display: inline-block;
-  background-color: rgba(109, 152, 186, 0.1);
-  border-radius: 4px 4px 0px 0px;
-  padding: 4px 8px;
-  color: black;
-  a:hover {
-    text-decoration: none;
-  }
- }
-#sessions-list-owned:hover {
-  background-color: rgba(109, 152, 186, 0.25);
   color: black;
 }
 
@@ -122,32 +166,6 @@
   text-align: center;
 }
 
-// .dashboard-container .nav-link {
-//   border-top: none;
-//   border-left: none;
-//   border-right: none;
-//   border-bottom: 1px solid rgba(0, 0, 0, 0.35);
-//   background-color: transparent;
-//   margin-bottom: 8px;
-//   width: 64%;
-//   display: inline-block;
-//   text-decoration: none;
-//   color: rgba(0, 0, 0, 0.35);
-//   font-size: 16px;
-//   font-weight: lighter;
-//   padding: 4px 4px;
-// }
-
-// .dashboard-container button.nav-link:hover {
-//   text-decoration: none;
-//   border-radius: 4px 4px 0px 0px;
-//   color: rgba(0, 0, 0, 1);
-//   border-bottom: 1px solid rgba(0, 0, 0, 1);
-// }
-
-// .dashboard-container .nav-link:focus {
-//   outline: none;
-// }
 
 .dashboard-container .dashboard-requests {
   background-color: white;

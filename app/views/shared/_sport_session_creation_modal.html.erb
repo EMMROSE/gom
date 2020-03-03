@@ -13,16 +13,16 @@
       </div>
       <div class="modal-body">
         <div class="container form-container">
-          <%= simple_form_for(SportSession.new) do |f| %>
-            <%= f.input :title %>
-            <%= f.input :description, as: :text %>
+          <%= simple_form_for(@sport_session) do |f| %>
+            <%= f.input :title, placeholder: "Maxi Sesh !" %>
+            <%= f.input :description, as: :text, placeholder: "Add your description ..." %>
 
-            <label class="select optional" for="sport_session_location">Location</label>
-            <input type="text" name="sport_session[location]" id="sport_session[location]" value="" style="text-align: left; position: relative; vertical-align: top; width: 100%" class="search_query">
+            <label class="select optional" for="sport_session_location">Where</label>
+            <input type="text" name="sport_session[location]" id="sport_session[location]" value="" style="text-align: left; position: relative; vertical-align: top; width: 100%" class="search_query" placeholder="Anywhere">
 
             <fieldset class="form-group radio_buttons optional sport_session_level">
-              <input type="hidden" name="sport_session[capacity]" value="">
-              <label class="select optional" for="sport_session_capacity">Number of Riders for this Session: <b><span class="rider-count"></span></b></label>
+              <input type="hidden" name="sport_session[capacity]">
+              <label class="select optional" for="sport_session_capacity">Number of Riders <b><span class="rider-count"></span></b></label>
               <div class="capacity-choices">
                 <% SportSession::CAPACITY.each_with_index do |capacity, i| %>
                   <input class="d-none" type="radio" value="<%= capacity %>" name="sport_session[capacity]" id="sport_session_capacity_<%= capacity %>">
@@ -49,14 +49,15 @@
               <div class="activity-choices">
                 <% Activity.all.each do |activity| %>
                   <input class="d-none required" type="radio" value="<%= activity.id %>" name="sport_session[activity_id]" id="sport_session_activity_id_<%= activity.id %>">
-                  <label class="form-check-label collection_radio_buttons activity-choice" for="sport_session_activity_id_<%= activity.id %>">
+                  <label class="form-check-label-activity d-flex collection_radio_buttons activity-choice" for="sport_session_activity_id_<%= activity.id %>">
+                    <%= image_tag "#{activity.name.downcase}-picto.png", class:"icon-small" %>
                     <%= activity.name %>
                   </label>
                 <% end %>
               </div>
             </fieldset>
 
-            <%= f.input :start_time, as: :string, input_html: { class: "datepickr sport-session-creation" } %>
+            <%= f.input :start_time, as: :string, input_html: { class: "datepickr sport-session-creation" }, placeholder:"mm/dd/yyyy" %>
             <%= f.submit class: 'btn btn-gom btn-submit' %>
           <% end %>
         </div>
