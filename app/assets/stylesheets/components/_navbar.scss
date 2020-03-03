@@ -35,3 +35,29 @@
 .algolia-places {
   width: 50%;
 }
+
+.notifs {
+  cursor: pointer;
+  margin-right: 24px;
+  margin-top: 6px;
+}
+
+.notifs-container {
+  min-width: 300px!important;
+}
+
+#notification-count {
+  position: absolute;
+  left: -16px;
+  top: -6px;
+  background-color: red;
+  border-radius: 4px;
+  color: white;
+  padding: 1px 6px;
+  font-size: small;
+  font-weight: 600;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}

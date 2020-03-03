@@ -1,0 +1,5 @@
+<div class="avatar-name">
+    <%= cl_image_tag @session_user.user.photo.key, class: "avatar d-block"%>
+    <%= @session_user.user.username %>
+</div>
+<p>wants to join you on <%= @session_user.sport_session.title %>!</p>

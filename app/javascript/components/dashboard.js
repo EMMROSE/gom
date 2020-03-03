@@ -12,18 +12,23 @@ const smoothScrollDashboard = () => {
     let count = window.pageYOffset - target.offsetTop + 140 // any extra distance from top ex. 60
     window.scrollBy({top: -count, left: 0, behavior: 'smooth'})
   }
+  if (navLink1) {
+    navLink1.addEventListener('click', (event) => {
+      smoothScrolltoTarget(nextSessions);
+    });
+  }
 
-  navLink1.addEventListener('click', (event) => {
-    smoothScrolltoTarget(nextSessions);
-  });
+  if (navLink2) {
+    navLink2.addEventListener('click', (event) => {
+      smoothScrolltoTarget(pastSessions);
+    });
+  }
 
-  navLink2.addEventListener('click', (event) => {
-    smoothScrolltoTarget(pastSessions);
-  });
-
-  navLink3.addEventListener('click', (event) => {
-    smoothScrolltoTarget(ownedSessions);
-  });
+  if (navLink3) {
+    navLink3.addEventListener('click', (event) => {
+      smoothScrolltoTarget(ownedSessions);
+    });
+  }
 };
 
 export { smoothScrollDashboard }
