@@ -3,7 +3,8 @@
     <div class="left-dashboard">
       <h2><%=  current_user.username %></h2>
       <%= cl_image_tag current_user.photo.key, crop: :fill, class: "avatar-large" %>
-      <div class="sessions-navigation">
+      <div class="sessions-navigation d-flex justify-content-around">
+        <p><%= current_user.session_users.where(owner: true).count %> / <%= current_user.session_users.count %> sessions organised</p>
       </div>
       <div class="container-dashboard-calendar">
         <p>Your Schedule</p>
@@ -36,13 +37,24 @@
           <% if @next_sessions %>
               <% sorted_next_sessions = @next_sessions.sort_by {|ss| ss.start_time} %>
               <% sorted_next_sessions.each do |session| %>
-                  <%= link_to sport_session_path(session) do%>
-                    <ul id="sessions-list-next">
-                      <li class ="li-nxt-session session-title"><%= session.title %></li>
-                      <li class ="li-nxt-session"><i class="fas fa-hand-peace fa-fw"></i></i><strong>Description:</strong><%= " #{session.description}" %></li>
-                      <li class ="li-nxt-session"><i class="fas fa-users fa-fw"></i><b>Capacity:</b><%= " #{session.capacity}" %></li>
-                      <li class ="li-nxt-session"><i class="fas fa-skull-crossbones fa-fw"></i><b>Level:</b><%= " #{session.level}" %></li>
-                      <li class ="li-nxt-session"><i class="fas fa-calendar-alt fa-fw"></i><%= "Starting from #{session.start_time.strftime("%-d %b %Y")}" %></li>
+                  <%= link_to sport_session_path(session), class:"text-decoration-none" do %>
+                    <ul id="sessions-list-next" class="d-flex justify-content-between">
+                      <div class="session-infos">
+                        <li class ="li-nxt-session session-title"><%= session.title %></li>
+                        <li class ="li-nxt-session"><i class="fas fa-hand-peace fa-fw"></i></i><strong>Description:</strong><%= " #{session.description}" %></li>
+                        <li class ="li-nxt-session"><i class="fas fa-users fa-fw"></i><b>Capacity:</b><%= " #{session.capacity}" %></li>
+                        <li class ="li-nxt-session"><i class="fas fa-skull-crossbones fa-fw"></i><b>Level:</b><%= " #{session.level}" %></li>
+                        <li class ="li-nxt-session"><i class="fas fa-calendar-alt fa-fw"></i><%= "Starting from #{session.start_time.strftime("%-d %b %Y")}" %></li>
+                      </div>
+                      <div class="session-users-avatars">
+                        <% session.session_users.reverse.each do |session_user| %>
+                          <% if session_user.owner %>
+                            <%= cl_image_tag session_user.user.photo.key, crop: :fill, class: "avatar-small owner" %>
+                          <% else %>
+                            <%= cl_image_tag session_user.user.photo.key, crop: :fill, class: "avatar-small" %>
+                          <% end %>
+                        <% end %>
+                      </div>
                     </ul>
                   <% end %>
               <% end %>
@@ -52,13 +64,24 @@
           <% if @past_sessions %>
               <% sorted_past_sessions = @past_sessions.sort_by {|ss| ss.start_time}.reverse %>
                 <% sorted_past_sessions.each do |session| %>
-                  <%= link_to sport_session_path(session) do%>
-                    <ul id="sessions-list-past">
-                      <li ><%= session.title %></li>
-                      <li ><i class="fas fa-hand-peace"></i><b>Description:</b><%= " #{session.description}" %></li>
-                      <li ><i class="fas fa-users"></i><b>Capacity:</b><%= " #{session.capacity}" %></li>
-                      <li ><i class="fas fa-skull-crossbones"></i><b>Level:</b><%= " #{session.level}" %></li>
-                      <li ><i class="fas fa-calendar-alt"></i><%= "Starting from #{session.start_time.strftime("%-d %b %Y")}" %></li>
+                  <%= link_to sport_session_path(session), class:"text-decoration-none" do %>
+                    <ul id="sessions-list-past" class="d-flex justify-content-between">
+                      <div class="session-infos">
+                        <li ><%= session.title %></li>
+                        <li ><i class="fas fa-hand-peace"></i><b>Description:</b><%= " #{session.description}" %></li>
+                        <li ><i class="fas fa-users"></i><b>Capacity:</b><%= " #{session.capacity}" %></li>
+                        <li ><i class="fas fa-skull-crossbones"></i><b>Level:</b><%= " #{session.level}" %></li>
+                        <li ><i class="fas fa-calendar-alt"></i><%= "Starting from #{session.start_time.strftime("%-d %b %Y")}" %></li>
+                      </div>
+                      <div class="session-users-avatars">
+                        <% session.session_users.reverse.each do |session_user| %>
+                          <% if session_user.owner %>
+                            <%= cl_image_tag session_user.user.photo.key, crop: :fill, class: "avatar-small owner" %>
+                          <% else %>
+                            <%= cl_image_tag session_user.user.photo.key, crop: :fill, class: "avatar-small" %>
+                          <% end %>
+                        <% end %>
+                      </div>
                     </ul>
                   <% end %>
                 <% end %>
