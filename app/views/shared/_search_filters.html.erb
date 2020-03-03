@@ -2,108 +2,109 @@
   <!-- select one (or several) activities tag among all activities available at this location-->
   <div class="filters">
 
-  <% if params[:activity] %>
-    <%= link_to sport_sessions_path(request.query_parameters.except(:activity)), class: "btn filter filter-selected" do %>
-      <%= @sport_sessions.find_by(activity: params[:activity]).activity.name %> <i class="fas fa-times"></i>
-    <% end %>
-  <% else %>
-    <div class="filter activity-filters dropdown">
-      <button class="btn filter-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Activities
-      </button>
-      <div class="dropdown-menu animated fadeIn" aria-labelledby="dropdownMenuButton">
-        <% activities = [] %>
-        <% @sport_sessions.each do |sport_session| %>
-          <% activities << sport_session.activity %>
-        <% end %>
-        <% activities.uniq.each do |activity| %>
-          <% request.query_parameters[:activity] = activity %>
-          <%= link_to sport_sessions_path(request.query_parameters), class: "dropdown-item" do %>
-            <%= activity.name %>
+    <% if params[:activity] %>
+      <%= link_to sport_sessions_path(request.query_parameters.except(:activity)), class: "btn filter filter-selected" do %>
+        <%= @sport_sessions.find_by(activity: params[:activity]).activity.name %> <i class="fas fa-times"></i>
+      <% end %>
+    <% else %>
+      <div class="filter activity-filters dropdown">
+        <button class="btn filter-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Activities
+        </button>
+        <div class="dropdown-menu animated fadeIn" aria-labelledby="dropdownMenuButton">
+          <% activities = [] %>
+          <% @sport_sessions.each do |sport_session| %>
+            <% activities << sport_session.activity %>
           <% end %>
-          <% request.query_parameters.except!(:activity) %>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-
-
-  <% if params[:level] %>
-    <%= link_to sport_sessions_path(request.query_parameters.except(:level)), class: "btn filter filter-selected" do %>
-      <%= @sport_sessions.find_by(level: params[:level]).level %> <i class="fas fa-times"></i>
-    <% end %>
-  <% else %>
-    <div class="filter level-filters dropdown">
-      <button class="btn filter-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Level
-      </button>
-      <div class="dropdown-menu animated fadeIn" aria-labelledby="dropdownMenuButton">
-        <% levels = [] %>
-        <% @sport_sessions.each do |sport_session| %>
-          <% levels << sport_session.level %>
-        <% end %>
-        <% levels.uniq.each do |level| %>
-          <% request.query_parameters[:level] = level %>
-          <%= link_to sport_sessions_path(request.query_parameters), class: "dropdown-item" do %>
-            <%= level %>
+          <% activities.uniq.each do |activity| %>
+            <% request.query_parameters[:activity] = activity %>
+            <%= link_to sport_sessions_path(request.query_parameters), class: "dropdown-item" do %>
+              <%= activity.name %>
+            <% end %>
+            <% request.query_parameters.except!(:activity) %>
           <% end %>
-          <% request.query_parameters.except!(:level) %>
-        <% end %>
+        </div>
       </div>
-    </div>
-  <% end %>
-
-  <% if params[:start_time] %>
-    <%= link_to sport_sessions_path(request.query_parameters.except(:start_time)), class: "btn filter filter-selected" do %>
-      <%= @sport_sessions.find_by(start_time: params[:start_time]).start_time %> <i class="fas fa-times"></i>
     <% end %>
-  <% else %>
-    <div class="filter level-filters dropdown">
-      <button class="btn filter-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Start Time
-      </button>
-      <div class="dropdown-menu animated fadeIn" aria-labelledby="dropdownMenuButton">
-        <% dates = [] %>
-        <% @sport_sessions.each do |sport_session| %>
-          <% dates << sport_session.start_time %>
-        <% end %>
-        <% dates.uniq.each do |start_time| %>
-          <% request.query_parameters[:start_time] = start_time %>
-          <%= link_to sport_sessions_path(request.query_parameters), class: "dropdown-item" do %>
-            <%= start_time.strftime("%-d %b %Y") %>
+
+
+    <% if params[:level] %>
+      <%= link_to sport_sessions_path(request.query_parameters.except(:level)), class: "btn filter filter-selected" do %>
+        <%= @sport_sessions.find_by(level: params[:level]).level %> <i class="fas fa-times"></i>
+      <% end %>
+    <% else %>
+      <div class="filter level-filters dropdown">
+        <button class="btn filter-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Level
+        </button>
+        <div class="dropdown-menu animated fadeIn" aria-labelledby="dropdownMenuButton">
+          <% levels = [] %>
+          <% @sport_sessions.each do |sport_session| %>
+            <% levels << sport_session.level %>
           <% end %>
-          <% request.query_parameters.except!(:start_time) %>
-        <% end %>
+          <% levels.uniq.each do |level| %>
+            <% request.query_parameters[:level] = level %>
+            <%= link_to sport_sessions_path(request.query_parameters), class: "dropdown-item" do %>
+              <%= level %>
+            <% end %>
+            <% request.query_parameters.except!(:level) %>
+          <% end %>
+        </div>
       </div>
-    </div>
-  <% end %>
-
-  <% if params[:open_status] %>
-    <%= link_to sport_sessions_path(request.query_parameters.except(:open_status)), class: "" do %>
-      Show Closed Sessions?
-
-      <label class="switch">
-      <input type="checkbox">
-      <span class="slider round"></span>
-      </label>
     <% end %>
-  <% else %>
-      <button class="">
-          <% request.query_parameters[:open_status] = true %>
-          <%= link_to sport_sessions_path(request.query_parameters), class: "dropdown-item" do %>
-            Hide Closed Sessions?
+
+    <% if params[:start_time] %>
+      <%= link_to sport_sessions_path(request.query_parameters.except(:start_time)), class: "btn filter filter-selected" do %>
+        <%= @sport_sessions.find_by(start_time: params[:start_time]).start_time %> <i class="fas fa-times"></i>
+      <% end %>
+    <% else %>
+      <div class="filter level-filters dropdown">
+        <button class="btn filter-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Start Time
+        </button>
+        <div class="dropdown-menu animated fadeIn" aria-labelledby="dropdownMenuButton">
+          <% dates = [] %>
+          <% @sport_sessions.each do |sport_session| %>
+            <% dates << sport_session.start_time %>
           <% end %>
-          <% request.query_parameters.except!(:open_status) %>
-      </button>
+          <% dates.uniq.each do |start_time| %>
+            <% request.query_parameters[:start_time] = start_time %>
+            <%= link_to sport_sessions_path(request.query_parameters), class: "dropdown-item" do %>
+              <%= start_time.strftime("%-d %b %Y") %>
+            <% end %>
+            <% request.query_parameters.except!(:start_time) %>
+          <% end %>
+        </div>
       </div>
-    </div>
-  <% end %>
-
-
+    <% end %>
   </div>
+
+  <div class="other-filters">
+    <div class="open-status-filter">
+      <% if params[:open_status] %>
+        <%= link_to sport_sessions_path(request.query_parameters.except(:open_status)), class: "filter-switch" do %>
+          Show Closed Sessions?
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </label>
+        <% end %>
+      <% else %>
+          <% request.query_parameters[:open_status] = true %>
+            <%= link_to sport_sessions_path(request.query_parameters), class: "filter-switch" do %>
+              Show Closed Sessions?
+              <label class="switch">
+                <input class="checked" type="checkbox">
+                <span class="slider round"></span>
+              </label>
+            <% end %>
+          <% request.query_parameters.except!(:open_status) %>
+      <% end %>
+    </div>
 
     <%= link_to sport_sessions_path, class: "clear-filters" do %>
       Clear All Filters
     <% end %>
+  </div>
 </div>
 

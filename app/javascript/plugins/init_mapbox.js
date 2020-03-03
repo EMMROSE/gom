@@ -155,7 +155,7 @@ const initMapbox = () => {
             'source': 'sportSessions',
             layout: {
             'icon-image': symbol,
-            'icon-size': 0.1,
+            // 'icon-size': 0.1,
             "icon-allow-overlap": true
             },
             paint: {
@@ -163,7 +163,7 @@ const initMapbox = () => {
               'case',
               ['boolean', ['feature-state', 'hover'], false],
               1,
-              0.7
+              0.8
               ]
               },
             'filter': ['==', 'activity', layerID]
