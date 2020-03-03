@@ -16,23 +16,24 @@ const initFlatpickr = () => {
 export { initFlatpickr };
 
 const dashboardFlatipickr = () => {
-  const div = document.querySelector(".dashboard-calendar");
-  if (div) {
+  const dashboardCalendar = document.querySelector(".dashboard-calendar");
+  if (dashboardCalendar) {
 
-    const dates = div.dataset.dates;
+    const dates = dashboardCalendar.dataset.dates;
+    const ids = dashboardCalendar.dataset.id;
     const datesArray = [];
     JSON.parse(dates).forEach((element) => {
       datesArray.push(element)
     });
 
-    flatpickr(div, {
+    flatpickr(dashboardCalendar, {
       altInput: true,
       inline: true,
       mode: "multiple",
       dateFormat: "Y-m-d",
       enable: datesArray,
       onChange: (selectedDates) => {
-        console.log(selectedDates);
+        // window.location.href = 'www.google.fr';
       }
     })
   };

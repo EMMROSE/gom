@@ -79,8 +79,13 @@ span.flatpickr-weekday {
   color: white;
   background-color: rgba(79,180,119, 0.7);
   border:none;
+  cursor: default;
   &:hover {
     background-color: $green;
     background: brightness(1.5);
   }
+}
+
+.container-dashboard-calendar .dayContainer {
+  margin-top: 5px;
 }
