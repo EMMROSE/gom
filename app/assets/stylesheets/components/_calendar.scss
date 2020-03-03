@@ -43,3 +43,22 @@ span.flatpickr-weekday {
   fill: white;
 }
 
+.flatpickr-calendar .flatpickr-day.flatpickr-disabled {
+  cursor: not-allowed;
+  color: rgba(0,0,0,0.8);
+  background-color: white;
+  &:hover {
+    color: rgba(0,0,0,0.3);
+    background-color: white;
+  }
+}
+
+.flatpickr-calendar .flatpickr-day {
+  color: white;
+  background-color: rgba(79,180,119, 0.7);
+  border:none;
+  &:hover {
+    background-color: $green;
+    background: brightness(1.5);
+  }
+}
