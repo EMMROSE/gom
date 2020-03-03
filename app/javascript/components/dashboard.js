@@ -24,6 +24,7 @@ const smoothScrollDashboard = () => {
   navLink3.addEventListener('click', (event) => {
     smoothScrolltoTarget(ownedSessions);
   });
+
 };
 
 export { smoothScrollDashboard }
