@@ -53,7 +53,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: transparent;
+  color: black;
   &:hover {
     opacity: 1;
     color: black;
@@ -64,6 +64,7 @@
   &.active {
     background-color: $green;
     opacity: 1;
+    color: transparent;
   }
 }
 
@@ -147,4 +148,8 @@
     color:white!important;
   }
 }
-
+.new-sesh .sport_session_start_time {
+  width: 88%;
+  align-content: center;
+  margin-left: 34px;
+}

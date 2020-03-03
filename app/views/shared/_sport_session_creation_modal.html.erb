@@ -2,7 +2,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="sport-session-creation-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade new-sesh" id="sport-session-creation-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -57,11 +57,11 @@
               </div>
             </fieldset>
 
-            <%= f.input :start_time, as: :string, input_html: { class: "datepickr sport-session-creation" }, placeholder:"mm/dd/yyyy" %>
-            <%= f.submit class: 'btn btn-gom btn-submit' %>
-          <% end %>
         </div>
       </div>
+            <%= f.input :start_time, as: :string, input_html: { class: "datepickr sport-session-creation" }, placeholder:"mm/dd/yyyy" %>
+            <%= f.submit class: 'btn btn-gom btn-submit btn-lg btn-block' %>
+            <% end %>
     </div>
   </div>
 </div>
