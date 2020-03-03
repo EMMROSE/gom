@@ -21,7 +21,7 @@
   height: 0;
   border-top: 15px solid transparent;
   border-bottom: 15px solid transparent;
-  border-left: 15px solid $black;
+  border-left: 15px solid rgba(50, 50, 50, 0.3);
 }
 
 .mapboxgl-popup-content {
@@ -41,13 +41,11 @@
   height: 100%;
   width: 100%;
   position: relative;
-  z-index: 0;
   text-align: left;
   font-family: 'Open Sans', sans-serif;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   color: white;
-  border-right: 1px solid black;
   font-size: 16px;
   button {
     width: 100%;
@@ -61,11 +59,12 @@
 
 
 .mapbox-popup-sport-session {
-  // display: flex;
-  // align-items: center;
-  // height: 100%!important;
   flex-grow: 1;
   padding: 27px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   p {
     font-size: 20px;
   }
@@ -74,12 +73,8 @@
 
 .mapbox-popup-bottom {
   padding: 15px;
-}
-
-.info-window-location {
-  padding: 15px;
-  p {
-    text-align: center!important;
+  i {
+    font-size: 30px;
   }
 }
 
@@ -131,17 +126,19 @@
 
 .btn-map {
   width: 100%;
-  height: 45px;
+  padding: 10px;
   left: 0;
   bottom:0;
+  z-index: 10;
+  border-radius: 0px;
 }
+
 a.mapboxgl-ctrl-logo {
   display: none !important;
 }
 
 .zoom-background {
   position: absolute;
-  z-index: -1;
   top: 0;
   bottom: 0;
   left: 0;
@@ -150,11 +147,29 @@ a.mapboxgl-ctrl-logo {
   background-position: center;
   -webkit-transform: scale(1);
   transform: scale(1);
-  -webkit-transition: .3s ease-in-out;
-  transition: .3s ease-in-out;
+  -webkit-transition: .7s ease-in-out;
+  transition: .7s ease-in-out;
 }
 
-.mapbox-popup-info:hover .zoom-background:hover {
-    -webkit-transform: scale(1.3);
-    transform: scale(1.3);
+.mapbox-popup-animation:hover .zoom-background {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.mapbox-popup-bottom {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.mapbox-popup-bottom-item {
+  flex: 0 0 33%;
+}
+
+
+.mapbox-popup-bottom-item-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  margin-bottom: 15px;
 }

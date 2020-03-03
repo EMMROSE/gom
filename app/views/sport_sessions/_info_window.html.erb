@@ -1,10 +1,12 @@
 <div class="animated fadeInLeft mapbox-popup-animation">
   <div class="mapbox-popup-info">
-    <div class="zoom-background" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(<%= cl_image_path sport_session.activity.photo.key %>);">
+    <div class="zoom-background" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url(<%= cl_image_path sport_session.activity.photo.key %>);">
     </div>
     <div class="mapbox-popup-sport-session">
-      <h2 class="text-center mt-2"><%= image_tag ("#{sport_session.activity.name.downcase}-picto.png"), class: "info-window-icon" %> <%= sport_session.activity.name %></h2>
-        <p class="text-center font-weight-lighter mt-2"><em>"<%= sport_session.description %>"</em></p><br>
+      <div class="mapbox-popup-header">
+        <h2 class="text-center mt-2"><%= image_tag ("#{sport_session.activity.name.downcase}-picto.png"), class: "info-window-icon" %> <%= sport_session.activity.name %></h2>
+        <p class="text-center font-weight-lighter mt-2"><em>"<%= sport_session.description %>"</em></p>
+      </div>
       <div class="info-window-levels text-center mt-2">
         <% if sport_session.level == "beginner" %>
           <div class="info-window-levels-pictos">
@@ -50,32 +52,41 @@
           </div>
         <% end %>
       </div>
-      <div class="d-flex justify-content-around">
-        <div>
-          <img src="/assets/calendar.png" height="32px" width="32px">
+      <div class="mapbox-popup-bottom">
+        <div class="mapbox-popup-bottom-item text-center">
+          <div class="mapbox-popup-bottom-item-top">
+            <img src="/assets/calendar.png" height="30px" width="30px">
+          </div>
           <p><%= sport_session.start_time.strftime("%-d %b %Y") %></p>
         </div>
-        <div class="info-window-capacity">
-          <p>
+        <div class="info-window-capacity mapbox-popup-bottom-item text-center">
+          <div class="mapbox-popup-bottom-item-top">
             <% accepted_users_count = sport_session.session_users.where(status: "accepted").count.times do %>
-              <i class="fas fa-user"></i>
+                <i class="fas fa-user"></i>
             <% end %>
             <% if accepted_users_count < sport_session.capacity %>
                 <% (sport_session.capacity - accepted_users_count).times do %>
                   <i class="far fa-user"></i>
                 <% end %>
-              <% if (sport_session.capacity - accepted_users_count)==1 %>
-                <p style="padding-top: 6px;">   <%= (sport_session.capacity - accepted_users_count)%> place left</p>
-              <% else %> <p style="padding-top: 6px;">   <%= (sport_session.capacity - accepted_users_count)%> places left</p>
-              <% end %>
-            <% else %> <p style="padding-top: 6px;"> Complete</p>
             <% end %>
-          </p>
+          </div>
+          <% if (sport_session.capacity - accepted_users_count) == 1 %>
+              <p><%= (sport_session.capacity - accepted_users_count)%> place left</p>
+            <% elsif (sport_session.capacity - accepted_users_count) > 1%>
+              <p><%= (sport_session.capacity - accepted_users_count)%> places left</p>
+          <% else %>
+            <p> Complete</p>
+          <% end %>
+        </div>
+        <div class="mapbox-popup-bottom-item text-center">
+          <div class="mapbox-popup-bottom-item-top">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <p><%= sport_session.location %></p>
         </div>
       </div>
-      <p id="info-window-location"><i class="fas fa-map-marker-alt"></i> <%= sport_session.location %></p>
     </div>
-    <%= link_to "more info", sport_session_path(sport_session), class: "btn btn-gom btn-map" %>
+    <%= link_to "MORE INFO", sport_session_path(sport_session), class: "btn btn-gom btn-map" %>
   </div>
   <div class="mapbox-popup-arrow"></div>
 </div>
