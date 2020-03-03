@@ -50,12 +50,12 @@
           </div>
         <% end %>
       </div>
-      <div class="d-flex justify-content-around">
-        <div>
+      <div class="mapbox-popup-bottom">
+        <div class="mapbox-popup-bottom-item">
           <img src="/assets/calendar.png" height="32px" width="32px">
           <p><%= sport_session.start_time.strftime("%-d %b %Y") %></p>
         </div>
-        <div class="info-window-capacity">
+        <div class="info-window-capacity mapbox-popup-bottom-item">
           <p>
             <% accepted_users_count = sport_session.session_users.where(status: "accepted").count.times do %>
               <i class="fas fa-user"></i>
@@ -72,8 +72,10 @@
             <% end %>
           </p>
         </div>
+        <div class="mapbox-popup-bottom-item">
+          <p id="info-window-location"><i class="fas fa-map-marker-alt"></i> <%= sport_session.location %></p>
+        </div>
       </div>
-      <p id="info-window-location"><i class="fas fa-map-marker-alt"></i> <%= sport_session.location %></p>
     </div>
     <%= link_to "more info", sport_session_path(sport_session), class: "btn btn-gom btn-map" %>
   </div>
