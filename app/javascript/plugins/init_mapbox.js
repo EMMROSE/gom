@@ -96,10 +96,11 @@ const initMapbox = () => {
         source: 'sportSessions',
         filter: ['has', 'point_count'],
         paint: {
-          'circle-color': 'black',
+          'circle-color': '#f0cc40',
           'circle-radius': 30,
-          'circle-stroke-width': 1,
-          'circle-stroke-color': '#ffffff'
+          'circle-stroke-width': 5,
+          'circle-stroke-color': '#f0cc40',
+          'circle-stroke-opacity': 0.4
           }
         });
 

@@ -18,6 +18,11 @@
   margin-right: 16px;
   display: block;
 }
+
+.session-infos {
+  flex-grow: 0.66;
+}
+
 .right-dashboard {
   padding: 0px 10px 10px 10px;
   background: white;
@@ -58,21 +63,6 @@
   color: black;
 }
 
-.dashboard-container a:active {
-  ;
-}
-// .nav-item a{
-//   padding: 8px 16px;
-//   font-family: "Poppins" !important;
-//   font-weight: bolder !important;
-//   font-size: 16px !important;
-// }
-
-// .right-dashboard .fas{
-//   font-family: 'Font Awesome\ 5 Free' !important;
-//   font-weight: 900 !important;
-// }
-
 .bgred {
   background-color: red;
 }
@@ -94,21 +84,6 @@
   font-size: 16px;
 }
 
-// .dashboard-container li {
-//   font-size: 12px;
-//   font-weight: lighter;
-//   list-style-type: none;
-//   text-decoration: none;
-// }
-
-
-// .dashboard-container li:first-child{
-//   font-size: 16px;
-//   list-style-type: none !important;
-//   margin: 0px !important;
-//   font-weight: bold;
-//  }
-
 #sessions-list-next {
   border-bottom: 1px solid rgba(79, 180, 119, 0.2);
   margin-bottom: 8px;
@@ -120,7 +95,7 @@
   color: black;
   li:first-child{
     font-size: 16px;
-    list-style-type: none !important;
+    list-style-type: none!important;
     margin: 0px !important;
     font-weight: bold;
   }
@@ -211,4 +186,12 @@
 
 #myTab {
   margin-bottom: 4px;
+}
+
+.owner{
+  border: 1px solid $green;
+}
+
+.session-users-avatars {
+  padding-top: 6px;
 }
