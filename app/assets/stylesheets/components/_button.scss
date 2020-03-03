@@ -34,22 +34,21 @@
   }
 }
 
-.btn-add-sesh-map {
-  position: absolute;
-  z-index: 1;
-  bottom: 40px;
-  right: 20px;
-  width: 10em;
-  height: 50px;
-  font-size: 16px;
-  background-color: rgba(79,180,119, 0.9);
-  color: white;
+.btn-add-sesh {
   font-weight: 600;
-  opacity: 0.9;
+  margin-right: 14px;
+  color: rgba(79, 180, 119, 0.7);
   transition: all .1s ease-out;
-  border:none;
+  display: flex;
+  justify-content: space-around;
+  -webkit-box-align: center;
+  align-items: center;
+  background: none;
+  border: none;
   &:hover {
-    opacity: 1;
-    color: white;
+    color: $green;
+    background: rgba(0,0,0,0.005);
+    border-right: 2px solid rgba(0,0,0,0.1);
+    border-left: 2px solid rgba(0,0,0,0.1);
   }
 }
