@@ -63,6 +63,8 @@
                 <span class="btn w-100 btn-pending">REQUEST PENDING...</span>
 
               <!-- Show "join" option  -->
+              <% elsif @current_relevant_session_user && @current_relevant_session_user.status == "accepted" %>
+
               <% else %>
                 <%= link_to "Ask to Join!", sport_session_session_users_path(params[:id]), method: "post", class: "btn btn-gom w-100" %>
               <% end %>
@@ -70,6 +72,22 @@
             <!-- Show "session complet" if session is complete  -->
             <% else %>
               <span class="btn w-100 btn-complete">SESSION COMPLETE</span>
+            <% end %>
+          <% else %>
+            <% @relevant_session_users.each do |relevant_session_user | %>
+               <%  if relevant_session_user.status == "pending" %>
+                 <div class="sport-session-pending-request">
+                  <p>1 pending request from <b><%= relevant_session_user.user.username %></b></p>
+                  <div class="sport-session-requests-btn">
+                    <%= link_to accept_session_user_path(relevant_session_user), class: "sport-session-accept" do %>
+                      <i class="fas fa-check"></i> Accept
+                    <% end %>
+                    <%= link_to reject_session_user_path(relevant_session_user) do %>
+                      <span class="sport-session-reject"><i class="fas fa-times"></i> Reject</span>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
             <% end %>
           <% end %>
         </div>

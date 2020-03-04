@@ -19,7 +19,7 @@ class SessionUsersController < ApplicationController
     session_user.status = 'accepted'
     session_user.save
     flash[:notice] = "Request accepted!"
-    redirect_to dashboards_path
+    redirect_to sport_session_path(session_user.sport_session)
   end
 
   def reject
@@ -27,6 +27,6 @@ class SessionUsersController < ApplicationController
     session_user.status = 'rejected'
     session_user.save
     flash[:notice] = "Request rejected!"
-    redirect_to dashboards_path
+    redirect_to  sport_session_path(session_user.sport_session)
   end
 end

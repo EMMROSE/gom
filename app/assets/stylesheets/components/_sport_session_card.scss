@@ -96,3 +96,42 @@
     opacity: 0.5;
   }
 }
+
+.sport-session-pending-request {
+  text-align:center;
+  a {
+    text-decoration: none;
+  }
+}
+
+.sport-session-requests-btn {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.sport-session-accept {
+  background-color: $green;
+  flex-grow: 1;
+  color: white;
+  padding: 30px;
+  padding: 3px 10px;
+  border-radius: 2px;
+  opacity: 0.8;
+  margin-right: 10px;
+  &:hover {
+    opacity: 1;
+    color: white;
+  }
+}
+
+.sport-session-reject {
+  color: black;
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+
+
