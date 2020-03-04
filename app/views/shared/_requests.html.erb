@@ -1,16 +1,16 @@
 <span id='notification-count'>1</span>
-  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-    <%= link_to dashboards_path do %>
-      <div class="container notifs-container">
-          <%  if @session_user != nil %>
-            <div class="d-flex align-items-center inner-notif-container">
-              <%= cl_image_tag @session_user.user.photo.key, class: "avatar d-block"%>
-              <div class="notif-text d-flex">
-                <p><strong><%= @session_user.user.username %> </strong> asks to join:</p>
-                <p><strong><%= @session_user.sport_session.title %></strong></p>
-              </div>
+<ul class="notifs-dropdown dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+  <%= link_to sport_session_path(@session_user.sport_session) do %>
+    <div class="container notifs-container">
+        <%  if @session_user != nil %>
+          <div class="d-flex align-items-center inner-notif-container">
+            <%= cl_image_tag @session_user.user.photo.key, class: "avatar d-block"%>
+            <div class="notif-text d-flex">
+              <p><strong><%= @session_user.user.username %> </strong> asks to join:</p>
+              <p><strong><%= @session_user.sport_session.title %></strong></p>
             </div>
-          <% end %>
-      </div>
-    <% end %>
-  </ul>
+          </div>
+        <% end %>
+    </div>
+  <% end %>
+</ul>
