@@ -1,0 +1,104 @@
+
+.video-background {
+  background: #000;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -99;
+}
+
+.video-background iframe {
+  opacity: 0.5;
+}
+.video-foreground,
+.video-background iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .video-foreground {
+    height: 300%;
+    top: -100%;
+  }
+}
+@media (max-aspect-ratio: 16/9) {
+  .video-foreground {
+    width: 300%;
+    left: -100%;
+  }
+}
+@media all and (max-width: 600px) {
+  .vid-info {
+    width: 50%;
+    padding: 0.5rem;
+  }
+  .vid-info h1 {
+    margin-bottom: 0.2rem;
+  }
+}
+@media all and (max-width: 500px) {
+  .vid-info .acronym {
+    display: none;
+  }
+}
+
+
+.video-banner {
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  h2 {
+    color: white;
+    opacity: 0.5;
+  }
+}
+
+.video-banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+  font-size: 100px;
+  font-weight: bold;
+  line-height: 145px;
+  span {
+    color: $green;
+  }
+}
+
+.video-banner p {
+  font-size: 20px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.video-banner-search {
+  height: 50px;
+}
+.video-banner-search input {
+  width: 100%;
+  display: inline;
+  vertical-align: middle!important;
+  height: 100%;
+}
+
+.video-banner-search button {
+  height: 100%;
+}
+
+.video-banner-search .algolia-places {
+  width: 50%;
+  height: 100%;
+}
