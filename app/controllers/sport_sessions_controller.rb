@@ -61,7 +61,7 @@ class SportSessionsController < ApplicationController
     @session_user.sport_session = @sport_session
     @session_user.user = current_user
     if @sport_session.save
-      @session_user.save
+      @session_user.save!
       redirect_to sport_session_path(@sport_session)
     else
       render :new
