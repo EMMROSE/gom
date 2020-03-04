@@ -31,6 +31,10 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initFlatpickr } from "../plugins/flatpickr";
 import { dashboardFlatipickr } from "../plugins/flatpickr";
+import { initChat } from "../channels/sport_session_channel";
+import { initRequest } from "../channels/user_channel";
+
+
 
 document.addEventListener('turbolinks:load', () => {
   // Call your JS functions here
@@ -43,11 +47,8 @@ document.addEventListener('turbolinks:load', () => {
   dashboardFlatipickr();
   smoothScrollDashboard();
   mapFilters();
-
-  const messagesContainer = document.getElementById('messages');
-  if (messagesContainer) {
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-  }
+  initChat();
+  initRequest();
 });
 
 

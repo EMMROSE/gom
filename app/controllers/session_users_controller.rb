@@ -4,7 +4,7 @@ class SessionUsersController < ApplicationController
     @sport_session = SportSession.find(params[:sport_session_id])
     @session_user.user = current_user
     @session_user.sport_session = @sport_session
-    @session_user.save
+    @session_user.save!
 
     UserChannel.broadcast_to(
         @sport_session.owner,

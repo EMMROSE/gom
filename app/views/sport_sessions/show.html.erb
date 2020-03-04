@@ -105,7 +105,7 @@
           <div id="messages" data-sport-session-id="<%= @sport_session.id %>">
             <% if @sport_session.messages %>
               <% @sport_session.messages.each do |message| %>
-                <div class="message-container" id=<%= "message-author" if current_user == message.user %>>
+                <div class="message-container"> <!-- id=<%= "message-author" if current_user == message.user %> -->
                   <i class="author">
                     <span><%= message.user.username %></span>
                     <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
@@ -115,7 +115,7 @@
               <% end %>
             <% end %>
           </div>
-          <%= simple_form_for [ @sport_session, @message ], remote: true do |f| %>
+          <%= simple_form_for [ @sport_session, @message ], remote: true, id:"message-form" do |f| %>
             <%= f.input :content, label: false, placeholder: "Message #Chat" %>
           <% end %>
         </div>
