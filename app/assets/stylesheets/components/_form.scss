@@ -130,16 +130,20 @@
   padding: 12px;
 }
 
-.icon-small {
+.activity-choice svg {
   width: 32px;
   margin-right: 10px;
 }
 
+.activity-choice.active svg {
+  fill: white;
+}
+
 .form-check-label-activity {
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   height: -webkit-fill-available;
-  padding: 32px;
+  height: 69px;
 }
 
 .close {
