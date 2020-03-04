@@ -48,7 +48,7 @@
 
 #notification-count {
   position: absolute;
-  left: -16px;
+  left: -10px;
   top: -6px;
   background-color: red;
   border-radius: 4px;
@@ -80,4 +80,29 @@
   &:hover {
     opacity:1;
   }
+}
+
+.dropdown-menu-right {
+  width: 350px;
+}
+
+.dropdown-menu-right a {
+  color: rgba(0,0,0,0.6);
+  &:hover {
+    color: rgba(0,0,0,0.8);
+  }
+}
+
+.inner-notif-container {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.notif-text {
+  width: 100%;
+  justify-content: space-around;
+}
+
+.notif-text p {
+  margin-bottom: 0px;
 }

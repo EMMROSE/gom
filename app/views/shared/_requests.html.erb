@@ -3,12 +3,12 @@
     <%= link_to dashboards_path do %>
       <div class="container notifs-container">
           <%  if @session_user != nil %>
-            <div class="d-flex">
-              <div class="avatar-name">
-                <%= cl_image_tag @session_user.user.photo.key, class: "avatar d-block"%>
-                <%= @session_user.user.username %>
+            <div class="d-flex align-items-center inner-notif-container">
+              <%= cl_image_tag @session_user.user.photo.key, class: "avatar d-block"%>
+              <div class="notif-text d-flex">
+                <p><strong><%= @session_user.user.username %> </strong> asks to join:</p>
+                <p><strong><%= @session_user.sport_session.title %></strong></p>
               </div>
-              <p>wants to join you on <%= @session_user.sport_session.title %>!</p>
             </div>
           <% end %>
       </div>

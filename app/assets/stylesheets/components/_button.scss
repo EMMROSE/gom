@@ -56,6 +56,9 @@
   border: none;
   border-right: 2px solid transparent;
   border-left: 2px solid transparent;
+  &:focus {
+    outline: none;
+  }
   &:hover {
     color: $green;
     background: rgba(0,0,0,0.005);
