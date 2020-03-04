@@ -19,24 +19,6 @@ const initMapbox = () => {
 
     map.on('load', () => {
 
-      // Add relief layer
-      map.addSource('dem', {
-          'type': 'raster-dem',
-          'url': 'mapbox://mapbox.terrain-rgb'
-      });
-      map.addLayer(
-          {
-              'id': 'hillshading',
-              'source': 'dem',
-              'type': 'hillshade'
-              // insert below waterway-river-canal-shadow;
-              // where hillshading sits in the Mapbox Outdoors style
-          },
-          'waterway-river-canal-shadow'
-      );
-
-
-
       // Build geoJson format with sportSession markers dataset
       let sportSessions = JSON.parse(mapElement.dataset.markers);
       let features = []
