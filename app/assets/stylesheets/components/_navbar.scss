@@ -87,12 +87,12 @@
   }
 }
 
-.dropdown-menu-right {
+.notifs-dropdown .dropdown-menu-right {
   width: 72vh;
   min-width: 52vh;
 }
 
-.dropdown-menu-right a {
+.notifs-dropdown .dropdown-menu-right a {
   color: rgba(0,0,0,0.6);
   &:hover {
     color: rgba(0,0,0,0.8);
