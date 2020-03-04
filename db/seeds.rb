@@ -76,10 +76,10 @@ file = URI.open('https://res.cloudinary.com/timothee/image/upload/v1582819985/Jo
 u4.photo.attach(io: file, filename: 'Joan_ar4jw5.png', content_type: 'image/png')
 u4.save
 
-u5 = User.new(email: "user5@gmail.com", password: 123456, username: "Joe")
-file = URI.open('https://res.cloudinary.com/timothee/image/upload/v1582819985/Joe_k9wrub.png')
-a5.photo.attach(io: file, filename: 'Joe_k9wrub.png', content_type: 'image/png')
-u5.save
+#u5 = User.new(email: "user5@gmail.com", password: 123456, username: "Joe")
+#file = URI.open('https://res.cloudinary.com/timothee/image/upload/v1582819985/Joe_k9wrub.png')
+#a5.photo.attach(io: file, filename: 'Joe_k9wrub.png', content_type: 'image/png')
+#u5.save
 
 u6 = User.new(email: "user6@gmail.com", password: 123456, username: "John")
 file = URI.open('https://res.cloudinary.com/timothee/image/upload/v1582819985/John_fv9x5r.png')
@@ -584,7 +584,7 @@ s18.activity = a5
 
 se18a = SessionUser.new(owner: true, status: 'accepted')
 se18a.sport_session = s18
-se18a.user = u5
+se18a.user = u16
 se18a.save!
 
 se18b = SessionUser.new(owner: false, status: 'accepted')
