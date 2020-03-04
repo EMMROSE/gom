@@ -2,8 +2,17 @@
   background-color: white;
   border-radius: 5px;
 }
+
+.background-login-signup {
+  background-image: url("https://images.unsplash.com/photo-1519789110007-0e751882be76");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
 .signin-form-content {
   margin: 50px 400px;
+  background-color: white;
 }
 
 .activity-choices {
