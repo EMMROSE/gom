@@ -8,7 +8,7 @@ const initMapbox = () => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/cjaudgl840gn32rnrepcb9b9g', //mapbox://styles/mapbox/cjaudgl840gn32rnrepcb9b9g',
+      style: 'mapbox://styles/emmrose/ck7d9p7y312ov1inu05nak5z0', //mapbox://styles/mapbox/cjaudgl840gn32rnrepcb9b9g'
       pitch: 30, // pitch in degrees
       bearing: 20, // bearing in degrees
       zoom: 9
