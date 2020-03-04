@@ -35,6 +35,7 @@ class SportSessionsController < ApplicationController
     # Find session users that belongs to THIS Sport Session
     @relevant_session_users = SessionUser.where(sport_session_id: params[:id])
 
+
     # Find sport session owner
     session_user_owner = SessionUser.find_by(sport_session_id: params[:id], owner: true)
     @sport_session_owner = User.find(session_user_owner.user_id)
