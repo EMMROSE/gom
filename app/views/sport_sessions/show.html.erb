@@ -8,25 +8,31 @@
       <div class="session-members">
 
         <!-- Session owner -->
-        <div class="session-member text-center" id="owner" data-user-id="<%= @sport_session_owner.id %>">
+        <div class="session-member text-center" id="owner">
           <%= cl_image_tag @sport_session_owner.photo.key, class: "avatar-large d-block avatar-owner" %>
           <b><%= @sport_session_owner == current_user ? "You" : @sport_session_owner.username %></b><br><span class="owner">Owner</span>
         </div>
 
         <% accepted_users_count = 1 %> <!-- Start at 1 to count the session owner -->
         <% pending_users_count = 0 %>
+
+        <!-- Differenciate accepted session members -->
         <% @relevant_session_users.each do |session_user| %>
           <% if session_user.user != @sport_session_owner %>
-            <!-- Differenciate accepted session members -->
             <% if session_user.status == "accepted" %>
               <div class="session-member text-center">
                 <%= cl_image_tag session_user.user.photo.key, class: "avatar-large d-block"%>
                 <%= session_user.user == current_user ? "You" : session_user.user.username %>
                 <% accepted_users_count += 1 %>
               </div>
+            <% end %>
+          <% end %>
+        <% end %>
 
-            <!-- Differenciate pending requests session members -->
-            <% elsif session_user.status == "pending" %>
+        <!-- Differenciate pending session members -->
+        <% @relevant_session_users.each do |session_user| %>
+          <% if session_user.user != @sport_session_owner %>
+            <% if session_user.status == "pending" %>
               <div class="session-member text-center pending-member">
                 <%= cl_image_tag session_user.user.photo.key, class: "avatar-large d-block"%>
                 <%= session_user.user == current_user ? "You" : session_user.user.username %><br><span class="pending">Pending</span>
