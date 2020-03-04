@@ -1,6 +1,6 @@
 <span id='notification-count'>1</span>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-    <%= link_to dashboards_path do %>
+    <%= link_to sport_session_path(@session_user.sport_session) do %>
       <div class="container notifs-container">
           <%  if @session_user != nil %>
             <div class="d-flex align-items-center inner-notif-container">
