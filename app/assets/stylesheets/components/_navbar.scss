@@ -32,6 +32,11 @@
   cursor: pointer;
 }
 
+.navbar svg {
+  fill: white;
+  width: 40px;
+}
+
 .algolia-places {
   width: 50%;
 }
@@ -80,4 +85,21 @@
   &:hover {
     opacity:1;
   }
+}
+
+
+.text-logo {
+  color: black;
+  font-weight: 900;
+  font-family: 'Poppins';
+  font-size: 23px;
+  vertical-align: middle;
+  color: rgb(80, 80, 80);
+  span {
+    color: $green;
+  }
+}
+
+.navbar-brand a:hover {
+  text-decoration: none;
 }

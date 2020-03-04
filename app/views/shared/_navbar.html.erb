@@ -2,7 +2,12 @@
   <div class="navbar-content">
     <div class="navbar-brand">
       <%= link_to root_path do %>
-        <%= image_tag("GOMLogo.png")%>
+        <% if params[:action] == "home" %>
+          <%= show_svg('gom-logo.svg') %>
+        <% else %>
+          <%= image_tag("GOMLogo.png") %>
+          <span class="text-logo">G<span>O</span>M</span>
+        <% end %>
       <% end %>
     </div>
 
