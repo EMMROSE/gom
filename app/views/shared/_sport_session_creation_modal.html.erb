@@ -22,12 +22,13 @@
 
             <fieldset class="form-group radio_buttons optional sport_session_level">
               <input type="hidden" name="sport_session[capacity]">
-              <label class="select optional" for="sport_session_capacity">Number of Riders <b><span class="rider-count"></span></b></label>
+              <label class="select optional" for="sport_session_capacity">Number of Riders</label>
               <div class="capacity-choices">
                 <% SportSession::CAPACITY.each_with_index do |capacity, i| %>
                   <input class="d-none" type="radio" value="<%= capacity %>" name="sport_session[capacity]" id="sport_session_capacity_<%= capacity %>">
                   <label class="form-check-label collection_radio_buttons capacity-choice" data-capacity="<%= i + 1 %>" for="sport_session_capacity_<%= capacity %>"><i class="far fa-user"></i></label>
                 <% end %>
+                <b><span class="rider-count"></span></b>
               </div>
             </fieldset>
 
