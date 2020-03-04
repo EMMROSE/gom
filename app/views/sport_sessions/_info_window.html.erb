@@ -4,7 +4,7 @@
     </div>
     <div class="mapbox-popup-sport-session">
       <div class="mapbox-popup-header">
-        <h2 class="text-center mt-2"><%= image_tag ("#{sport_session.activity.name.downcase}-picto.png"), class: "info-window-icon" %> <%= sport_session.activity.name %></h2>
+        <h2 class="text-center mt-2"><%= show_svg("#{sport_session.activity.name.downcase}.svg") %> <%= sport_session.activity.name %></h2>
         <p class="text-center font-weight-lighter mt-2"><em>"<%= sport_session.description %>"</em></p>
       </div>
       <div class="info-window-levels text-center mt-2">

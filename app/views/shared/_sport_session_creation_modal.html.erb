@@ -50,7 +50,7 @@
                 <% Activity.all.each do |activity| %>
                   <input class="d-none required" type="radio" value="<%= activity.id %>" name="sport_session[activity_id]" id="sport_session_activity_id_<%= activity.id %>">
                   <label class="form-check-label-activity d-flex collection_radio_buttons activity-choice" for="sport_session_activity_id_<%= activity.id %>">
-                    <%= image_tag "#{activity.name.downcase}-picto.png", class:"icon-small" %>
+                    <%= show_svg("#{activity.name.downcase}.svg") %>
                     <%= activity.name %>
                   </label>
                 <% end %>
