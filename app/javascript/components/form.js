@@ -96,7 +96,11 @@ const formSportSessions = () => {
       capacity.addEventListener('click', (event) => {
         const capacity = (event.currentTarget.dataset.capacity);
         const count = document.querySelector('.rider-count');
-        count.innerHTML = `${capacity}`;
+        if (!count) {
+          count.innerHTML = 0;
+        } else {
+          count.innerHTML = `${capacity}`;
+        }
       });
     });
 
