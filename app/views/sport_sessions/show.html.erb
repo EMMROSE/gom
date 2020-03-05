@@ -50,11 +50,55 @@
 
       <div class="sport-session-info">
         <div class="sport-session-info-left">
-          <ul class="list-unstyled">
-            <li><i class="fas fa-calendar-alt"></i> <%= @sport_session.start_time.strftime("%-d %b %Y") %></li>
-            <li><b>Level:</b> <%= @sport_session.level %></li>
-            <li><i class="fas fa-map-marker-alt"></i> <%= @sport_session.location %></li>
-          </ul>
+          <div class="sport-session-info-item"><i class="fas fa-calendar-alt"></i><br><%= @sport_session.start_time.strftime("%-d %b %Y") %></div>
+          <div class="sport-session-info-item">
+            <div class="sport-session-levels text-center mt-2">
+              <% if @sport_session.level == "beginner" %>
+                <div class="sport-session-levels-pictos">
+                  <div class="sport-session-level-content">
+                    <p>Beginner</p>
+                    <div class="arrow-level"></div>
+                    <div class="sport-session-level first full"></div>
+                  </div>
+                  <div class="sport-session-level-content">
+                    <div class="sport-session-level"></div>
+                  </div>
+                  <div class="sport-session-level-content">
+                    <div class="sport-session-level last"></div>
+                  </div>
+                </div>
+              <% elsif @sport_session.level == "intermediate" %>
+                <div class="sport-session-levels-pictos">
+                  <div class="sport-session-level-content">
+                    <div class="sport-session-level first full"></div>
+                  </div>
+                  <div class="sport-session-level-content">
+                    <p>Intermediate</p>
+                    <div class="arrow-level"></div>
+                    <div class="sport-session-level full"></div>
+                  </div>
+                  <div class="sport-session-level-content">
+                    <div class="sport-session-level last"></div>
+                  </div>
+                </div>
+              <% else %>
+                <div class="sport-session-levels-pictos">
+                  <div class="sport-session-level-content">
+                    <div class="sport-session-level first full"></div>
+                  </div>
+                  <div class="sport-session-level-content">
+                    <div class="sport-session-level full"></div>
+                  </div>
+                  <div class="sport-session-level-content">
+                    <p>Expert</p>
+                    <div class="arrow-level"></div>
+                    <div class="sport-session-level full last"></div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="sport-session-info-item text-truncate"><i class="fas fa-map-marker-alt"></i><br><%= @sport_session.location %></div>
         </div>
         <div class="sport-session-join">
           <!-- Show "join" option only if you are not owner of the sport session -->
