@@ -89,6 +89,7 @@
   i {
     font-size: 24px;
     color: $green;
+    margin-bottom: 8px;
   }
 }
 
@@ -153,7 +154,10 @@
 
 .sport-session-reject {
   color: black;
-  opacity: 0.8;
+  opacity: 0.5;
+  border: 1px solid lightgray;
+  padding: 2px 8px;
+  border-radius: 4px;
   &:hover {
     opacity: 1;
   }
@@ -173,8 +177,8 @@
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 8px 7.5px 0 7.5px;
-  border-color: $green transparent transparent transparent;
+  border-width: 0px 8px 8px 8px;
+  border-color: transparent transparent $green transparent;
   margin: 1px auto 4px auto;
 }
 

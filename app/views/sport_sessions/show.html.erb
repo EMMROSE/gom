@@ -50,7 +50,7 @@
 
       <div class="sport-session-info">
         <div class="sport-session-info-left">
-          <div class="sport-session-info-item-small"><i class="fas fa-calendar-alt"></i><br><div class="pt-1"><%= @sport_session.start_time.strftime("%-d %b %Y") %></div></div>
+          <div class="sport-session-info-item-small"><i class="fas fa-calendar-alt"></i><br><%= @sport_session.start_time.strftime("%-d %b %Y") %></div>
           <div class="sport-session-info-item-big">
             <div class="sport-session-levels">
               <% if @sport_session.level == "beginner" %>
@@ -98,7 +98,7 @@
               <% end %>
             </div>
           </div>
-          <div class="sport-session-info-item-small text-truncate"><i class="fas fa-map-marker-alt"></i><br><div class="pt-1"><%= @sport_session.location %></div></div>
+          <div class="sport-session-info-item-small text-truncate"><i class="fas fa-map-marker-alt"></i><br><%= @sport_session.location %></div>
         </div>
         <div class="sport-session-join">
           <!-- Show "join" option only if you are not owner of the sport session -->
