@@ -49,7 +49,7 @@
 }
 
 .sport-session-card-right {
-  padding: 0px 10px 0px 20px;
+  padding: 4px 10px 0px 20px;
   min-width: 33%;
   overflow: hidden;
 }
@@ -83,8 +83,18 @@
   }
 }
 
-.sport-session-info-item {
-  flex: 0 0 33%;
+.sport-session-info-item-small {
+  flex: 25%;
+  text-align: center;
+  i {
+    font-size: 24px;
+    color: $green;
+    margin-bottom: 8px;
+  }
+}
+
+.sport-session-info-item-big {
+  flex: 50%;
   text-align: center;
   i {
     font-size: 24px;
@@ -110,8 +120,14 @@
 
 .sport-session-pending-request {
   text-align:center;
+  margin-right: 32px;
+  margin-left: 32px;
   a {
     text-decoration: none;
+  }
+  p {
+    text-align: left;
+    margin-bottom: 8px;
   }
 }
 
@@ -138,7 +154,10 @@
 
 .sport-session-reject {
   color: black;
-  opacity: 0.8;
+  opacity: 0.5;
+  border: 1px solid lightgray;
+  padding: 2px 8px;
+  border-radius: 4px;
   &:hover {
     opacity: 1;
   }
@@ -146,24 +165,21 @@
 
 .sport-session-levels {
   margin-top: 8px;
-  p {
-    margin-top: 9px;
-  }
 }
 
 .sport-session-levels-pictos {
   display:flex;
   justify-content: space-around;
-  align-items: flex-end;
+  align-items: flex-top;
 }
 
 .sport-session-levels .arrow-level {
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 8px 7.5px 0 7.5px;
-  border-color: $green transparent transparent transparent;
-  margin: 0 auto 4px auto;
+  border-width: 0px 8px 8px 8px;
+  border-color: transparent transparent $green transparent;
+  margin: 1px auto 4px auto;
 }
 
 .sport-session-level-content {

@@ -50,13 +50,15 @@
 
       <div class="sport-session-info">
         <div class="sport-session-info-left">
-          <div class="sport-session-info-item"><i class="fas fa-calendar-alt"></i><br><%= @sport_session.start_time.strftime("%-d %b %Y") %></div>
-          <div class="sport-session-info-item">
+          <div class="sport-session-info-item-small"><i class="fas fa-calendar-alt"></i><br><%= @sport_session.start_time.strftime("%-d %b %Y") %></div>
+          <div class="sport-session-info-item-big">
             <div class="sport-session-levels">
               <% if @sport_session.level == "beginner" %>
                 <div class="sport-session-levels-pictos">
                   <div class="sport-session-level-content">
                     <div class="sport-session-level first full"></div>
+                    <div class="arrow-level"></div>
+                    <p><%= @sport_session.level.capitalize %></p>
                   </div>
                   <div class="sport-session-level-content">
                     <div class="sport-session-level"></div>
@@ -72,6 +74,8 @@
                   </div>
                   <div class="sport-session-level-content">
                     <div class="sport-session-level full"></div>
+                    <div class="arrow-level"></div>
+                    <p><%= @sport_session.level.capitalize %></p>
                   </div>
                   <div class="sport-session-level-content">
                     <div class="sport-session-level last"></div>
@@ -87,13 +91,14 @@
                   </div>
                   <div class="sport-session-level-content">
                     <div class="sport-session-level full last"></div>
+                    <div class="arrow-level"></div>
+                    <p><%= @sport_session.level.capitalize %></p>
                   </div>
                 </div>
               <% end %>
-              <p class="mt-16"><%= @sport_session.level.capitalize %></p>
             </div>
           </div>
-          <div class="sport-session-info-item text-truncate"><i class="fas fa-map-marker-alt"></i><br><%= @sport_session.location %></div>
+          <div class="sport-session-info-item-small text-truncate"><i class="fas fa-map-marker-alt"></i><br><%= @sport_session.location %></div>
         </div>
         <div class="sport-session-join">
           <!-- Show "join" option only if you are not owner of the sport session -->
@@ -139,7 +144,7 @@
     </div>
     <div class="sport-session-card-right">
       <div class="chatroom-container">
-        <h2 class="text-center">#chat</h2>
+        <h2>#chat</h2>
         <div class=<%= @current_relevant_session_user && @current_relevant_session_user.status == "accepted" ? "" : 'blur-chatroom' %>>
           <div id="messages" data-sport-session-id="<%= @sport_session.id %>" data-current-user-id="<%= current_user.id %>">
             <% if @sport_session.messages %>
