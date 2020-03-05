@@ -521,7 +521,7 @@ se15a.save!
 
 se15a = SessionUser.new(owner: false, status: 'accepted')
 se15a.sport_session = s15
-se15a.user = u1
+se15a.user = u3
 se15a.save!
 
 s15.save!
