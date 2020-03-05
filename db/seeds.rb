@@ -57,8 +57,8 @@ puts "----------"
 
 puts "Create Users"
 u1 = User.new(email: "user1@gmail.com", password: 123456, username: "Adrien")
-file = URI.open('https://res.cloudinary.com/timothee/image/upload/v1582819949/Adrien_gxvz9c.png')
-u1.photo.attach(io: file, filename: 'Adrien_gxvz9c.png', content_type: 'image/png')
+file = URI.open('https://res.cloudinary.com/timothee/image/upload/v1583409742/timgom_v55hju.jpg')
+u1.photo.attach(io: file, filename: 'timgom_v55hju.jpg', content_type: 'image/png')
 u1.save
 
 u2 = User.new(email: "user2@gmail.com", password: 123456, username: "Andy")
@@ -299,11 +299,6 @@ se4b.save!
 se4c = SessionUser.new(owner: false, status: 'pending')
 se4c.sport_session = s4
 se4c.user = u22
-se4c.save!
-
-se4c = SessionUser.new(owner: false, status: 'pending')
-se4c.sport_session = s4
-se4c.user = u8
 se4c.save!
 
 s4.save!
@@ -635,5 +630,49 @@ se20b.save!
 
 s20.save!
 puts "Session20 ok"
+
+
+s21 = SportSession.new(location: "Aime-la-Plagne, Auvergne-Rhône-Alpes, France", start_time: (Date.today + 8), capacity: 2, title: "Trees session", description: "Truth is in the pudding", level: 'expert')
+s21.activity = a5
+# file = URI.open('https://res.cloudinary.com/timothee/image/upload/v1582820064/ski_powder_ac2unl.jpg')
+# s21.photo.attach(io: file, filename: 'ski_powder_ac2unl.jpg', content_type: 'image/png')
+
+se21a = SessionUser.new(owner: true, status: 'accepted')
+se21a.sport_session = s21
+se21a.user = u19
+se21a.save!
+
+se21b = SessionUser.new(owner: false, status: 'accepted')
+se21b.sport_session = s21
+se21b.user = u20
+se21b.save!
+
+s21.save!
+puts "Session21 ok"
+
+
+s22 = SportSession.new(location: "Sainte-Foy-Tarentaise, Auvergne-Rhône-Alpes, France", start_time: (Date.today + 8), capacity: 3, title: "Foglietta", description: "Not here to f*** spiders mate", level: 'expert')
+s22.activity = a2
+# file = URI.open('https://res.cloudinary.com/timothee/image/upload/v1582820064/ski_powder_ac2unl.jpg')
+# s22.photo.attach(io: file, filename: 'ski_powder_ac2unl.jpg', content_type: 'image/png')
+
+se22a = SessionUser.new(owner: true, status: 'accepted')
+se22a.sport_session = s22
+se22a.user = u13
+se22a.save!
+
+se22b = SessionUser.new(owner: false, status: 'accepted')
+se22b.sport_session = s22
+se22b.user = u27
+se22b.save!
+
+se22b = SessionUser.new(owner: false, status: 'accepted')
+se22b.sport_session = s22
+se22b.user = u12
+se22b.save!
+
+s22.save!
+puts "Session22 ok"
+
 
 puts ">>>>>> Done, #{SportSession.count} sessions created!"
