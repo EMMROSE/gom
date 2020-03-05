@@ -246,7 +246,7 @@ const initMapbox = () => {
 
         const bounds = new mapboxgl.LngLatBounds();
         bounds.extend([ longitude, latitude ]);
-        map.fitBounds(bounds, { padding: 20, maxZoom: 11, duration: 0 });
+        map.fitBounds(bounds, { padding: 20, maxZoom: 10, duration: 0 });
       });
     }
   };
