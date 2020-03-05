@@ -1,6 +1,15 @@
+#sport-session-creation-modal .modal-body {
+  padding: 0px;
+}
+
 .form-container {
   background-color: white;
   border-radius: 5px;
+  padding: 0px;
+}
+
+.form-container .form-top {
+  padding: 1rem 30px 1rem 30px;
 }
 
 .background-login-signup {
@@ -56,7 +65,7 @@
 
 .level-choice {
   flex-grow: 1;
-  flex: 0 0 30%;
+  flex: 0 0 33%;
   opacity: 0.3;
   text-align: center;
   background-color: grey;
@@ -165,15 +174,9 @@
     color:white!important;
   }
 }
-.new-sesh .sport_session_start_time {
-  width: 88%;
-  align-content: center;
-  margin-left: 34px;
-}
 
 .new-sesh .btn-gom {
   border-radius: 0px;
-  height: 56px;
 }
 
 .new-sesh .rider-count {
