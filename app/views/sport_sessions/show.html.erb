@@ -102,11 +102,11 @@
       <div class="chatroom-container">
         <h2 class="text-center">#chat</h2>
         <div class=<%= @current_relevant_session_user && @current_relevant_session_user.status == "accepted" ? "" : 'blur-chatroom' %>>
-          <div id="messages" data-sport-session-id="<%= @sport_session.id %>">
+          <div id="messages" data-sport-session-id="<%= @sport_session.id %>" data-current-user-id="<%= current_user.id %>">
             <% if @sport_session.messages %>
               <% @sport_session.messages.each do |message| %>
-                <div class="message-container"> <!-- id=<%= "message-author" if current_user == message.user %> -->
-                  <i class="author">
+                <div class="message-container <%= "message-author" if current_user == message.user %>">
+                    <i class="author">
                     <span><%= message.user.username %></span>
                     <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
                   </i>

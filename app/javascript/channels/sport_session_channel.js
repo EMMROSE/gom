@@ -7,13 +7,13 @@ const initChat = () => {
     const id = messagesContainer.dataset.sportSessionId;
     consumer.subscriptions.create({ channel: "SportSessionChannel", id: id }, {
       received(data) {
-        console.log(data);
-
         const currentUser = messagesContainer.dataset.currentUserId;
-        console.log(currentUser);
-
-
         messagesContainer.insertAdjacentHTML('beforeend', data);
+
+        const messageSender = messagesContainer.lastElementChild.dataset.messageSender;
+        if (currentUser === messageSender) {
+          messagesContainer.lastElementChild.classList.add("message-author");
+        }
 
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
       },

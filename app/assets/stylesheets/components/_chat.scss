@@ -10,7 +10,11 @@
   padding-right: 10px;
 }
 
-#message-author {
+.message-container {
+  opacity: 0.8;
+}
+
+.message-author {
  text-align: end;
 }
 
@@ -24,4 +28,8 @@
 
 #messages::-webkit-scrollbar-thumb {
   background: #4a4a4a;
+}
+
+.new-message {
+  opacity: 1;
 }
