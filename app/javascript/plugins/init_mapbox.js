@@ -225,6 +225,8 @@ const initMapbox = () => {
 
     const query = document.getElementById('query').value;
 
+    console.log(mapElement.dataset.mapmarker)
+
     // Generate a Marker according to location query
     if (query) {
       fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?access_token=${mapElement.dataset.mapboxApiKey}`)
@@ -233,7 +235,15 @@ const initMapbox = () => {
         const longitude = data.features[0].geometry.coordinates[0];
         const latitude = data.features[0].geometry.coordinates[1];
 
-        const superMarker = new mapboxgl.Marker()
+        const element = document.createElement('div');
+        element.className = 'marker';
+        element.style.backgroundImage = `url(${mapElement.dataset.mapmarker})`;
+        element.style.backgroundSize = 'contain';
+        element.style.width = '40px';
+        element.style.height = '40px';
+
+
+        const superMarker = new mapboxgl.Marker(element)
           .setLngLat([ longitude, latitude ])
           .addTo(map);
 
