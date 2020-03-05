@@ -54,8 +54,10 @@
       </div>
     <% else %>
       <div class="navbar-login">
-        <%= link_to "login", new_user_session_path, class: "btn btn-black" %>
-        <%= link_to "sign-up", new_user_registration_path, class: "btn btn-black" %>
+        <%- if controller_name != 'sessions' && controller_name != 'registrations'%>
+          <button data-toggle="modal" data-target="#login-modal" class="btn btn-black">login</button>
+          <button data-toggle="modal" data-target="#signup-modal" class="btn btn-black">sign up</button>
+        <% end %>
       </div>
     <% end %>
   </div>
