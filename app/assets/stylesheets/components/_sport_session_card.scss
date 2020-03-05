@@ -110,8 +110,14 @@
 
 .sport-session-pending-request {
   text-align:center;
+  margin-right: 32px;
+  margin-left: 32px;
   a {
     text-decoration: none;
+  }
+  p {
+    text-align: left;
+    margin-bottom: 8px;
   }
 }
 
