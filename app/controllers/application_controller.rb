@@ -23,4 +23,8 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  def default_url_options
+    { host: ENV["https://www.greatoutdoorsmap.com/"] || "localhost:3000" }
+  end
 end
