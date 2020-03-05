@@ -3,8 +3,10 @@
 
   <div class="sport-session-card" style="">
     <div class="sport-session-card-left">
-      <h1 class="text-center sport-session-title"><%= image_tag ("#{@sport_session.activity.name.downcase}-picto.png") %><%= @sport_session.title %></h1>
-      <p class="text-center"><%=  @sport_session.description %></p>
+      <div class="sport-session-card-left-headings">
+        <h2 class="text-center sport-session-title"><%= image_tag ("#{@sport_session.activity.name.downcase}-picto.png") %><%= @sport_session.title %></h2>
+        <p class="text-center"><%=  @sport_session.description %></p>
+      </div>
       <div class="session-members">
 
         <!-- Session owner -->
@@ -145,7 +147,7 @@
     <div class="sport-session-card-right">
       <div class="chatroom-container">
         <h2>#chat</h2>
-        <div class=<%= @current_relevant_session_user && @current_relevant_session_user.status == "accepted" ? "" : 'blur-chatroom' %>>
+        <div class="<%= @current_relevant_session_user && @current_relevant_session_user.status == "accepted" ? "" : 'blur-chatroom' %> chat-container">
           <div id="messages" data-sport-session-id="<%= @sport_session.id %>" data-current-user-id="<%= current_user.id %>">
             <% if @sport_session.messages %>
               <% @sport_session.messages.each do |message| %>
