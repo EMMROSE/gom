@@ -12,12 +12,6 @@
   padding: 1rem 30px 1rem 30px;
 }
 
-.background-login-signup {
-  background-image: url("https://images.unsplash.com/photo-1519789110007-0e751882be76");
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-}
 
 .signin-form-content {
   margin: 50px 400px;
@@ -88,6 +82,14 @@
     color: transparent;
   }
 }
+
+.level-choice.non-active {
+  color: transparent;
+  &:hover {
+    color: black;
+  }
+}
+
 
 .level-input[type=radio]:checked + label {
   color: white;

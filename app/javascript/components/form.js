@@ -2,7 +2,6 @@ const formSportSessions = () => {
   const formContainer = document.querySelector('.form-container');
 
   if (formContainer) {
-
     const activities = document.querySelectorAll('.form-container .activity-choices .activity-choice');
 
     // Add click effect on activities radio-button
@@ -47,14 +46,20 @@ const formSportSessions = () => {
     const clickEffect = (arr, data, icon = null) => {
       arr.forEach((element) => {
         element.addEventListener('click', (event) => {
+          // arr.forEach((element) => {
+          //   element.style.color = 'transparent';
+          // })
+          // element.style.color = 'white';
           const currentElement = (event.currentTarget.dataset[`${data}`]);
           arr.slice(0, currentElement).forEach((element) => {
             element.classList.add('active');
+            element.classList.remove('non-active');
             if (icon !== null) element.innerHTML = `<i class="fas fa-${icon}"></i>`;
           });
 
           arr.slice(currentElement, arr.length).forEach((element) => {
             element.classList.remove('active');
+            element.classList.add('non-active');
             if (icon !== null) element.innerHTML = `<i class="far fa-${icon}"></i>`;
           });
         });

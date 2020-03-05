@@ -52,8 +52,7 @@ class SportSessionsController < ApplicationController
   end
 
   def new
-    @activities = Activity.all
-    @sport_session = SportSession.new
+    redirect_to :root
   end
 
   def create
