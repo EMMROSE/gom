@@ -109,7 +109,6 @@ const initMapbox = () => {
         });
 
         const clusterId = features[0].properties.cluster_id;
-        // console.log(map.getSource('sportSessions'));
         map.getSource('sportSessions').getClusterExpansionZoom(clusterId, (err, zoom) => {
           if (err) return;
           map.easeTo({
@@ -224,8 +223,6 @@ const initMapbox = () => {
 
 
     const query = document.getElementById('query').value;
-
-    console.log(mapElement.dataset.mapmarker)
 
     // Generate a Marker according to location query
     if (query) {
