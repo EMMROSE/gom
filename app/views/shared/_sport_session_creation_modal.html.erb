@@ -6,7 +6,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New Sport Session</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Your new outdoor session</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -16,15 +16,15 @@
           <% new_sport_session = SportSession.new %>
           <%= simple_form_for(new_sport_session) do |f| %>
             <div class="form-top">
-              <%= f.input :title, placeholder: "Maxi Sesh !" %>
-              <%= f.input :description, as: :text, placeholder: "Add your description ..." %>
+              <%= f.input :title, label: 'Name your session', placeholder: "Maxi Sesh !" %>
+              <%= f.input :description, label: 'Add a description', as: :text, placeholder: "Once upon a sesh..." %>
 
-              <label class="select optional" for="sport_session_location">Where</label>
+              <label class="select optional" for="sport_session_location">Where are you heading?</label>
               <input type="text" name="sport_session[location]" id="sport_session[location]" value="" style="text-align: left; position: relative; vertical-align: top; width: 100%" class="search_query" placeholder="Anywhere">
 
               <fieldset class="form-group radio_buttons optional sport_session_level">
                 <input type="hidden" name="sport_session[capacity]">
-                <label class="select optional" for="sport_session_capacity">Number of Riders</label>
+                <label class="select optional" for="sport_session_capacity">How many riders can join you?</label>
                 <div class="capacity-choices">
                   <% SportSession::CAPACITY.each_with_index do |capacity, i| %>
                     <input class="d-none" type="radio" value="<%= capacity %>" name="sport_session[capacity]" id="sport_session_capacity_<%= capacity %>">
@@ -36,7 +36,7 @@
 
               <fieldset class="form-group radio_buttons optional sport_session_level">
                 <input type="hidden" name="sport_session[level]" value="">
-                <label class="select optional" for="sport_session_capacity">Level</label>
+                <label class="select optional" for="sport_session_capacity">Choose a level of difficulty</label>
                 <div class="level-choices">
                   <% SportSession::LEVEL.each_with_index do |level, i| %>
                     <input class="d-none level-input" type="radio" value="<%= level %>" name="sport_session[level]" id="sport_session_level_<%= level %>">
@@ -48,6 +48,7 @@
 
               <fieldset class="form-group required">
                 <input type="hidden" name="sport_session[activity_id][]" value="">
+                How are you gonna have fun?
 
                 <div class="activity-choices">
                   <% Activity.all.each do |activity| %>
@@ -59,9 +60,9 @@
                   <% end %>
                 </div>
               </fieldset>
-              <%= f.input :start_time, as: :string, input_html: { class: "datepickr sport-session-creation" }, placeholder:"mm/dd/yyyy" %>
+              <%= f.input :start_time, label: "Pick a start date", as: :string, input_html: { class: "datepickr sport-session-creation" }, placeholder:"mm/dd/yyyy" %>
             </div>
-            <%= f.submit class: 'btn btn-gom btn-submit btn-lg btn-block p-3' %>
+            <%= f.submit "Create your outdoor session", class: 'btn btn-gom btn-submit btn-lg btn-block p-3' %>
           <% end %>
         </div>
       </div>
