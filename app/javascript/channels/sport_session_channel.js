@@ -7,7 +7,14 @@ const initChat = () => {
     const id = messagesContainer.dataset.sportSessionId;
     consumer.subscriptions.create({ channel: "SportSessionChannel", id: id }, {
       received(data) {
-        messagesContainer.insertAdjacentHTML('beforeend', data); // called when data is broadcast in the cable
+        console.log(data);
+
+        const currentUser = messagesContainer.dataset.currentUserId;
+        console.log(currentUser);
+
+
+        messagesContainer.insertAdjacentHTML('beforeend', data);
+
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
       },
     });
