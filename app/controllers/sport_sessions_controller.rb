@@ -26,7 +26,10 @@ class SportSessionsController < ApplicationController
         id: sport_session.id,
         activity: sport_session.activity.name.downcase
       }
+
     end
+
+    @mapmarker = helpers.asset_url("mapmarker-black.png")
   end
 
   def show
