@@ -6,7 +6,6 @@
 #messages {
   overflow-y: scroll;
   overflow-x: hidden;
-  height: 40vh;
   padding-right: 10px;
 }
 
@@ -16,6 +15,10 @@
 
 .message-author {
  text-align: end;
+}
+
+.chatroom-container {
+  height: 100%;
 }
 
 .chatroom-container h2 {
@@ -33,4 +36,11 @@
 
 .new-message {
   opacity: 1;
+}
+
+.chat-container {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
