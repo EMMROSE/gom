@@ -1,16 +1,11 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :login_new
-  before_action :sport_session_new
   before_action :notifications_generation
   private
 
   def login_new
     @new_user = User.new
-  end
-
-  def sport_session_new
-    @new_sport_session = SportSession.new
   end
 
   def notifications_generation
