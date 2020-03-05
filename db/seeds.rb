@@ -56,7 +56,7 @@ puts "----------"
 
 
 puts "Create Users"
-u1 = User.new(email: "user1@gmail.com", password: 123456, username: "Adrien")
+u1 = User.new(email: "user1@gmail.com", password: 123456, username: "Tim")
 file = URI.open('https://res.cloudinary.com/timothee/image/upload/v1583409742/timgom_v55hju.jpg')
 u1.photo.attach(io: file, filename: 'timgom_v55hju.jpg', content_type: 'image/png')
 u1.save
