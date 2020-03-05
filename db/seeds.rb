@@ -390,7 +390,7 @@ s9.save!
 puts "Session9 ok"
 
 
-s10 = SportSession.new(location: "Bidarray", start_time: (Date.today -180), end_time: (Date.today -180), capacity: 3, title: "Downhill biking", description: "Join me if you enjoy goin fast!", level: 'expert')
+s10 = SportSession.new(location: "Bidarray", start_time: (Date.today -180), end_time: (Date.today -180), capacity: 3, title: "Downhill biking", description: "Thibaut Pinot for president", level: 'expert')
 s10.activity = a3
 file = URI.open('https://res.cloudinary.com/timothee/image/upload/v1582820064/vtt_women_cloud_kmylbx.jpg')
 s10.photo.attach(io: file, filename: 'vtt_women_cloud_kmylbx.jpg', content_type: 'image/png')
@@ -511,7 +511,7 @@ s14.save!
 puts "Session14 ok"
 
 
-s15 = SportSession.new(location: "Labenne", start_time: (Date.today + 30), capacity: 3, title: "Cruise on the lake", description: "Looking for someone to join me!", level: 'intermediate')
+s15 = SportSession.new(location: "Labenne", start_time: (Date.today + 30), capacity: 3, title: "Cruise on the lake", description: "Looking for partners to cross the Atlantic!", level: 'intermediate')
 s15.activity = a4
 
 se15a = SessionUser.new(owner: true, status: 'accepted')
@@ -632,7 +632,7 @@ s20.save!
 puts "Session20 ok"
 
 
-s21 = SportSession.new(location: "Aime-la-Plagne, Auvergne-Rhône-Alpes, France", start_time: (Date.today + 8), capacity: 2, title: "Trees session", description: "Truth is in the pudding", level: 'expert')
+s21 = SportSession.new(location: "Aime-la-Plagne, Auvergne-Rhône-Alpes, France", start_time: (Date.today + 8), capacity: 3, title: "Trees session", description: "Truth is in the pudding", level: 'expert')
 s21.activity = a5
 # file = URI.open('https://res.cloudinary.com/timothee/image/upload/v1582820064/ski_powder_ac2unl.jpg')
 # s21.photo.attach(io: file, filename: 'ski_powder_ac2unl.jpg', content_type: 'image/png')
