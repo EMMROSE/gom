@@ -283,7 +283,7 @@ s3.save!
 puts "Session3 ok"
 
 
-s4 = SportSession.new(location: "Cenitz", start_time: (Date.today + 7), capacity: 5, title: "Chill Sessions with friends", description: "Looking for fellow longboarders!", level: 'beginner')
+s4 = SportSession.new(location: "Cenitz", start_time: (Date.today + 7), capacity: 5, title: "Chill Session", description: "Looking for fellow longboarders!", level: 'beginner')
 s4.activity = a1
 
 se4a = SessionUser.new(owner: true, status: 'accepted')
