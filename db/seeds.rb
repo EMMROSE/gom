@@ -302,6 +302,13 @@ se4c.user = u22
 se4c.save!
 
 s4.save!
+m1 = Message.new(sport_session_id: s4.id, user_id: u7.id, content: "Pizza surfing")
+m1.save!
+
+m2 = Message.new(sport_session_id: s4.id, user_id: u21.id, content: "Hey Leo, how are you?")
+m2.save!
+m2.save!
+
 puts "Session4 ok"
 
 
