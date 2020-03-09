@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :login_new
   before_action :notifications_generation
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :default_username
   private
 
   def login_new
