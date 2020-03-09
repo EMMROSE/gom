@@ -1,0 +1,207 @@
+#sport-session-creation-modal .modal-body {
+  padding: 0px;
+}
+
+.form-container {
+  background-color: white;
+  border-radius: 5px;
+  padding: 0px;
+}
+
+.form-container .form-top {
+  padding: 1rem 30px 1rem 30px;
+}
+
+
+.signin-form-content {
+  margin: 50px 400px;
+  background-color: white;
+}
+
+.activity-choices {
+  display: -webkit-box!important;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px 0px;
+}
+
+.activity-choice {
+  flex: 0 0 30%;
+  margin: 5px 0px;
+  text-align: center;
+  background-color: #b7b7b7;
+  padding: 20px;
+  border-radius: 5px;
+  opacity: 0.3;
+  font-weight: bold;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  &.active {
+    background-color: $green;
+    color: white;
+    opacity: 1;
+  }
+}
+
+
+.level-choices {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.level-choice {
+  flex-grow: 1;
+  flex: 0 0 33%;
+  opacity: 0.3;
+  text-align: center;
+  background-color: grey;
+  width: 100px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  &:hover {
+    opacity: 1;
+    color: black;
+  }
+  &.hover {
+    opacity: 1;
+  }
+  &.active {
+    background-color: $green;
+    opacity: 1;
+    color: transparent;
+  }
+}
+
+.level-choice.non-active {
+  color: transparent;
+  &:hover {
+    color: black;
+  }
+}
+
+
+.level-input[type=radio]:checked + label {
+  color: white;
+}
+
+.level-choice[data-level='1'] {
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px
+}
+
+.level-choice[data-level='3'] {
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px
+}
+
+
+.capacity-choices {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px 0px;
+}
+
+.capacity-choice {
+  flex: 0 0 10%;
+  opacity: 0.3;
+  text-align: center;
+  i {
+    font-size: 30px;
+  }
+  &:hover {
+    opacity: 1;
+  }
+  &.hover {
+    opacity: 1;
+  }
+  &.active {
+    color: $green;
+    opacity: 1;
+  }
+}
+
+#sport-session-creation-modal .modal-header {
+  background-color: $green;
+  color: white;
+}
+
+.modal-dialog {
+  max-width: 600px!important;
+}
+
+.form-container .algolia-places {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.form-container .btn-submit {
+  margin-top: 10px;
+  width: 100%;
+  padding: 12px;
+}
+
+.activity-choice svg {
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+}
+
+.activity-choice.active svg {
+  fill: white;
+}
+
+.form-check-label-activity {
+  justify-content: center;
+  align-items: center;
+  height: -webkit-fill-available;
+  height: 69px;
+}
+
+.close {
+  color: white;
+  &:hover {
+    color:white!important;
+  }
+}
+
+.new-sesh .btn-gom {
+  border-radius: 0px;
+  font-family: "Poppins";
+  font-size: 20px;
+}
+
+.new-sesh .rider-count {
+  padding: 8px 40px;
+  border-left: solid;
+  font-size: 24px;
+}
+
+
+// .new-sesh .sport_session_level {
+//     margin-right: 134px;
+// }
+
+// .new-sesh .capacity-choices {
+//     border-right: solid;
+
+// }
+
+// .new-sesh .rider-count {
+//     border-left: solid;
+//     font-size: 24px;
+//     font-weight: bold;
+//     padding: 8px 32px;
+// }

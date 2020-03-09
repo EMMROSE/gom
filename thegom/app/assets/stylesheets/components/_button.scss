@@ -1,0 +1,61 @@
+.btn-gom {
+  background-color: $green;
+  color: white;
+  font-weight: 600;
+  opacity: 0.9;
+  transition: all .1s ease-out;
+  &:hover {
+    opacity: 1;
+    color: white;
+  }
+}
+
+.btn-white {
+  color: white;
+  opacity: 0.9;
+  border: 1px solid white;
+  transition: all .1s ease-out;
+  margin-left: 10px;
+  &:hover {
+    opacity: 1;
+    color: white;
+  }
+}
+
+.btn-black {
+  color: black;
+  opacity: 0.9;
+  border: 1px solid black;
+  transition: all .1s ease-out;
+  margin-left: 10px;
+  &:hover {
+    opacity: 1;
+    color: black;
+  }
+}
+
+#navbar-homepage .btn-add-sesh {
+  color: rgba(250,250,250, 0.8);
+  &:hover {
+    color: white;
+  }
+}
+
+.btn-add-sesh {
+  font-weight: 600;
+  margin-right: 14px;
+  color: rgba(79, 180, 119, 0.7);
+  transition: all .1s ease-out;
+  display: flex;
+  justify-content: space-around;
+  -webkit-box-align: center;
+  align-items: center;
+  background: none;
+  border: none;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    color: $green;
+  }
+}

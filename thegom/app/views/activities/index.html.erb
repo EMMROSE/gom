@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>Here your results:</h1>
+
+  <% @activities.each do |activity| %>
+    <div class="card-activity d-flex">
+      <div class="card-activity-left h-100" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path activity.photo.key, height: 300, width: 400, crop: :fill; %>');">
+        <h2 class="text-center">
+          <%= activity.name %>
+        </h2>
+      </div>
+      <div class="card-activity-right">
+        <p>Past sessions: </p>
+        <p>Sessions to come: <%= (@sport_sessions.map do |ss| ss.activity_id == activity.id end).count(true) %></p>
+        <p>Average level: </p>
+        <p>Usually around: </p>
+      </div>
+    </div>
+  <% end %>
+</div>

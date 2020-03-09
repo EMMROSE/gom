@@ -1,0 +1,49 @@
+.blur-chatroom {
+  filter: blur(0.25rem);
+  pointer-events: none;
+}
+
+#messages {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-right: 10px;
+}
+
+.message-container {
+  opacity: 0.8;
+  p {
+    font-weight: 600;
+  }
+}
+
+.message-author {
+ text-align: end;
+}
+
+.chatroom-container {
+  height: 100%;
+}
+
+.chatroom-container h2 {
+  padding: 0px;
+  text-align: right !important;
+}
+
+#messages::-webkit-scrollbar {
+  width: 3px;
+}
+
+#messages::-webkit-scrollbar-thumb {
+  background: #4a4a4a;
+}
+
+.new-message {
+  opacity: 1;
+}
+
+.chat-container {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}

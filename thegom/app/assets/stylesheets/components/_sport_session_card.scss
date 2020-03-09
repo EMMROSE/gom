@@ -1,0 +1,219 @@
+.session-members {
+  display: flex;
+  justify-content: space-around;
+  .pending-member {
+    opacity: 0.4;
+  }
+}
+
+.session-member .avatar {
+  margin: 0px auto;
+}
+
+
+.sport-session-background {
+  background-size: cover;
+  background-position: center;
+  height: calc(100vh - 87px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.sport-session-card {
+  width: 80%;
+  height: 80%;
+  max-height: 600px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  display:flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 10px 20px 30px;
+  li {
+    font-size: 16px;
+  }
+}
+
+.sport-session-card-left {
+  height: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-right: 1px solid lightgrey;
+  padding: 0px 20px;
+  .sport-session-title img{
+    width: 50px;
+    margin-right: 30px;
+  }
+}
+
+.sport-session-card-left-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sport-session-card-right {
+  padding: 4px 10px 0px 20px;
+  min-width: 33%;
+  overflow: hidden;
+  height: 100%;
+}
+
+#owner .owner {
+  border: none;
+}
+
+.sport-session-card .owner,
+.sport-session-card .pending {
+  font-size: smaller;
+}
+
+.sport-session-card .avatar-owner {
+  border: 2px solid $green;
+  padding: 1px;
+}
+
+.sport-session-info {
+  margin-top: 15px;
+  align-items: center;
+  .sport-session-info-left {
+    margin-right: 20px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+  .sport-session-join {
+    flex-grow: 1;
+  }
+}
+
+.sport-session-info-item-small {
+  flex: 25%;
+  text-align: center;
+  i {
+    font-size: 24px;
+    color: $green;
+    margin-bottom: 8px;
+  }
+}
+
+.sport-session-info-item-big {
+  flex: 50%;
+  text-align: center;
+  i {
+    font-size: 24px;
+    color: $green;
+  }
+}
+
+.sport-session-join {
+  .btn {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  }
+  .btn-pending {
+    background-color: #F4E76E;
+    opacity: 0.5;
+    color: #4F4A23;
+  }
+  .btn-complete {
+    background-color: lightgrey;
+    opacity: 0.5;
+  }
+}
+
+.sport-session-pending-request {
+  text-align:center;
+  margin-right: 32px;
+  margin-left: 32px;
+  a {
+    text-decoration: none;
+  }
+  p {
+    text-align: left;
+    margin-bottom: 8px;
+  }
+}
+
+.sport-session-requests-btn {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.sport-session-accept {
+  background-color: $green;
+  flex-grow: 1;
+  color: white;
+  padding: 30px;
+  padding: 3px 10px;
+  border-radius: 2px;
+  opacity: 0.8;
+  margin-right: 10px;
+  &:hover {
+    opacity: 1;
+    color: white;
+  }
+}
+
+.sport-session-reject {
+  color: black;
+  opacity: 0.5;
+  border: 1px solid lightgray;
+  padding: 2px 8px;
+  border-radius: 4px;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.sport-session-levels {
+  margin-top: 8px;
+}
+
+.sport-session-levels-pictos {
+  display:flex;
+  justify-content: space-around;
+  align-items: flex-top;
+}
+
+.sport-session-levels .arrow-level {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0px 8px 8px 8px;
+  border-color: transparent transparent $green transparent;
+  margin: 1px auto 4px auto;
+}
+
+.sport-session-level-content {
+  flex: 0 0 30%;
+}
+.sport-session-level{
+  height: 10px;
+  border: 1px solid $green;
+}
+
+.sport-session-level.first{
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+
+.sport-session-level.last{
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+.sport-session-level.full{
+  background-color: $green;
+}
+

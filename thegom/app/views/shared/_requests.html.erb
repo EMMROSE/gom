@@ -1,0 +1,12 @@
+<span id='notification-count'>1</span>
+  <ul class="notifs-dropdown dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+    <%= link_to sport_session_path(@session_user.sport_session) do %>
+      <div class="inner-notif-container d-flex">
+        <%= cl_image_tag @session_user.user.photo.key, class: "avatar d-block"%>
+        <div class="notifs-text">
+          <p class="mr-2"><strong><%= @session_user.user.username %></strong> asks to join:</p>
+          <p><strong><%= @session_user.sport_session.title %></strong></p>
+        </div>
+      </div>
+    <% end %>
+  </ul>

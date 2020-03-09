@@ -1,0 +1,171 @@
+<div class="sport-session-background" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('<%= cl_image_path @sport_session.activity.photo.key %>');">
+
+
+  <div class="sport-session-card" style="">
+    <div class="sport-session-card-left">
+      <div class="sport-session-card-left-headings">
+        <h2 class="text-center sport-session-title"><%= image_tag ("#{@sport_session.activity.name.downcase}-picto.png") %><%= @sport_session.title %></h2>
+        <p class="text-center"><%=  @sport_session.description %></p>
+      </div>
+      <div class="session-members">
+
+        <!-- Session owner -->
+        <div class="session-member text-center" id="owner">
+          <%= cl_image_tag @sport_session_owner.photo.key, class: "avatar-large d-block avatar-owner" %>
+          <b><%= @sport_session_owner == current_user ? "You" : @sport_session_owner.username %></b><br><span class="owner">Owner</span>
+        </div>
+
+        <% accepted_users_count = 1 %> <!-- Start at 1 to count the session owner -->
+        <% pending_users_count = 0 %>
+
+        <!-- Differenciate accepted session members -->
+        <% @relevant_session_users.each do |session_user| %>
+          <% if session_user.user != @sport_session_owner %>
+            <% if session_user.status == "accepted" %>
+              <div class="session-member text-center">
+                <%= cl_image_tag session_user.user.photo.key, class: "avatar-large d-block"%>
+                <%= session_user.user == current_user ? "You" : session_user.user.username %>
+                <% accepted_users_count += 1 %>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+
+        <!-- Differenciate pending session members -->
+        <% @relevant_session_users.each do |session_user| %>
+          <% if session_user.user != @sport_session_owner %>
+            <% if session_user.status == "pending" %>
+              <div class="session-member text-center pending-member">
+                <%= cl_image_tag session_user.user.photo.key, class: "avatar-large d-block"%>
+                <%= session_user.user == current_user ? "You" : session_user.user.username %><br><span class="pending">Pending</span>
+                <% pending_users_count += 1 %>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+
+        <!-- Adding placeholders for remaining places -->
+        <% (@sport_session.capacity - (accepted_users_count + pending_users_count)).times do %>
+          <%= image_tag('avatar-placeholder.jpg', class: "avatar-large avatar-placeholder") %>
+        <% end %>
+      </div>
+
+      <div class="sport-session-info">
+        <div class="sport-session-info-left">
+          <div class="sport-session-info-item-small"><i class="fas fa-calendar-alt"></i><br><%= @sport_session.start_time.strftime("%-d %b %Y") %></div>
+          <div class="sport-session-info-item-big">
+            <div class="sport-session-levels">
+              <% if @sport_session.level == "beginner" %>
+                <div class="sport-session-levels-pictos">
+                  <div class="sport-session-level-content">
+                    <div class="sport-session-level first full"></div>
+                    <div class="arrow-level"></div>
+                    <p><%= @sport_session.level.capitalize %></p>
+                  </div>
+                  <div class="sport-session-level-content">
+                    <div class="sport-session-level"></div>
+                  </div>
+                  <div class="sport-session-level-content">
+                    <div class="sport-session-level last"></div>
+                  </div>
+                </div>
+              <% elsif @sport_session.level == "intermediate" %>
+                <div class="sport-session-levels-pictos">
+                  <div class="sport-session-level-content">
+                    <div class="sport-session-level first full"></div>
+                  </div>
+                  <div class="sport-session-level-content">
+                    <div class="sport-session-level full"></div>
+                    <div class="arrow-level"></div>
+                    <p><%= @sport_session.level.capitalize %></p>
+                  </div>
+                  <div class="sport-session-level-content">
+                    <div class="sport-session-level last"></div>
+                  </div>
+                </div>
+              <% else %>
+                <div class="sport-session-levels-pictos">
+                  <div class="sport-session-level-content">
+                    <div class="sport-session-level first full"></div>
+                  </div>
+                  <div class="sport-session-level-content">
+                    <div class="sport-session-level full"></div>
+                  </div>
+                  <div class="sport-session-level-content">
+                    <div class="sport-session-level full last"></div>
+                    <div class="arrow-level"></div>
+                    <p><%= @sport_session.level.capitalize %></p>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="sport-session-info-item-small text-truncate"><i class="fas fa-map-marker-alt"></i><br><%= @sport_session.location %></div>
+        </div>
+        <div class="sport-session-join">
+          <!-- Show "join" option only if you are not owner of the sport session -->
+          <% if @sport_session_owner != current_user %>
+
+            <!-- Show "join" option only if session is not complete -->
+            <% if @sport_session.users.count < @sport_session.capacity %>
+
+              <!-- Show "pending request", if you already requested to join this session -->
+              <% if @current_relevant_session_user && @current_relevant_session_user.status == "pending" %>
+                <span class="btn w-100 btn-pending">REQUEST PENDING...</span>
+
+              <!-- Show "join" option  -->
+              <% elsif @current_relevant_session_user && @current_relevant_session_user.status == "accepted" %>
+
+              <% else %>
+                <%= link_to "Ask to Join!", sport_session_session_users_path(params[:id]), method: "post", class: "btn btn-gom w-100" %>
+              <% end %>
+
+            <!-- Show "session complet" if session is complete  -->
+            <% else %>
+              <span class="btn w-100 btn-complete">SESSION COMPLETE</span>
+            <% end %>
+          <% else %>
+            <% @relevant_session_users.each do |relevant_session_user | %>
+               <%  if relevant_session_user.status == "pending" %>
+                 <div class="sport-session-pending-request">
+                  <p>1 pending request from <b><%= relevant_session_user.user.username %></b></p>
+                  <div class="sport-session-requests-btn">
+                    <%= link_to accept_session_user_path(relevant_session_user), class: "sport-session-accept" do %>
+                      <i class="fas fa-check"></i> Accept
+                    <% end %>
+                    <%= link_to reject_session_user_path(relevant_session_user) do %>
+                      <span class="sport-session-reject"><i class="fas fa-times"></i> Reject</span>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="sport-session-card-right">
+      <div class="chatroom-container">
+        <h2>#chat</h2>
+        <div class="<%= @current_relevant_session_user && @current_relevant_session_user.status == "accepted" ? "" : 'blur-chatroom' %> chat-container">
+          <div id="messages" data-sport-session-id="<%= @sport_session.id %>" data-current-user-id="<%= current_user.id %>">
+            <% if @sport_session.messages %>
+              <% @sport_session.messages.each do |message| %>
+                <div class="message-container <%= "message-author" if current_user == message.user %>">
+                    <i class="author">
+                    <span><%= message.user.username %></span>
+                    <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+                  </i>
+                  <p><%= message.content %></p>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+          <%= simple_form_for [ @sport_session, @message ], remote: true, id:"message-form" do |f| %>
+            <%= f.input :content, label: false, placeholder: "Message #Chat" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
