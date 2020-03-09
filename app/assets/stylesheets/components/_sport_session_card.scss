@@ -1,6 +1,7 @@
 .session-members {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   .pending-member {
     opacity: 0.4;
   }
@@ -94,6 +95,11 @@
   .sport-session-join {
     flex-grow: 1;
   }
+}
+
+.sport-session-info-item-small,
+.sport-session-info-item-big {
+  width: 100%;
 }
 
 .sport-session-info-item-small {
@@ -217,3 +223,53 @@
   background-color: $green;
 }
 
+@media (max-width: 575px) {
+
+  .sport-session-info .sport-session-info-left {
+    flex-direction: column;
+  }
+
+  .sport-session-info-item-big,
+  .sport-session-info-item-small {
+    margin-bottom: 20px;
+  }
+
+}
+
+@media (min-width: 100px) and (max-width: 767px) {
+  .sport-session-background {
+    height: auto;
+  }
+
+  .sport-session-card {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    padding: 16px;
+    border-radius: 0px;
+    max-height: none;
+  }
+
+  .sport-session-card-left {
+    padding: 0px;
+    border-right: none;
+    height: auto;
+    width: 100%;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 20px;
+  }
+
+  .sport-session-card-left .sport-session-title img {
+      width: 35px;
+      margin-right: 10px;
+  }
+
+  .session-member {
+    margin-bottom: 0px 5px 10px 5px;
+  }
+
+  .sport-session-info .sport-session-info-left {
+    align-items: center;
+    margin-right: 0px;
+  }
+}
