@@ -23,7 +23,7 @@
                 <%= f.input :password_confirmation,
                             required: true,
                             input_html: { autocomplete: "new-password" } %>
-                <%= f.input :photo %>
+                <%= f.input :photo, input_html: {value:'../../assets/images/avatar-placeholder.jpg'} %>
                 <%= f.input :username %>
               </div>
 
