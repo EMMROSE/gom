@@ -48,6 +48,7 @@
 
 .container-filters .filters {
   flex-grow: 1;
+  flex-wrap: wrap;
 }
 
 .container-filters .clear-filters {
@@ -169,6 +170,10 @@ input.checked + .slider:before {
       margin-right: 0px;
       padding-right: 0px;
       border-right: none;
+  }
+
+  .filter {
+    margin-bottom: 5px;
   }
 }
 
