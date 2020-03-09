@@ -136,8 +136,20 @@
   text-decoration: none;
 }
 
+.navbar-placeholder-map {
+  height: 122px;
+}
+
+.navbar-placeholder{
+  height: 87px;
+}
+
 
 @media (min-width: 100px) and (max-width: 767px) {
+
+  .navbar-placeholder-map {
+    height: 146px;
+  }
 
   .navbar-dark .navbar-toggler {
       border-color: rgba(255,255,255,0.5);
