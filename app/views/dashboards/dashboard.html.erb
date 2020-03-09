@@ -2,11 +2,7 @@
   <div class="dashboards-left-container">
     <div class="left-dashboard">
       <h2><%=  current_user.username %></h2>
-      <% if current_user.photo.attached? %>
         <%= cl_image_tag current_user.photo.key, crop: :fill, class: "avatar-large" %>
-      <% else %>
-        <%= image_tag('avatar-placeholder.jpg', crop: :fill, class: "avatar-large") %>
-      <% end %>
       <div class="sessions-navigation d-flex justify-content-around">
         <p><%= current_user.session_users.where(owner: true).count %> / <%= current_user.session_users.count %> sessions organised</p>
       </div>

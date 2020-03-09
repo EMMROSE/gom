@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :login_new
   before_action :notifications_generation
+  before_action :configure_permitted_parameters, if: :devise_controller?
   private
 
   def login_new
@@ -26,5 +27,9 @@ class ApplicationController < ActionController::Base
 
   def default_url_options
     { host: ENV["https://www.greatoutdoorsmap.com/"] || "localhost:3000" }
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:photo, :username])
   end
 end
