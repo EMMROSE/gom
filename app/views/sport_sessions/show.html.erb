@@ -36,7 +36,11 @@
           <% if session_user.user != @sport_session_owner %>
             <% if session_user.status == "pending" %>
               <div class="session-member text-center pending-member">
-                <%= cl_image_tag session_user.user.photo.key, class: "avatar-large d-block"%>
+                <% if current_user.photo.attached? %>
+                  <%= cl_image_tag session_user.user.photo.key, class: "avatar-large d-block"%>
+                <% else %>
+                  <%= image_tag('avatar-placeholder.jpg', class: "avatar-large d-block") %>
+                <% end %>
                 <%= session_user.user == current_user ? "You" : session_user.user.username %><br><span class="pending">Pending</span>
                 <% pending_users_count += 1 %>
               </div>

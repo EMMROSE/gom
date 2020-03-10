@@ -9,5 +9,6 @@ class User < ApplicationRecord
   has_many :sport_sessions, through: :session_users
   has_one_attached :photo
 
-  validates :username, uniqueness: true
+  validates :username, uniqueness: true, presence: true
+  validates :photo, presence: true
 end
