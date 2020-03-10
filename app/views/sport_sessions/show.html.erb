@@ -149,27 +149,44 @@
       </div>
     </div>
     <div class="sport-session-card-right">
-      <div class="chatroom-container">
-        <h2>#chat</h2>
-        <div class="<%= @current_relevant_session_user && @current_relevant_session_user.status == "accepted" ? "" : 'blur-chatroom' %> chat-container">
-          <div id="messages" data-sport-session-id="<%= @sport_session.id %>" data-current-user-id="<%= current_user.id %>">
-            <% if @sport_session.messages %>
-              <% @sport_session.messages.each do |message| %>
-                <div class="message-container <%= "message-author" if current_user == message.user %>">
-                    <i class="author">
-                    <span><%= message.user.username %></span>
-                    <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-                  </i>
-                  <p><%= message.content %></p>
+      <!-- Button trigger modal -->
+      <button type="button" class="<%= @current_relevant_session_user && @current_relevant_session_user.status == "accepted" ? "btn-gom" : "btn-disabled" %> btn modal-chat-btn" data-toggle="modal" data-target="#modal-chat">
+        <i class="fas fa-comment-dots"></i>
+      </button>
+
+      <!-- Modal -->
+      <div class="modal" id="modal-chat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <button type="button" class="close-chat" data-dismiss="modal"><i class="fas fa-times"></i></button>
+            <div class="chatroom-container">
+              <h2>#chat</h2>
+              <div class="<%= @current_relevant_session_user && @current_relevant_session_user.status == "accepted" ? "" : 'blur-chatroom' %> chat-container">
+                <div id="messages" data-sport-session-id="<%= @sport_session.id %>" data-current-user-id="<%= current_user.id %>">
+                  <% if @sport_session.messages %>
+                    <% @sport_session.messages.each do |message| %>
+                      <div class="message-container <%= "message-author" if current_user == message.user %>">
+                          <i class="author">
+                          <span><%= message.user.username %></span>
+                          <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+                        </i>
+                        <p><%= message.content %></p>
+                      </div>
+                    <% end %>
+                  <% end %>
                 </div>
-              <% end %>
-            <% end %>
+                <%= simple_form_for [ @sport_session, @message ], remote: true, id:"message-form" do |f| %>
+                  <%= f.input :content, label: false, placeholder: "Message #Chat" %>
+                <% end %>
+              </div>
+            </div>
           </div>
-          <%= simple_form_for [ @sport_session, @message ], remote: true, id:"message-form" do |f| %>
-            <%= f.input :content, label: false, placeholder: "Message #Chat" %>
-          <% end %>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
+
+

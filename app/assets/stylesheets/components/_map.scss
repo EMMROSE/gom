@@ -184,3 +184,92 @@ a.mapboxgl-ctrl-logo {
     width: 30px;
   }
 }
+
+
+@media (max-width: 575px) {
+
+  .info-window-level-content {
+    flex: 0 0 28%;
+  }
+
+  .info-window-levels {
+    margin: 10px 0px;
+  }
+
+  .mapbox-popup-bottom i {
+      font-size: 24px;
+  }
+
+  .mapbox-popup-bottom-item-top img {
+      height: 24px;
+      width: 24px;
+  }
+
+  .mapbox-popup-sport-session p {
+    font-size: 1.1rem;
+  }
+}
+
+
+@media (min-width: 100px) and (max-width: 767px) {
+
+  #map {
+    height: calc(100vh - 146px)!important;
+  }
+
+  .mapboxgl-popup {
+    width: 100%;
+  }
+
+  .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right, .mapboxgl-ctrl-top-left, .mapboxgl-ctrl-top-right {
+    z-index: 0;
+  }
+
+  .mapboxgl-popup-close-button {
+    display:block;
+    right: 10px;
+    top: 16px;
+    z-index: 1;
+    font-size: 40px;
+    color: white;
+  }
+
+  .mapbox-popup-sport-session {
+    padding: 20px 16px 16px 16px;
+  }
+
+  .mapbox-popup-bottom {
+    padding: 0px;
+  }
+}
+
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .mapboxgl-popup {
+    width: 45%;
+  }
+
+  .info-window-level-content {
+    flex: 0 0 28%;
+  }
+
+  .info-window-levels {
+    margin: 10px 0px;
+  }
+
+  .mapbox-popup-bottom {
+    padding: 0px;
+    i {
+        font-size: 24px;
+    }
+  }
+
+  .mapbox-popup-bottom-item-top img {
+      height: 24px;
+      width: 24px;
+  }
+
+  .mapbox-popup-sport-session p {
+    font-size: 1.1rem;
+  }
+}

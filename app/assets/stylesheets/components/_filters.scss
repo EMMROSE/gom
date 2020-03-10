@@ -43,10 +43,12 @@
   display: flex;
   align-items: center;
   padding-top: 8px;
+  border-top: 1px solid #dee2e6;
 }
 
 .container-filters .filters {
   flex-grow: 1;
+  flex-wrap: wrap;
 }
 
 .container-filters .clear-filters {
@@ -130,4 +132,57 @@ input.checked + .slider:before {
 
 .container-filters .filter-switch {
   color: #878787;
+}
+
+#collapseFilters .card-body {
+  padding: 0px;
+  border: 0px;
+}
+
+
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 767px) {
+  .filters-mobile-dropdown {
+    display: flex;
+    margin-top: 10px;
+    a {
+      color: #878787;
+      text-decoration: underline;
+    }
+  }
+
+  .container-filters {
+    flex-direction: column;
+    border-top: 0px;
+    padding-top: 10px;
+    .filters {
+      margin-bottom: 8px;
+    }
+  }
+
+  .filter-dates .dropdown-menu {
+    left: auto;
+    right: 0px;
+  }
+
+  .open-status-filter {
+      margin-right: 0px;
+      padding-right: 0px;
+      border-right: none;
+  }
+
+  .filter {
+    margin-bottom: 5px;
+  }
+}
+
+@media (min-width: 768px) {
+  #collapseFilters {
+    display: block;
+    .card-body {
+      padding: 0px;
+      border: 0px;
+    }
+  }
 }
