@@ -226,8 +226,7 @@
     flex-grow: 1;
   }
 
-  .navbar-toggler,
-  .navbar-login {
+  .navbar-toggler {
     position: absolute;
     right: 16px;
     top: 10px;
@@ -239,6 +238,10 @@
 
   .navbar-brand {
     padding-top: 0px;
+  }
+
+  .navbar-login button {
+    color: black;
   }
 
 }

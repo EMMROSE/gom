@@ -32,7 +32,6 @@
       <% end %>
     </div>
 
-    <% if user_signed_in? %>
 
 
 
@@ -42,6 +41,10 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+
+        <% if user_signed_in? %>
+
+
           <button data-toggle="modal" data-target="#sport-session-creation-modal" class="btn-add-sesh">Create a Session</button>
           <li class="notifs dropdown" id="dropdown-notifications">
             <i class="far fa-bell fa-2x dropdown-toggle hide-tablet" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
@@ -57,17 +60,20 @@
               <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>
+
+          <% else %>
+            <div class="navbar-login">
+              <%- if controller_name != 'sessions' && controller_name != 'registrations'%>
+                <button data-toggle="modal" data-target="#login-modal" class="btn btn-black">login</button>
+                <button data-toggle="modal" data-target="#signup-modal" class="btn btn-black">sign up</button>
+              <% end %>
+            </div>
+          <% end %>
+
+
         </ul>
       </div>
 
-    <% else %>
-      <div class="navbar-login">
-        <%- if controller_name != 'sessions' && controller_name != 'registrations'%>
-          <button data-toggle="modal" data-target="#login-modal" class="btn btn-black">login</button>
-          <button data-toggle="modal" data-target="#signup-modal" class="btn btn-black">sign up</button>
-        <% end %>
-      </div>
-    <% end %>
   </div>
   <% if params[:controller] == "sport_sessions" && params[:action] == "index" %>
     <%= render 'shared/search_filters' %>
