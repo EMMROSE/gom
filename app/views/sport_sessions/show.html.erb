@@ -146,14 +146,15 @@
     </div>
     <div class="sport-session-card-right">
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-gom modal-chat-btn" data-toggle="modal" data-target="#modal-chat">
+      <button type="button" class="<%= @current_relevant_session_user && @current_relevant_session_user.status == "accepted" ? "btn-gom" : "btn-disabled" %> btn modal-chat-btn" data-toggle="modal" data-target="#modal-chat">
         <i class="fas fa-comment-dots"></i>
       </button>
 
       <!-- Modal -->
-      <div class="modal" id="modal-chat" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal" id="modal-chat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
+            <button type="button" class="close-chat" data-dismiss="modal"><i class="fas fa-times"></i></button>
             <div class="chatroom-container">
               <h2>#chat</h2>
               <div class="<%= @current_relevant_session_user && @current_relevant_session_user.status == "accepted" ? "" : 'blur-chatroom' %> chat-container">
