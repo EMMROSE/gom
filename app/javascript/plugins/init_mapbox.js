@@ -123,11 +123,6 @@ const initMapbox = () => {
         let symbol = feature.properties['image_url'];
         let layerID = feature.properties['activity'];
 
-        // new mapboxgl.Marker()
-        //   .setLngLat(feature.geometry.coordinates)
-        //   .addTo(map);
-
-
 
         // Add a layer for this symbol type if it hasn't been added already.
         if (!map.getLayer(layerID)) {
@@ -151,10 +146,18 @@ const initMapbox = () => {
             'filter': ['==', 'activity', layerID]
           });
         };
+      });
 
 
+      let arr = []
+      sportSessions.forEach(sportsession => {
+        arr.push(sportsession.activity);
+      });
 
-        map.on('click', layerID, event => {
+      let activities = [...new Set(arr)];
+
+      activities.forEach(activity => {
+        map.on('click', activity, event => {
 
           // When clicked on a Sport Session, center the map on this sportSession
           map.flyTo({ center: event.features[0].geometry.coordinates });
@@ -170,7 +173,7 @@ const initMapbox = () => {
         });
 
 
-        map.on('click', layerID, function(e) {
+        map.on('click', activity, function(e) {
 
           if (e.features.length > 0) {
             if (hoveredSportSessionId) {
@@ -188,24 +191,14 @@ const initMapbox = () => {
           }
         });
 
-        // map.on('click', function(e) {
-        // if (hoveredSportSessionId) {
-        // map.setFeatureState(
-        // { source: 'sportSessions', id: hoveredSportSessionId },
-        // { hover: false }
-        // );
-        // }
-        // hoveredSportSessionId = null;
-        // });
-
 
         // Change the cursor to a pointer when the it enters a feature in the sportSessions layer.
-        map.on('mouseenter', layerID, function(e) {
+        map.on('mouseenter', activity, function(e) {
           map.getCanvas().style.cursor = 'pointer';
         });
 
         // Change it back to a pointer when it leaves.
-        map.on('mouseleave', layerID, function() {
+        map.on('mouseleave', activity, function() {
           map.getCanvas().style.cursor = '';
         });
 
