@@ -20,6 +20,18 @@ const initChat = () => {
     });
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
   };
+
+  const messageForm = document.getElementById('new_message');
+
+  if (messageForm) {
+    console.log(messageForm);
+  }
+
+  messageForm.addEventListener('keydown', (event) => {
+    if (event.key == "Enter") {
+      event.preventDefault();
+    };
+  });
 }
 
 export { initChat };
