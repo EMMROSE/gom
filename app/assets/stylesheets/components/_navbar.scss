@@ -8,6 +8,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 0px;
+  flex-wrap: wrap;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -133,4 +134,111 @@
 
 .navbar-brand a:hover {
   text-decoration: none;
+}
+
+.navbar-placeholder-map {
+  height: 122px;
+}
+
+.navbar-placeholder{
+  height: 87px;
+}
+
+
+@media (min-width: 100px) and (max-width: 767px) {
+
+  .navbar-placeholder {
+    height: 112px;
+  }
+
+  .navbar-placeholder-map {
+    height: 146px;
+  }
+
+
+  .navbar-dark .navbar-toggler {
+      border-color: rgba(255,255,255,0.5);
+  }
+
+
+  .navbar-collapse {
+    background-color: white;
+    .navbar-nav {
+      padding: 0px 10px 10px;
+      border-bottom: 1px solid lightgray;
+    }
+    button {
+      text-align: left;
+      display: block;
+      padding-left: 0px;
+    }
+  }
+
+
+  .mobile-navbar-dropdown {
+    display: block!important;
+    border: none!important;
+    padding: 0px!important;
+    a {
+      padding: 0px;
+    }
+  }
+
+  .navbar-lewagon .navbar-collapse > ul {
+    flex-grow: 0;
+    margin-top: 15px;
+  }
+
+  #navbar-homepage {
+    .navbar-collapse {
+      margin-top: 10px;
+    }
+    .btn-add-sesh {
+      color: rgba(79,180,119,0.7);
+    }
+  }
+
+  .notifs-dropdown {
+    display: block!important;
+    margin-bottom: 10px;
+    width: 100%!important;
+    a {
+    color: rgba(0,0,0,0.6);
+    }
+  }
+
+  #notification-count {
+    position: fixed;
+    top: 10px;
+    right: 65px;
+    left: auto;
+  }
+
+  .search {
+    width: 100%;
+    margin-top: 5px;
+    .search-form-control {
+      display: flex;
+    }
+  }
+
+  .search-form-control .algolia-places {
+    flex-grow: 1;
+  }
+
+  .navbar-toggler,
+  .navbar-login {
+    position: absolute;
+    right: 16px;
+    top: 10px;
+  }
+
+  .navbar-content {
+    padding: 0px;
+  }
+
+  .navbar-brand {
+    padding-top: 0px;
+  }
+
 }

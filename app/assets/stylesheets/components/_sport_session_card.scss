@@ -1,6 +1,7 @@
 .session-members {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   .pending-member {
     opacity: 0.4;
   }
@@ -24,7 +25,7 @@
 .sport-session-card {
   width: 80%;
   height: 80%;
-  max-height: 600px;
+  max-height: 750px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
@@ -94,6 +95,11 @@
   .sport-session-join {
     flex-grow: 1;
   }
+}
+
+.sport-session-info-item-small,
+.sport-session-info-item-big {
+  width: 100%;
 }
 
 .sport-session-info-item-small {
@@ -217,3 +223,125 @@
   background-color: $green;
 }
 
+
+@media (max-width: 575px) {
+
+  .sport-session-info .sport-session-info-left {
+    flex-direction: column;
+  }
+
+  .sport-session-info-item-big,
+  .sport-session-info-item-small {
+    margin-bottom: 20px;
+  }
+
+}
+
+@media (min-width: 100px) and (max-width: 767px) {
+  .sport-session-background {
+    height: auto;
+  }
+
+  .sport-session-card {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    padding: 16px;
+    border-radius: 0px;
+    max-height: none;
+  }
+
+  .sport-session-card-left {
+    padding: 0px;
+    border-right: none;
+    width: 100%;
+  }
+
+  .sport-session-card-left .sport-session-title img {
+      width: 35px;
+      margin-right: 10px;
+  }
+
+  .session-member {
+    margin-bottom: 0px 5px 10px 5px;
+  }
+
+  .sport-session-info .sport-session-info-left {
+    align-items: center;
+    margin-right: 0px;
+  }
+
+  // Boostrap Chat Modal
+
+  .sport-session-card-right .modal-chat-btn {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    padding: 5px 10px;
+    box-shadow: 3px 3px 4px rgba(0,0,0,0.3);
+    z-index: 1050;
+  }
+
+  .sport-session-card-right .modal {
+    height: 100%;
+    bottom: 0px;
+    top: auto;
+  }
+
+  .sport-session-card-right .modal-dialog {
+    height: calc(100% - 60px);
+    margin: 10px 10px 0px 10px;
+  }
+
+  .sport-session-card-right .modal-content {
+    height: 100%;
+    padding: 15px;
+  }
+
+  .close-chat {
+    position: absolute;
+    background-color: transparent;
+    border:none;
+    font-size: 24px;
+  }
+}
+
+
+@media (min-width: 768px) {
+  // Modal Chat
+
+  #modal-chat {
+    display: block;
+    position: relative;
+  }
+
+  .modal-chat-btn,
+  .close-chat {
+    display: none;
+  }
+
+
+  .sport-session-card-right .modal-dialog {
+    height: 100%;
+    margin: 0px;
+    max-width: none!important;
+  }
+
+  .sport-session-card-right .modal-content {
+    height: 100%;
+    border: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .sport-session-card {
+    height: 100%;
+    width: 100%;
+    border-radius: 0px;
+    padding: 20px 10px;
+  }
+
+  .sport-session-card-left {
+    padding: 0 10px;
+  }
+}
