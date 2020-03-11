@@ -190,18 +190,29 @@
 }
 
 
-// .new-sesh .sport_session_level {
-//     margin-right: 134px;
-// }
+@media (min-width: 100px) and (max-width: 575px) {
+  .new-sesh {
+    padding-left: 0px;
+  }
 
-// .new-sesh .capacity-choices {
-//     border-right: solid;
+  .activity-choices label {
+    flex-basis: 49%;
+  }
 
-// }
+  .level-choice {
+    flex: 1 1 0%;
+    font-size: 14px;
+  }
 
-// .new-sesh .rider-count {
-//     border-left: solid;
-//     font-size: 24px;
-//     font-weight: bold;
-//     padding: 8px 32px;
-// }
+  .capacity-choice i {
+    font-size: 24px;
+  }
+
+  .new-sesh .rider-count {
+    padding: 8px 20px;
+  }
+
+  .new-sesh .btn-gom {
+    font-size: 18px;
+  }
+}
