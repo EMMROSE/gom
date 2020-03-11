@@ -9,11 +9,11 @@
   z-index: -99;
 }
 
-.video-background iframe {
+.video-foreground {
   opacity: 0.5;
 }
-.video-foreground,
-.video-background iframe {
+
+.video-foreground {
   position: absolute;
   top: 0;
   left: 0;
