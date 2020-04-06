@@ -21,9 +21,9 @@ puts "----------"
 
 puts "Create Activities"
 
-cover_photo = URI.open('https://res.cloudinary.com/detkhu57i/image/upload/v1584630460/portfolio/bdtroc_p75geh.png')
+file = URI.open('https://res.cloudinary.com/timothee/image/upload/v1582638267/surf_activity.jpg')
 a1 = Activity.create!(name: "Surf")
-a1.photo.attach(io: cover_photo, filename: 'surf_activity.jpg', content_type: 'image/png')
+a1.photo.attach(io: file, filename: 'surf_activity.jpg', content_type: 'image/png')
 a1.save!
 
 file = URI.open('https://res.cloudinary.com/timothee/image/upload/v1582638314/ski_activity.jpg')
