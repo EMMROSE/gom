@@ -119,7 +119,7 @@
 
               <!-- Show "join" option  -->
               <% elsif @current_relevant_session_user && @current_relevant_session_user.status == "rejected" %>
-                <p>Your previous request was rejected... <%= link_to "Ask again?", session_user_path(@current_relevant_session_user), method: "patch", class: "sport-session-accept" %></p>
+                <p class="text-center">Your previous request was rejected... <%= link_to "Ask again?", session_user_path(@current_relevant_session_user), method: "patch", class: "sport-session-accept" %></p>
 
               <% elsif !@current_relevant_session_user %>
                 <%= link_to "Ask to Join!", sport_session_session_users_path(params[:id]), method: "post", class: "btn btn-gom w-100" %>
