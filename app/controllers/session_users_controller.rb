@@ -14,6 +14,13 @@ class SessionUsersController < ApplicationController
     redirect_to sport_session_path(params[:sport_session_id])
   end
 
+  def update
+    session_user = SessionUser.find(params[:id])
+    session_user.update(status: 'pending')
+    flash[:notice] = "Great! We will notify when the session owner accept/refuse your request"
+    redirect_to sport_session_path(session_user.sport_session_id)
+  end
+
   def accept
     session_user = SessionUser.find(params[:id])
     session_user.status = 'accepted'
